@@ -26,8 +26,8 @@ export const Navigationbar = () => {
           <div className="collapse navbar-collapse" id="navbarCards">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink className="nav-link" to="/grimorio">
-                  Home
+                <NavLink className="nav-link" to="/hipatia/cartas">
+                  Hijos del Sol
                 </NavLink>
               </li>
               <li className="nav-item">

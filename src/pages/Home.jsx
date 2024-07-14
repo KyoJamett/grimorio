@@ -7,29 +7,29 @@ export function Home() {
     <>
       <div className="container my-4">
         <div className="row">
-          <p class="text-start">{homeText.text}</p>
+          <p className="text-start">{homeText.text}</p>
         </div>
-        <div class="container my-4">
-          <div class="row">
-            <div class="col">
+        <div className="container my-4">
+          <div className="row">
+            <div className="col">
               Hijos del Sol
               <button
                 type="button"
-                class="btn btn-dark"
+                className="btn btn-dark"
                 onClick={() => handlerEdition()}
               >
                 Dark
               </button>
             </div>
-            <div class="col">
+            <div className="col">
               Column
-              <button type="button" class="btn btn-dark">
+              <button type="button" className="btn btn-dark">
                 Dark
               </button>
             </div>
-            <div class="col">
+            <div className="col">
               Column
-              <button type="button" class="btn btn-dark">
+              <button type="button" className="btn btn-dark">
                 Dark
               </button>
             </div>
