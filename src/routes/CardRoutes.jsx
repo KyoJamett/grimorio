@@ -11,7 +11,7 @@ export const CardRoutes = () => {
     <>
       <Navigationbar />
       <Routes>
-        <Route path="sabiduria-infinita" element={<CardsPage />} />
+        <Route path="hipatia" element={<CardsPage />} />
         <Route path="home" element={<Home />} />
         <Route path="/" element={<Navigate to="/home" />} />
       </Routes>
