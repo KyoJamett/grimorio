@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { useCards } from "../hooks/useCards";
 
 export function Home() {
@@ -13,13 +14,9 @@ export function Home() {
           <div className="row">
             <div className="col">
               Hijos del Sol
-              <button
-                type="button"
-                className="btn btn-dark"
-                onClick={() => handlerEdition()}
-              >
+              <NavLink className="btn btn-dark" to={"/hipatia/cartas"}>
                 Dark
-              </button>
+              </NavLink>
             </div>
             <div className="col">
               Column
