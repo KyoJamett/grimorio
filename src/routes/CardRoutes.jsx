@@ -9,9 +9,9 @@ export const CardRoutes = () => {
     <>
       <Navigationbar />
       <Routes>
-        <Route path="hipatia/cartas" element={<CardsPage />} />
-        <Route path="hipatia" element={<Home />} />
-        <Route path="/" element={<Navigate to="/hipatia" />} />
+        <Route path="grimorio/cartas" element={<CardsPage />} />
+        <Route path="grimorio" element={<Home />} />
+        <Route path="/" element={<Navigate to="/grimorio" />} />
       </Routes>
     </>
   );

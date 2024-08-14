@@ -5,8 +5,8 @@ export const Navigationbar = () => {
     <>
       <nav className="navbar navbar-expand-lg navbar-dark  bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            Sabiduria Infinita
+          <a className="navbar-brand" href="/grimorio">
+            Grimorio
           </a>
 
           {/*-------------Collapsibe Button---------------- */}
@@ -26,7 +26,7 @@ export const Navigationbar = () => {
           <div className="collapse navbar-collapse" id="navbarCards">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink className="nav-link" to="/hipatia/cartas">
+                <NavLink className="nav-link" to="/grimorio/cartas">
                   Hijos del Sol
                 </NavLink>
               </li>

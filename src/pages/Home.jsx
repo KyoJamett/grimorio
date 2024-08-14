@@ -14,7 +14,7 @@ export function Home() {
           <div className="row">
             <div className="col">
               Hijos del Sol
-              <NavLink className="btn btn-dark" to={"/hipatia/cartas"}>
+              <NavLink className="btn btn-dark" to={"/grimorio/cartas"}>
                 Dark
               </NavLink>
             </div>
