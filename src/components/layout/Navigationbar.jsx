@@ -5,7 +5,7 @@ export const Navigationbar = () => {
     <>
       <nav className="navbar navbar-expand-lg navbar-dark  bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/grimorio">
+          <a className="navbar-brand" href="/grimorio/">
             Grimorio
           </a>
 
