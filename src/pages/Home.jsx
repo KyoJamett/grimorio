@@ -14,21 +14,33 @@ export function Home() {
           <div className="row">
             <div className="col">
               Hijos del Sol
-              <NavLink className="btn btn-dark" to={"/grimorio/cartas"}>
+              <NavLink
+                className="btn btn-dark"
+                to={"/grimorio/cartas"}
+                state={{ ed: "hijos-del-sol" }}
+              >
                 Dark
               </NavLink>
             </div>
             <div className="col">
-              Column
-              <button type="button" className="btn btn-dark">
+              Legado Gótico
+              <NavLink
+                className="btn btn-dark"
+                to={"/grimorio/cartas"}
+                state={{ ed: "legado-gotico" }}
+              >
                 Dark
-              </button>
+              </NavLink>
             </div>
             <div className="col">
-              Column
-              <button type="button" className="btn btn-dark">
+              Águila Imperial
+              <NavLink
+                className="btn btn-dark"
+                to={"/grimorio/cartas"}
+                state={{ ed: "aguila-imperial" }}
+              >
                 Dark
-              </button>
+              </NavLink>
             </div>
           </div>
         </div>
