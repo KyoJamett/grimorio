@@ -49,6 +49,14 @@ const homeText = {
   text: "Seleccione la edición que desea consultar",
 };
 
+const format = {
+  name: "Escuelas Elementales",
+  intro:
+    "Escuelas Elementales es un formato de nueva era, compuesto inicialmente por las ediciones Dominio, Contraataque, Águila Imperial, Steampunk, Axis Mundi, Hijos del Sol y Legado Gótico.",
+  details:
+    "El formato al ser actualmente sólo de comunidad, ha sido sometido a cambios, siendo el más aceptado por las comunidades la inclusión de las ediciones Bushido y Sol Naciente, a fin de dar algo de soporte extra a ciertas razas débiles.",
+};
+
 export const useCards = () => {
   const [cardSelected, setCardSelected] = useState(initialCardSelected);
   const [visibleForm, setVisibleForm] = useState(false);
@@ -80,5 +88,6 @@ export const useCards = () => {
     handlerOpenForm,
     handlerCloseForm,
     homeText,
+    format,
   };
 };

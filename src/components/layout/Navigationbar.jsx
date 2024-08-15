@@ -26,8 +26,16 @@ export const Navigationbar = () => {
           <div className="collapse navbar-collapse" id="navbarCards">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
+                <NavLink
+                  className="nav-link"
+                  to="/grimorio/escuelas-elementales"
+                >
+                  Escuelas Elementales
+                </NavLink>
+              </li>
+              <li className="nav-item">
                 <NavLink className="nav-link" to="/grimorio/cartas">
-                  Hijos del Sol
+                  Civilizaciones
                 </NavLink>
               </li>
               <li className="nav-item">
