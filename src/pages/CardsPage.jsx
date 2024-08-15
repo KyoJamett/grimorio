@@ -51,7 +51,7 @@ export function CardsPage() {
 
   return (
     <>
-      <div className="container my-4 align-items-center justify-content-center">
+      <div className="container my-4">
         {/*<div className="col-4 mb-3">
           <CardForm
             cardSelected={cardSelected}
