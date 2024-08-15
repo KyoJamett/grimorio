@@ -70,8 +70,6 @@ export const useCards = () => {
     setCardSelected(initialCardSelected);
   };
 
-  const handlerEdition = () => {};
-
   return {
     cards,
     handlerCardSelectedForm,
@@ -82,6 +80,5 @@ export const useCards = () => {
     handlerOpenForm,
     handlerCloseForm,
     homeText,
-    handlerEdition,
   };
 };

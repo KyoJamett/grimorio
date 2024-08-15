@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useCards } from "../hooks/useCards";
 
 export function Home() {
-  const { homeText, handlerEdition } = useCards();
+  const { homeText } = useCards();
 
   return (
     <>

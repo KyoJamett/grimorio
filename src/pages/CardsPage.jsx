@@ -51,7 +51,7 @@ export function CardsPage() {
 
   return (
     <>
-      <div className="container my-4">
+      <div className="container my-4 align-items-center justify-content-center">
         {/*<div className="col-4 mb-3">
           <CardForm
             cardSelected={cardSelected}
@@ -75,26 +75,22 @@ export function CardsPage() {
           edition={edition}
         />
       )}
-      {!dataCards || (
-        <div className="container my-4">
-          <div className="row">
-            {cards.length === 0 ? (
-              <div className="alert alert-warning">
-                No hay registros en el sistema
-              </div>
-            ) : (
-              <CardsList
-                cards={cardsArray}
-                rarities={rarities}
-                types={types}
-                visibleForm={visibleForm}
-                handlerOpenForm={handlerOpenForm}
-                handlerCardSelectedForm={handlerCardSelectedForm}
-              />
-            )}
-          </div>
+      <div className="container my-4 justify-content-center">
+        <div className="row">
+          {!dataCards ? (
+            <div className="lds-dual-ring"></div>
+          ) : (
+            <CardsList
+              cards={cardsArray}
+              rarities={rarities}
+              types={types}
+              visibleForm={visibleForm}
+              handlerOpenForm={handlerOpenForm}
+              handlerCardSelectedForm={handlerCardSelectedForm}
+            />
+          )}
         </div>
-      )}
+      </div>
     </>
   );
 }
