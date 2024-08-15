@@ -4,7 +4,7 @@ import { CardsList } from "../components/CardsList";
 import { useCards } from "../hooks/useCards";
 import { CardModalForm } from "../components/CardModalForm";
 import { useFetch } from "../hooks/useFetch";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useFetchEd } from "../hooks/useFetchEd";
 
 export function CardsPage() {
@@ -17,11 +17,20 @@ export function CardsPage() {
     handlerCloseForm,
   } = useCards();
 
+  const navigate = useNavigate();
+
   function getEd() {
     const location = useLocation();
     console.log(location);
-    return location.state.ed;
+    if (location.state) {
+      return location.state.ed;
+    } else {
+      console.log("redirecciona");
+      navigate("/");
+    }
   }
+
+  function handlerRedirect() {}
 
   const { dataCards } = useFetchEd(getEd());
   let races = null;
@@ -40,14 +49,7 @@ export function CardsPage() {
     cardsArray = dataCards.cards;
   }
 
-  //const [cardSelected, setCardSelected] = useState(initialCardSelected);
-
-  /*const handlerCardSelectedForm = (card) => {
-    console.log(card);
-    setCardSelected({ ...card });
-  };*/
-
-  console.log(cardsArray);
+  //console.log(cardsArray);
 
   return (
     <>
@@ -75,7 +77,7 @@ export function CardsPage() {
           edition={edition}
         />
       )}
-      <div className="container my-4 justify-content-center">
+      <div className="container my-5 justify-content-center">
         <div className="row">
           {!dataCards ? (
             <div className="lds-dual-ring"></div>

@@ -40,13 +40,13 @@ export const CardsList = ({
           )*/}
         </div>
         <table className="table table-hover table-striped rounded-3 border">
-          <thead className="table-dark">
+          <thead className="table-responsive table-dark">
             <tr>
-              <th>#Número de Edición</th>
+              <th>N° Edición</th>
               <th>Nombre</th>
               <th>Tipo</th>
               <th>Frecuencia</th>
-              <th>Info</th>
+              {/*<th>Info</th>*/}
             </tr>
           </thead>
           <tbody>

@@ -46,14 +46,18 @@ export const CardRow = ({
     ed_slug,
   };
 
+  const handleRowClick = () => {
+    handlerOpenForm(card);
+  };
+
   return (
     <>
-      <tr>
+      <tr onClick={handleRowClick} style={{ cursor: "pointer" }}>
         <td>{edid}</td>
         <td>{name.toUpperCase()}</td>
         <td>{onTypes(type)}</td>
         <td>{onRarity(rarity)}</td>
-        {
+        {/*
           <td>
             <button
               className="btn btn-primary my-2"
@@ -61,8 +65,7 @@ export const CardRow = ({
             >
               Detalles
             </button>
-          </td>
-        }
+          </td>*/}
       </tr>
     </>
   );
