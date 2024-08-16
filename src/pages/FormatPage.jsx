@@ -17,99 +17,225 @@ export function FormatPage() {
               <p>{format.details}</p>
             </div>
             <div className="row">
-              <div className="col">
-                Bushido
-                <NavLink
-                  className="btn btn-dark"
-                  to={"/grimorio/cartas"}
-                  state={{ ed: "bushido" }}
-                >
-                  Dark
-                </NavLink>
+              <div
+                className="col d-flex flex-column align-items-center"
+                style={{ maxWidth: "300px" }}
+              >
+                <span className="border border-secondary rounded p-3 mb-3 align-items-center">
+                  <img
+                    src="https://api.myl.cl/static/bushido.png"
+                    alt="Bushido"
+                    className="img-fluid" // Opcional: Ajusta el tamaño de la imagen si es necesario
+                    style={{
+                      width: "150px",
+                      height: "150px",
+                      objectFit: "contain",
+                    }}
+                  />
+                  <NavLink
+                    className="btn btn-dark"
+                    to={"/grimorio/cartas"}
+                    state={{ ed: "bushido" }}
+                  >
+                    Ver
+                  </NavLink>
+                </span>
               </div>
-              <div className="col">
-                Sol Naciente
-                <NavLink
-                  className="btn btn-dark"
-                  to={"/grimorio/cartas"}
-                  state={{ ed: "sol-naciente" }}
-                >
-                  Dark
-                </NavLink>
+              <div
+                className="col d-flex flex-column align-items-center"
+                style={{ maxWidth: "300px" }}
+              >
+                <span className="border border-secondary rounded p-3 mb-3 align-items-center ">
+                  <img
+                    src="https://api.myl.cl/static/sol_naciente.png"
+                    alt="Sol Naciente"
+                    className="img-fluid" // Opcional: Ajusta el tamaño de la imagen si es necesario
+                    style={{
+                      width: "150px",
+                      height: "150px",
+                      objectFit: "contain",
+                    }}
+                  />
+                  <NavLink
+                    className="btn btn-dark"
+                    to={"/grimorio/cartas"}
+                    state={{ ed: "sol-naciente" }}
+                  >
+                    Ver
+                  </NavLink>
+                </span>
               </div>
-              <div className="col">
-                Dominio
-                <NavLink
-                  className="btn btn-dark"
-                  to={"/grimorio/cartas"}
-                  state={{ ed: "dominio" }}
-                >
-                  Dark
-                </NavLink>
+              <div
+                className="col d-flex flex-column align-items-center"
+                style={{ maxWidth: "300px" }}
+              >
+                <span className="border border-secondary rounded p-3 mb-3 align-items-center">
+                  <img
+                    src="https://api.myl.cl/static/dominio.png"
+                    alt="Dominio"
+                    className="img-fluid" // Opcional: Ajusta el tamaño de la imagen si es necesario
+                    style={{
+                      width: "150px",
+                      height: "150px",
+                      objectFit: "contain",
+                    }}
+                  />
+                  <NavLink
+                    className="btn btn-dark"
+                    to={"/grimorio/cartas"}
+                    state={{ ed: "dominio" }}
+                  >
+                    Ver
+                  </NavLink>
+                </span>
               </div>
             </div>
             <div className="row">
-              <div className="col">
-                Contraataque
-                <NavLink
-                  className="btn btn-dark"
-                  to={"/grimorio/cartas"}
-                  state={{ ed: "contraataque" }}
-                >
-                  Dark
-                </NavLink>
+              <div
+                className="col d-flex flex-column align-items-center"
+                style={{ maxWidth: "300px" }}
+              >
+                <span className="border border-secondary rounded p-3 mb-3 align-items-center">
+                  <img
+                    src="https://api.myl.cl/static/contraataque.png"
+                    alt="Contraataque"
+                    className="img-fluid" // Opcional: Ajusta el tamaño de la imagen si es necesario
+                    style={{
+                      width: "150px",
+                      height: "150px",
+                      objectFit: "contain",
+                    }}
+                  />
+                  <NavLink
+                    className="btn btn-dark"
+                    to={"/grimorio/cartas"}
+                    state={{ ed: "contraataque" }}
+                  >
+                    Ver
+                  </NavLink>
+                </span>
               </div>
-              <div className="col">
-                Águila Imperial
-                <NavLink
-                  className="btn btn-dark"
-                  to={"/grimorio/cartas"}
-                  state={{ ed: "aguila-imperial" }}
-                >
-                  Dark
-                </NavLink>
+              <div
+                className="col d-flex flex-column align-items-center"
+                style={{ maxWidth: "300px" }}
+              >
+                <span className="border border-secondary rounded p-3 mb-3 align-items-center">
+                  <img
+                    src="https://api.myl.cl/static/aguila_imperial.png"
+                    alt="Aguila"
+                    className="img-fluid" // Opcional: Ajusta el tamaño de la imagen si es necesario
+                    style={{
+                      width: "150px",
+                      height: "150px",
+                      objectFit: "contain",
+                    }}
+                  />
+                  <NavLink
+                    className="btn btn-dark"
+                    to={"/grimorio/cartas"}
+                    state={{ ed: "aguila-imperial" }}
+                  >
+                    Ver
+                  </NavLink>
+                </span>
               </div>
-              <div className="col">
-                Steampunk
-                <NavLink
-                  className="btn btn-dark"
-                  to={"/grimorio/cartas"}
-                  state={{ ed: "steampunk" }}
-                >
-                  Dark
-                </NavLink>
+              <div
+                className="col d-flex flex-column align-items-center"
+                style={{ maxWidth: "300px" }}
+              >
+                <span className="border border-secondary rounded p-3 mb-3 align-items-center">
+                  <img
+                    src="https://api.myl.cl/static/steampunk.png"
+                    alt="Steampunk"
+                    className="img-fluid" // Opcional: Ajusta el tamaño de la imagen si es necesario
+                    style={{
+                      width: "150px",
+                      height: "150px",
+                      objectFit: "contain",
+                    }}
+                  />
+                  <NavLink
+                    className="btn btn-dark"
+                    to={"/grimorio/cartas"}
+                    state={{ ed: "steampunk" }}
+                  >
+                    Ver
+                  </NavLink>
+                </span>
               </div>
             </div>
             <div className="row">
-              <div className="col">
-                Axis Mundi
-                <NavLink
-                  className="btn btn-dark"
-                  to={"/grimorio/cartas"}
-                  state={{ ed: "axis-mundi" }}
-                >
-                  Dark
-                </NavLink>
+              <div
+                className="col d-flex flex-column align-items-center"
+                style={{ maxWidth: "300px" }}
+              >
+                <span className="border border-secondary rounded p-3 mb-3 align-items-center">
+                  <img
+                    src="https://api.myl.cl/static/axis-mundi.png"
+                    alt="Axis"
+                    className="img-fluid" // Opcional: Ajusta el tamaño de la imagen si es necesario
+                    style={{
+                      width: "150px",
+                      height: "150px",
+                      objectFit: "contain",
+                    }}
+                  />
+                  <NavLink
+                    className="btn btn-dark"
+                    to={"/grimorio/cartas"}
+                    state={{ ed: "axis-mundi" }}
+                  >
+                    Ver
+                  </NavLink>
+                </span>
               </div>
-              <div className="col">
-                Hijos del Sol
-                <NavLink
-                  className="btn btn-dark"
-                  to={"/grimorio/cartas"}
-                  state={{ ed: "hijos-del-sol" }}
-                >
-                  Dark
-                </NavLink>
+              <div
+                className="col d-flex flex-column align-items-center"
+                style={{ maxWidth: "300px" }}
+              >
+                <span className="border border-secondary rounded p-3 mb-3 align-items-center">
+                  <img
+                    src="https://api.myl.cl/static/hijos_del_sol.png"
+                    alt="Hijos del Sol"
+                    className="img-fluid" // Opcional: Ajusta el tamaño de la imagen si es necesario
+                    style={{
+                      width: "150px",
+                      height: "150px",
+                      objectFit: "contain",
+                    }}
+                  />
+                  <NavLink
+                    className="btn btn-dark"
+                    to={"/grimorio/cartas"}
+                    state={{ ed: "hijos-del-sol" }}
+                  >
+                    Ver
+                  </NavLink>
+                </span>
               </div>
-              <div className="col">
-                Legado Gótico
-                <NavLink
-                  className="btn btn-dark"
-                  to={"/grimorio/cartas"}
-                  state={{ ed: "legado-gotico" }}
-                >
-                  Dark
-                </NavLink>
+              <div
+                className="col d-flex flex-column align-items-center"
+                style={{ maxWidth: "300px" }}
+              >
+                <span className="border border-secondary rounded p-3 mb-3 align-items-center">
+                  <img
+                    src="https://api.myl.cl/static/legado-gotico.png"
+                    alt="Legado"
+                    className="img-fluid" // Opcional: Ajusta el tamaño de la imagen si es necesario
+                    style={{
+                      width: "150px",
+                      height: "150px",
+                      objectFit: "contain",
+                    }}
+                  />
+                  <NavLink
+                    className="btn btn-dark align-items-center"
+                    to={"/grimorio/cartas"}
+                    state={{ ed: "legado-gotico" }}
+                  >
+                    Ver
+                  </NavLink>
+                </span>
               </div>
             </div>
           </div>
