@@ -79,4 +79,37 @@
 
   @media (min-width:1025px) { .container { width: 60% !important;} }
 
+  .modal-dialog-scrollable {
+    max-height: 80vh; /* Ajusta esto según tus necesidades */
+  }
+  
+  .modal-body {
+    overflow-y: auto;
+  }
+  
+  .skill-text {
+    max-height: 250px; /* Ajusta este valor según tus necesidades */
+    overflow-y: auto;
+  }
+
+  .card-text {
+    font-size: 0.800rem; /* Tamaño de fuente específico para el texto dentro de la tarjeta */
+    margin-bottom: 1rem; /* Espacio inferior para separar del siguiente contenido */
+  }
+
+/* CSS personalizado para el botón de cierre */
+.btn-close {
+  width: 30px; /* Ajusta el tamaño del botón */
+  height: 30px; /* Ajusta el tamaño del botón */
+  background-color: red; /* Color de fondo rojo */
+  border-radius: 50%; /* Hacer que sea redondeado */
+  border: none; /* Eliminar el borde predeterminado */
+}
+
+.btn-close::before {
+  color: white; /* Color del icono de cierre */
+}
+
+  
+
   

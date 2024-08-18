@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useCards } from "../hooks/useCards";
 
 export const CardForm = ({
@@ -74,55 +74,86 @@ export const CardForm = ({
 
   return (
     <>
-      <div className="card">
-        <div className="row">
-          <div className="col">
-            {/*<img src="...imagen" className="card-img-top" alt="..." />*/}
-            <img
-              src={
-                "https://api.myl.cl/static/cards/" +
-                onEd(ed_edid) +
-                "/" +
-                onEdid(edid) +
-                ".png"
-              }
-              className="card-img-top"
-              alt="card"
-            />
-          </div>
-          <div className="col">
-            <div className="card-body">
-              <h5 className="card-title">{name.toUpperCase()}</h5>
-              <p className="card-text">{"Habilidad: " + ability}</p>
+      <div
+        className="modal fade show"
+        tabIndex="-1"
+        role="dialog"
+        style={{ display: "block" }}
+      >
+        <div className="modal-dialog modal-dialog-scrollable" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">{name.toUpperCase()}</h5>
+              <button
+                type="button"
+                className="btn-close btn-close-red"
+                onClick={onCloseForm}
+                aria-label="Close"
+              ></button>
             </div>
-            <ul className="list-group list-group-flush">
-              <li className="list-group-item">
-                {"Tipo de carta: " + onTypes(type)}
-              </li>
-              <li className="list-group-item">
-                {"Costo: " + (cost === null ? "no aplica" : cost)}
-              </li>
-              <li className="list-group-item">
-                {"Fuerza: " + (damage === null ? "no aplica" : damage)}
-              </li>
-              <li className="list-group-item">
-                {"Raza: " + (race === null ? "no aplica" : onRace(race))}
-              </li>
-              {/*<li className="list-group-item">{"Texto épico: " + flavour}</li>*/}
-            </ul>
+            <div className="modal-body">
+              <div className="card">
+                <div className="row">
+                  <div className="col">
+                    <img
+                      src={
+                        "https://api.myl.cl/static/cards/" +
+                        onEd(ed_edid) +
+                        "/" +
+                        onEdid(edid) +
+                        ".png"
+                      }
+                      className="card-img-top"
+                      alt="card"
+                    />
+                  </div>
+                  <div className="col">
+                    <div className="card-body">
+                      <h5 className="card-title">{name.toUpperCase()}</h5>
+                      <p className="card-text skill-text">
+                        {"Habilidad: " + ability}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="card-body">
+                    <div className="card-text">
+                      <ul className="list-group list-group-flush">
+                        <li className="list-group-item">
+                          {"Tipo de carta: " + onTypes(type)}
+                        </li>
+                        <li className="list-group-item">
+                          {"Costo: " + (cost === null ? "no aplica" : cost)}
+                        </li>
+                        <li className="list-group-item">
+                          {"Fuerza: " +
+                            (damage === null ? "no aplica" : damage)}
+                        </li>
+                        <li className="list-group-item">
+                          {"Raza: " +
+                            (race === null ? "no aplica" : onRace(race))}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <p className="card-text">
+                  {"Texto épico: " + (flavour === null ? "no aplica" : flavour)}
+                </p>
+              </div>
+            </div>
+            {/*<div className="modal-footer">
+              <button
+                className="btn btn-primary"
+                type="button"
+                onClick={onCloseForm}
+              >
+                Cerrar
+              </button>
+            </div>*/}
           </div>
-          <p className="card-text">
-            {"Texto épico: " + (flavour === null ? "no aplica" : flavour)}
-          </p>
         </div>
-
-        <button
-          className="btn btn-primary mx-2"
-          type="button"
-          onClick={onCloseForm}
-        >
-          Cerrar
-        </button>
       </div>
     </>
   );

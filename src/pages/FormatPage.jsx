@@ -33,7 +33,7 @@ export function FormatPage() {
                     }}
                   />
                   <NavLink
-                    className="btn btn-dark"
+                    className="btn btn-dark mt-2 d-flex justify-content-center"
                     to={"/grimorio/cartas"}
                     state={{ ed: "bushido" }}
                   >
@@ -57,7 +57,7 @@ export function FormatPage() {
                     }}
                   />
                   <NavLink
-                    className="btn btn-dark"
+                    className="btn btn-dark mt-2 d-flex justify-content-center"
                     to={"/grimorio/cartas"}
                     state={{ ed: "sol-naciente" }}
                   >
@@ -81,7 +81,7 @@ export function FormatPage() {
                     }}
                   />
                   <NavLink
-                    className="btn btn-dark"
+                    className="btn btn-dark mt-2 d-flex justify-content-center"
                     to={"/grimorio/cartas"}
                     state={{ ed: "dominio" }}
                   >
@@ -107,7 +107,7 @@ export function FormatPage() {
                     }}
                   />
                   <NavLink
-                    className="btn btn-dark"
+                    className="btn btn-dark mt-2 d-flex justify-content-center"
                     to={"/grimorio/cartas"}
                     state={{ ed: "contraataque" }}
                   >
@@ -131,7 +131,7 @@ export function FormatPage() {
                     }}
                   />
                   <NavLink
-                    className="btn btn-dark"
+                    className="btn btn-dark mt-2 d-flex justify-content-center"
                     to={"/grimorio/cartas"}
                     state={{ ed: "aguila-imperial" }}
                   >
@@ -155,7 +155,7 @@ export function FormatPage() {
                     }}
                   />
                   <NavLink
-                    className="btn btn-dark"
+                    className="btn btn-dark mt-2 d-flex justify-content-center"
                     to={"/grimorio/cartas"}
                     state={{ ed: "steampunk" }}
                   >
@@ -181,7 +181,7 @@ export function FormatPage() {
                     }}
                   />
                   <NavLink
-                    className="btn btn-dark"
+                    className="btn btn-dark mt-2 d-flex justify-content-center"
                     to={"/grimorio/cartas"}
                     state={{ ed: "axis-mundi" }}
                   >
@@ -205,7 +205,7 @@ export function FormatPage() {
                     }}
                   />
                   <NavLink
-                    className="btn btn-dark"
+                    className="btn btn-dark mt-2 d-flex justify-content-center"
                     to={"/grimorio/cartas"}
                     state={{ ed: "hijos-del-sol" }}
                   >
@@ -229,7 +229,7 @@ export function FormatPage() {
                     }}
                   />
                   <NavLink
-                    className="btn btn-dark align-items-center"
+                    className="btn btn-dark mt-2 d-flex justify-content-center"
                     to={"/grimorio/cartas"}
                     state={{ ed: "legado-gotico" }}
                   >
