@@ -107,9 +107,9 @@ export const CardForm = ({
                       alt="card"
                     />
                   </div>
-                  <div className="col">
+                  <div className="col card-col">
                     <div className="card-body">
-                      <h5 className="card-title">{name.toUpperCase()}</h5>
+                      {/*<h5 className="card-title">{name.toUpperCase()}</h5>*/}
                       <p className="card-text skill-text">
                         {"Habilidad: " + ability}
                       </p>

@@ -88,7 +88,7 @@
   }
   
   .skill-text {
-    max-height: 250px; /* Ajusta este valor según tus necesidades */
+    max-height: 290px; /* Ajusta este valor según tus necesidades */
     overflow-y: auto;
   }
 
@@ -110,6 +110,24 @@
   color: white; /* Color del icono de cierre */
 }
 
-  
+.table-responsive {
+  overflow-x: auto;
+}
+
+.card-body {
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+}
+
+.card-col {
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+}
+
+
 
   
