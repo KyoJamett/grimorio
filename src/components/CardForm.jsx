@@ -113,24 +113,34 @@ export const CardForm = ({
                       <p className="card-text skill-text">
                         {"Habilidad: " + ability}
                       </p>
+                      <p className="card-text">
+                        {"Texto épico: " +
+                          (flavour === null ? "no aplica" : flavour)}
+                      </p>
                     </div>
                   </div>
                 </div>
                 <div className="row">
-                  <div className="card-body">
-                    <div className="card-text">
-                      <ul className="list-group list-group-flush">
-                        <li className="list-group-item">
+                  <div className="col-6">
+                    <div className="card-body">
+                      <ul className="list-unstyled">
+                        <li className="mb-2">
                           {"Tipo de carta: " + onTypes(type)}
                         </li>
-                        <li className="list-group-item">
+                        <li className="mb-2">
                           {"Costo: " + (cost === null ? "no aplica" : cost)}
                         </li>
-                        <li className="list-group-item">
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="col-6">
+                    <div className="card-body">
+                      <ul className="list-unstyled">
+                        <li className="mb-2">
                           {"Fuerza: " +
                             (damage === null ? "no aplica" : damage)}
                         </li>
-                        <li className="list-group-item">
+                        <li className="mb-2">
                           {"Raza: " +
                             (race === null ? "no aplica" : onRace(race))}
                         </li>
@@ -138,20 +148,20 @@ export const CardForm = ({
                     </div>
                   </div>
                 </div>
-                <p className="card-text">
+                {/*<p className="card-text">
                   {"Texto épico: " + (flavour === null ? "no aplica" : flavour)}
-                </p>
+                </p>*/}
               </div>
             </div>
             {/*<div className="modal-footer">
-              <button
-                className="btn btn-primary"
-                type="button"
-                onClick={onCloseForm}
-              >
-                Cerrar
-              </button>
-            </div>*/}
+          <button
+            className="btn btn-primary"
+            type="button"
+            onClick={onCloseForm}
+          >
+            Cerrar
+          </button>
+        </div>*/}
           </div>
         </div>
       </div>
