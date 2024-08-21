@@ -58,9 +58,15 @@ const format = {
 };
 
 const escuelas = {
+  bu: "bushido",
+  sn: "sol-naciente",
+  dom: "dominio",
+  con: "contrataque",
+  agu: "aguila-imperial",
+  stm: "steampunk",
+  axs: "axis-mundi",
   sol: "hijos-del-sol",
   leg: "legado-gotico",
-  agu: "aguila-imperial",
 };
 
 export const useCards = () => {

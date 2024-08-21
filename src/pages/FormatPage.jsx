@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useCards } from "../hooks/useCards";
 
 export function FormatPage() {
-  const { format } = useCards();
+  const { format, escuelas } = useCards();
 
   return (
     <>
@@ -34,7 +34,7 @@ export function FormatPage() {
                   />
                   <NavLink
                     className="btn btn-dark mt-2 d-flex justify-content-center"
-                    to={"/grimorio/cartas"}
+                    to={`/grimorio/cartas/${escuelas.bu}`}
                     state={{ ed: "bushido" }}
                   >
                     Ver
@@ -58,7 +58,7 @@ export function FormatPage() {
                   />
                   <NavLink
                     className="btn btn-dark mt-2 d-flex justify-content-center"
-                    to={"/grimorio/cartas"}
+                    to={`/grimorio/cartas/${escuelas.sn}`}
                     state={{ ed: "sol-naciente" }}
                   >
                     Ver
@@ -82,7 +82,7 @@ export function FormatPage() {
                   />
                   <NavLink
                     className="btn btn-dark mt-2 d-flex justify-content-center"
-                    to={"/grimorio/cartas"}
+                    to={`/grimorio/cartas/${escuelas.dom}`}
                     state={{ ed: "dominio" }}
                   >
                     Ver
@@ -108,7 +108,7 @@ export function FormatPage() {
                   />
                   <NavLink
                     className="btn btn-dark mt-2 d-flex justify-content-center"
-                    to={"/grimorio/cartas"}
+                    to={`/grimorio/cartas/${escuelas.con}`}
                     state={{ ed: "contraataque" }}
                   >
                     Ver
@@ -132,7 +132,7 @@ export function FormatPage() {
                   />
                   <NavLink
                     className="btn btn-dark mt-2 d-flex justify-content-center"
-                    to={"/grimorio/cartas"}
+                    to={`/grimorio/cartas/${escuelas.agu}`}
                     state={{ ed: "aguila-imperial" }}
                   >
                     Ver
@@ -156,7 +156,7 @@ export function FormatPage() {
                   />
                   <NavLink
                     className="btn btn-dark mt-2 d-flex justify-content-center"
-                    to={"/grimorio/cartas"}
+                    to={`/grimorio/cartas/${escuelas.stm}`}
                     state={{ ed: "steampunk" }}
                   >
                     Ver
@@ -182,7 +182,7 @@ export function FormatPage() {
                   />
                   <NavLink
                     className="btn btn-dark mt-2 d-flex justify-content-center"
-                    to={"/grimorio/cartas"}
+                    to={`/grimorio/cartas/${escuelas.axs}`}
                     state={{ ed: "axis-mundi" }}
                   >
                     Ver
@@ -206,7 +206,7 @@ export function FormatPage() {
                   />
                   <NavLink
                     className="btn btn-dark mt-2 d-flex justify-content-center"
-                    to={"/grimorio/cartas"}
+                    to={`/grimorio/cartas/${escuelas.sol}`}
                     state={{ ed: "hijos-del-sol" }}
                   >
                     Ver
@@ -230,7 +230,7 @@ export function FormatPage() {
                   />
                   <NavLink
                     className="btn btn-dark mt-2 d-flex justify-content-center"
-                    to={"/grimorio/cartas"}
+                    to={`/grimorio/cartas/${escuelas.leg}`}
                     state={{ ed: "legado-gotico" }}
                   >
                     Ver
