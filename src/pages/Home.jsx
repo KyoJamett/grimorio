@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useCards } from "../hooks/useCards";
 
 export function Home() {
-  const { homeText } = useCards();
+  const { homeText, escuelas } = useCards();
 
   return (
     <>
@@ -16,7 +16,7 @@ export function Home() {
               Hijos del Sol
               <NavLink
                 className="btn btn-dark"
-                to={"/grimorio/cartas"}
+                to={`/grimorio/cartas/${escuelas.sol}`}
                 state={{ ed: "hijos-del-sol" }}
               >
                 Dark
@@ -26,7 +26,7 @@ export function Home() {
               Legado Gótico
               <NavLink
                 className="btn btn-dark"
-                to={"/grimorio/cartas"}
+                to={`/grimorio/cartas/${escuelas.leg}`}
                 state={{ ed: "legado-gotico" }}
               >
                 Dark
@@ -36,7 +36,7 @@ export function Home() {
               Águila Imperial
               <NavLink
                 className="btn btn-dark"
-                to={"/grimorio/cartas"}
+                to={`/grimorio/cartas/${escuelas.agu}`}
                 state={{ ed: "aguila-imperial" }}
               >
                 Dark

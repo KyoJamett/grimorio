@@ -57,6 +57,12 @@ const format = {
     "El formato al ser actualmente sólo de comunidad, ha sido sometido a cambios, siendo el más aceptado por las comunidades la inclusión de las ediciones Bushido y Sol Naciente, a fin de dar algo de soporte extra a ciertas razas débiles.",
 };
 
+const escuelas = {
+  sol: "hijos-del-sol",
+  leg: "legado-gotico",
+  agu: "aguila-imperial",
+};
+
 export const useCards = () => {
   const [cardSelected, setCardSelected] = useState(initialCardSelected);
   const [visibleForm, setVisibleForm] = useState(false);
@@ -89,5 +95,6 @@ export const useCards = () => {
     handlerCloseForm,
     homeText,
     format,
+    escuelas,
   };
 };
