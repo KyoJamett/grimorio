@@ -52,9 +52,9 @@ export const CardsList = ({
           <tbody>
             {cards
               .filter((card) => {
-                return searchInput.toLowerCase() === ""
+                return searchInput.trim().toLowerCase() === ""
                   ? card
-                  : card.name.toLowerCase().includes(searchInput);
+                  : card.name.toLowerCase().includes(searchInput.toLowerCase());
               })
               .map(
                 ({
