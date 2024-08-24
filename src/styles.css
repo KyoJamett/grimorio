@@ -129,5 +129,14 @@
 }
 
 
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
 
-  
+.grid-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
