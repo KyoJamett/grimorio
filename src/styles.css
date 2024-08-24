@@ -140,3 +140,13 @@
   justify-content: center;
   align-items: center;
 }
+
+/* 
+Explicación
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));: Esto crea un diseño de cuadrícula donde cada ítem tiene un tamaño mínimo de 200px y se ajusta automáticamente para llenar el espacio disponible.
+
+gap: 1rem;: Define el espacio entre los ítems de la cuadrícula.
+
+.grid-item: Centra el contenido dentro de cada celda de la cuadrícula.
+
+*/
