@@ -26,7 +26,8 @@ export const CardRow = ({
   };
 
   const onTypes = (type) => {
-    return types.find((t) => t.id == type).name;
+    const foundType = types.find((t) => t.id == type);
+    return foundType ? foundType.name || "sin nombre" : "sin nombre";
   };
 
   const card = {

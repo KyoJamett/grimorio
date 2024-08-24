@@ -61,7 +61,7 @@ const escuelas = {
   bu: "bushido",
   sn: "sol-naciente",
   dom: "dominio",
-  con: "contrataque",
+  con: "contraataque",
   agu: "aguila-imperial",
   stm: "steampunk",
   axs: "axis-mundi",
