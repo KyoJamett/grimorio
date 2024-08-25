@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useCards } from "../hooks/useCards";
 
 export function Home() {
-  const { homeText, escuelas } = useCards();
+  const { homeText, intro, escuelas } = useCards();
   const [inputValue, setInputValue] = useState(""); // Estado para el valor del input
   const [loading, setLoading] = useState(false); // Estado para gestionar la carga
   const [error, setError] = useState(null); // Estado para manejar errores
@@ -53,7 +53,11 @@ export function Home() {
   return (
     <>
       <div className="container my-4">
+        <h2>Grimorio</h2>
+        <h6 className="cursiva">Sabiduría Infinita</h6>
+        <p className="justificado">{intro.text}</p>
         {/* Formulario de entrada */}
+        {/*
         <form onSubmit={handleSubmit} className="mb-4">
           <div className="row">
             <div className="col">
@@ -75,8 +79,9 @@ export function Home() {
           {loading && <p>Cargando...</p>}
           {error && <p className="text-danger">Error: {error}</p>}
         </form>
-
+        */}
         {/* Contenido existente */}
+        {/*
         <div className="row">
           <p className="text-start">{homeText.text}</p>
         </div>
@@ -114,6 +119,7 @@ export function Home() {
             </div>
           </div>
         </div>
+       */}
       </div>
     </>
   );
