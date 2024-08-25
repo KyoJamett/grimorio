@@ -22,7 +22,8 @@ export const CardRow = ({
   handlerOpenForm,
 }) => {
   const onRarity = (rarity) => {
-    return rarities.find((r) => r.id == rarity).name;
+    const foundRarity = rarities.find((r) => r.id == rarity);
+    return foundRarity ? foundRarity.name || "sin rareza" : "sin nombre";
   };
 
   const onTypes = (type) => {

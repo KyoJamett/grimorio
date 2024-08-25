@@ -37,8 +37,8 @@ export function FormatPage() {
   return (
     <div className="container my-4">
       <h3>{formato.name}</h3>
-      <p class="justificado">{formato.intro}</p>
-      <p class="justificado">{formato.details}</p>
+      <p className="justificado">{formato.intro}</p>
+      <p className="justificado">{formato.details}</p>
       <div className="grid-container">
         {formato.ediciones.map((element) => (
           <div className="grid-item" key={element.ed}>

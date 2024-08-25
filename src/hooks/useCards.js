@@ -75,7 +75,7 @@ const civilizaciones = {
   intro:
     "Civilizaciones es un formato de nueva era que comprende las ediciones de Kemet, Dharma, Olimpia, Calavera y la edición recopilatoria Arsenal. Destaca por un gran control de cementerio, una agresividad considerable de ciertas razas, y la nula presencia de las razas Samurai y Oni, las cuales ya no estaban consideradas para futuras ediciones.",
   details:
-    "En la línea de tiempo de nueva era, corresponden a las ediciones posteriores al formato Escuelas Elementales hasta la llegada de la edicion Kilimanjaro, donde aumentó considerablemente la escala de poder de las cartas.",
+    "En la línea de tiempo de nueva era, corresponden a las ediciones posteriores al formato Escuelas Elementales hasta la llegada de la edicion Kilimanjaro, donde aumentó considerablemente la escala de poder de las cartas. Adicionalmente aquí se utilizan las cartas SP (llamadas set paralelo por la comunidad) que salieron en diversos productos durante el formato imperio de la época de estas ediciones. Dichas cartas se pueden hallar dentro de las ediciones del formato.",
   ediciones: [
     { ed: "kemet", edImg: "kemet.png" },
     { ed: "dharma", edImg: "dharma.png" },
