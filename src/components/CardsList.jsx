@@ -5,6 +5,7 @@ export const CardsList = ({
   cards = [],
   rarities = [],
   types = [],
+  edition = [],
   visibleForm,
   handlerOpenForm,
   handlerCardSelectedForm,
@@ -15,13 +16,14 @@ export const CardsList = ({
     <>
       <div className="table-responsive card">
         <br></br>
-        <h2>Lista de Cartas</h2>
+        <h2>Edición {edition.title}</h2>
+        <h5>Lista de cartas</h5>
         <br></br>
 
         <div className="col-4 mb-3">
           <form className="d-flex" role="search">
             <input
-              className="form-control me-2"
+              className="form-control form-control-xl custom-search-input me-2"
               type="search"
               placeholder="Search"
               aria-label="Search"

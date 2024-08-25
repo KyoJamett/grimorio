@@ -87,6 +87,7 @@ export function CardsPage() {
               cards={cardsArray}
               rarities={rarities}
               types={types}
+              edition={edition}
               visibleForm={visibleForm}
               handlerOpenForm={handlerOpenForm}
               handlerCardSelectedForm={handlerCardSelectedForm}
