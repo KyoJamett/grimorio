@@ -49,14 +49,6 @@ const homeText = {
   text: "Seleccione la edición que desea consultar",
 };
 
-const format = {
-  name: "Escuelas Elementales",
-  intro:
-    "Escuelas Elementales es un formato de nueva era, compuesto inicialmente por las ediciones Dominio, Contraataque, Águila Imperial, Steampunk, Axis Mundi, Hijos del Sol y Legado Gótico.",
-  details:
-    "El formato al ser actualmente sólo de comunidad, ha sido sometido a cambios, siendo el más aceptado por las comunidades la inclusión de las ediciones Bushido y Sol Naciente, a fin de dar algo de soporte extra a ciertas razas débiles.",
-};
-
 const escuelas = {
   name: "Escuelas Elementales",
   intro:
@@ -77,6 +69,32 @@ const escuelas = {
     { ed: "escuelas_elementales", edImg: "escuelas_elementales.png" },
   ],
 };
+
+const civilizaciones = {
+  name: "Civilizaciones",
+  intro:
+    "Civilizaciones es un formato de nueva era que comprende las ediciones de Kemet, Dharma, Olimpia, Calavera y la edición recopilatoria Arsenal. Destaca por un gran control de cementerio, una agresividad considerable de ciertas razas, y la nula presencia de las razas Samurai y Oni, las cuales ya no estaban consideradas para futuras ediciones.",
+  details:
+    "En la línea de tiempo de nueva era, corresponden a las ediciones posteriores al formato Escuelas Elementales hasta la llegada de la edicion Kilimanjaro, donde aumentó considerablemente la escala de poder de las cartas.",
+  ediciones: [
+    { ed: "kemet", edImg: "kemet.png" },
+    { ed: "dharma", edImg: "dharma.png" },
+    { ed: "olimpia", edImg: "olimpia.png" },
+    { ed: "calavera", edImg: "calavera.png" },
+    { ed: "arsenal", edImg: "logo_arsenal.png" },
+  ],
+};
+
+/*
+
+const formato = {
+  name: '',
+  intro: '',
+  details: '',
+  ediciones: []
+}
+
+*/
 
 export const useCards = () => {
   const [cardSelected, setCardSelected] = useState(initialCardSelected);
@@ -109,7 +127,7 @@ export const useCards = () => {
     handlerOpenForm,
     handlerCloseForm,
     homeText,
-    format,
     escuelas,
+    civilizaciones,
   };
 };

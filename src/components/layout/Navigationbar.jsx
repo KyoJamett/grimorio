@@ -35,9 +35,13 @@ export const Navigationbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link disabled" aria-disabled="true">
+                <NavLink
+                  className="nav-link"
+                  to="/grimorio/civilizaciones"
+                  state={{ formatParam: "civilizaciones" }}
+                >
                   Civilizaciones
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
                 <a className="nav-link disabled" aria-disabled="true">

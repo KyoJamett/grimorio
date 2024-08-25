@@ -2,7 +2,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useCards } from "../hooks/useCards";
 
 export function FormatPage() {
-  const { format, escuelas } = useCards();
+  const { escuelas, civilizaciones } = useCards();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -21,6 +21,9 @@ export function FormatPage() {
     case "escuelas":
       formato = escuelas;
       break;
+    case "civilizaciones":
+      formato = civilizaciones;
+      break;
 
     default:
       break;
@@ -34,8 +37,8 @@ export function FormatPage() {
   return (
     <div className="container my-4">
       <h3>{formato.name}</h3>
-      <p>{formato.intro}</p>
-      <p>{formato.details}</p>
+      <p class="justificado">{formato.intro}</p>
+      <p class="justificado">{formato.details}</p>
       <div className="grid-container">
         {formato.ediciones.map((element) => (
           <div className="grid-item" key={element.ed}>

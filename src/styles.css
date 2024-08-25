@@ -214,3 +214,9 @@ Media queries: Aplican estilos específicos para mejorar la visualización en di
 
 nota de nacho: el media query solucionó el problema de la tabla no ajustandose a la resolucion de la pantalla, lo demás podría eliminarse ya que desconozco si sería útil. Sugiero comentarlo hasta que se requiera
 */
+
+/*justificado de textos*/
+
+.justificado {
+  text-align: justify;
+}
