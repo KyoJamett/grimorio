@@ -47,7 +47,9 @@ export function CardsPage() {
     types = dataCards.types;
     keywords = dataCards.keywords;
     edition = dataCards.edition;
-    cardsArray = dataCards.cards;
+    cardsArray = dataCards.cards.sort(
+      (a, b) => Number(a.edid) - Number(b.edid)
+    );
   }
 
   //console.log(cardsArray);
