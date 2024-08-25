@@ -150,3 +150,67 @@ gap: 1rem;: Define el espacio entre los ítems de la cuadrícula.
 .grid-item: Centra el contenido dentro de cada celda de la cuadrícula.
 
 */
+
+/* CSS para la tabla */
+.table-container {
+  overflow-x: auto; /* Habilita el scroll horizontal si es necesario */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+  table {
+    font-size: 12px; /* Reduce el tamaño de la fuente en pantallas pequeñas */
+  }
+
+  th, td {
+    padding: 4px; /* Reduce el padding para ajustarse mejor */
+  }
+}
+
+/* explicacion del código de arriba */
+/*
+
+Claro, aquí tienes una explicación detallada de cada parte del código CSS que compartiste:
+
+1. .table-container { overflow-x: auto; }
+overflow-x: auto;: Esta propiedad habilita el desplazamiento horizontal si el contenido de un contenedor (en este caso, una tabla) se desborda horizontalmente. Esto significa que si la tabla es más ancha que el contenedor que la envuelve, se mostrará una barra de desplazamiento horizontal para que el usuario pueda desplazarse y ver el contenido completo. Esta técnica asegura que la tabla no se rompa o se salga del contenedor en pantallas pequeñas.
+2. table { width: 100%; border-collapse: collapse; }
+width: 100%;: Esta propiedad hace que la tabla ocupe el 100% del ancho del contenedor padre. Esto asegura que la tabla se expanda o contraiga para ajustarse al ancho disponible en su contenedor.
+
+border-collapse: collapse;: Esta propiedad elimina los espacios entre los bordes de las celdas de la tabla, combinando las fronteras adyacentes en una sola frontera. Esto hace que la tabla se vea más compacta y organizada.
+
+3. th, td { padding: 8px; text-align: left; border: 1px solid #ddd; }
+padding: 8px;: Esta propiedad establece el espacio interno (padding) de las celdas de la tabla (th para encabezados y td para datos) a 8 píxeles. Esto proporciona un espacio entre el contenido de la celda y su borde, haciendo que el contenido sea más legible y que la tabla no se vea abarrotada.
+
+text-align: left;: Esta propiedad alinea el texto dentro de las celdas a la izquierda. Es una configuración común para tablas, especialmente si los datos son principalmente texto.
+
+border: 1px solid #ddd;: Esta propiedad define un borde de 1 píxel de grosor, sólido, con un color gris claro (#ddd) alrededor de cada celda de la tabla. Esto ayuda a definir visualmente las celdas y mejorar la legibilidad.
+
+4. @media (max-width: 768px) { ... }
+Las media queries son una técnica en CSS que permite aplicar estilos específicos en función del tamaño de la pantalla o el dispositivo. En este caso, se aplica un estilo específico cuando la anchura de la pantalla es de 768 píxeles o menos, lo cual es común para dispositivos móviles.
+
+Dentro de la media query:
+table { font-size: 12px; }: Reduce el tamaño de la fuente en la tabla a 12 píxeles en pantallas pequeñas. Esto ayuda a hacer que el contenido de la tabla se ajuste mejor en pantallas más pequeñas, donde hay menos espacio disponible.
+
+th, td { padding: 4px; }: Reduce el padding dentro de las celdas a 4 píxeles en pantallas pequeñas. Menos padding significa que habrá más espacio disponible para el contenido dentro de las celdas, lo que puede ayudar a que la tabla se ajuste mejor en pantallas más estrechas.
+
+Resumen
+overflow-x: auto;: Permite el desplazamiento horizontal para tablas grandes.
+width: 100%;: Asegura que la tabla se ajuste al ancho del contenedor.
+border-collapse: collapse;: Combina las fronteras de celdas adyacentes para un aspecto más compacto.
+padding, text-align, y border: Ajustan el espaciado, la alineación y el borde de las celdas.
+Media queries: Aplican estilos específicos para mejorar la visualización en dispositivos móviles, como reducir el tamaño de fuente y el padding.
+
+nota de nacho: el media query solucionó el problema de la tabla no ajustandose a la resolucion de la pantalla, lo demás podría eliminarse ya que desconozco si sería útil. Sugiero comentarlo hasta que se requiera
+*/
