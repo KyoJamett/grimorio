@@ -54,7 +54,7 @@ const escuelas = {
   intro:
     "Escuelas Elementales es un formato de nueva era, compuesto inicialmente por las ediciones Dominio, Contraataque, Águila Imperial, Steampunk, Axis Mundi, Hijos del Sol y Legado Gótico.",
   details:
-    "El formato al ser actualmente sólo de comunidad, ha sido sometido a cambios, siendo el más aceptado por las comunidades la inclusión de las ediciones Bushido y Sol Naciente, a fin de dar algo de soporte extra a ciertas razas débiles. Adicionalmente se creó una edición recopilatoria también llamada Escuelas Elementales. \n La edición destaca por su mecánica de combinar dos razas para la construcción de mazos. Guerrero-Dragón, Caballero-Sacerdote, Faerie-Eterno y Sombra-Oni.",
+    "El formato al ser actualmente sólo de comunidad, ha sido sometido a cambios, siendo el más aceptado por las comunidades la inclusión de las ediciones Bushido y Sol Naciente, a fin de dar algo de soporte extra a ciertas razas débiles. Adicionalmente se creó una edición recopilatoria también llamada Escuelas Elementales.",
 
   ediciones: [
     { ed: "bushido", edImg: "bushido.png" },
@@ -73,7 +73,7 @@ const escuelas = {
 const civilizaciones = {
   name: "Civilizaciones",
   intro:
-    "Civilizaciones es un formato de nueva era que comprende las ediciones de Kemet, Dharma, Olimpia, Calavera y la edición recopilatoria Arsenal. Destaca por un gran control de cementerio, una agresividad considerable de ciertas razas, y la nula presencia de las razas Samurai y Oni, las cuales ya no estaban consideradas para futuras ediciones.",
+    "Civilizaciones es un formato de nueva era que comprende las ediciones de Kemet, Dharma, Olimpia, Calavera y la edición recopilatoria Arsenal.",
   details:
     "En la línea de tiempo de nueva era, corresponden a las ediciones posteriores al formato Escuelas Elementales hasta la llegada de la edicion Kilimanjaro, donde aumentó considerablemente la escala de poder de las cartas. Adicionalmente aquí se utilizan las cartas SP (llamadas set paralelo por la comunidad) que salieron en diversos productos durante el formato imperio de la época de estas ediciones. Dichas cartas se pueden hallar dentro de las ediciones del formato.",
   ediciones: [
@@ -88,9 +88,9 @@ const civilizaciones = {
 const pb = {
   name: "Primer Bloque",
   intro:
-    "Primer bloque es un formato perteneciente a la segunda Era de la época Salo y abarca las primeras cuatro ediciones de dicha era, junto a sus respectivas extensiones. Posee un ritmo de juego bastante pausado y ameno, ideal para jugadores novatos.",
+    "Primer bloque es un formato perteneciente a la segunda Era de la época Salo y abarca las primeras cuatro ediciones de dicha era, junto a sus respectivas extensiones.",
   details:
-    "El formato clásico se juega en base al DAR de Abril del 2005, donde se aclararon varias dudas respecto a ciertas cartas con dudosa redacción. Aún así, hay varios consensos de comunidad por lo que se recomienda consultar a jugadores experimentados de ser necesario. Fuera de eso, las restricciones pueden variar según las comunidades.",
+    "El formato clásico se juega en base al DAR de Abril del 2005, donde se aclararon varias dudas respecto a ciertas cartas con dudosa redacción. Aún así, hay varios consensos de comunidad por lo que se recomienda consultar a jugadores experimentados de ser necesario.",
   ediciones: [
     { ed: "espada-sagrada", edImg: "espada_sagrada.png" },
     { ed: "cruzadas", edImg: "cruzadas.png" },
