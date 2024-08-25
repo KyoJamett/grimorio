@@ -113,7 +113,7 @@ export const CardForm = ({
                       <p className="card-text skill-text">
                         {"Habilidad: " + ability}
                       </p>
-                      <p className="card-text">
+                      <p className="card-text cursiva">
                         {"Texto épico: " +
                           (flavour === null ? "no aplica" : flavour)}
                       </p>

@@ -220,3 +220,7 @@ nota de nacho: el media query solucionó el problema de la tabla no ajustandose 
 .justificado {
   text-align: justify;
 }
+
+.cursiva {
+  font-style: italic;
+}

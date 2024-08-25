@@ -2,7 +2,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useCards } from "../hooks/useCards";
 
 export function FormatPage() {
-  const { escuelas, civilizaciones } = useCards();
+  const { escuelas, civilizaciones, pb } = useCards();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -23,6 +23,9 @@ export function FormatPage() {
       break;
     case "civilizaciones":
       formato = civilizaciones;
+      break;
+    case "pb":
+      formato = pb;
       break;
 
     default:

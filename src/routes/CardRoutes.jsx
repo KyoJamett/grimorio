@@ -19,6 +19,7 @@ export const CardRoutes = () => {
         <Route path="/" element={<Navigate to="/grimorio" />} />
         <Route path="grimorio/escuelas-elementales" element={<FormatPage />} />
         <Route path="grimorio/civilizaciones" element={<FormatPage />} />
+        <Route path="grimorio/primer-bloque" element={<FormatPage />} />
       </Routes>
     </>
   );

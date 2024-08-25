@@ -85,6 +85,24 @@ const civilizaciones = {
   ],
 };
 
+const pb = {
+  name: "Primer Bloque",
+  intro:
+    "Primer bloque es un formato perteneciente a la segunda Era de la época Salo y abarca las primeras cuatro ediciones de dicha era, junto a sus respectivas extensiones. Posee un ritmo de juego bastante pausado y ameno, ideal para jugadores novatos.",
+  details:
+    "El formato clásico se juega en base al DAR de Abril del 2005, donde se aclararon varias dudas respecto a ciertas cartas con dudosa redacción. Aún así, hay varios consensos de comunidad por lo que se recomienda consultar a jugadores experimentados de ser necesario. Fuera de eso, las restricciones pueden variar según las comunidades.",
+  ediciones: [
+    { ed: "espada-sagrada", edImg: "espada_sagrada.png" },
+    { ed: "cruzadas", edImg: "cruzadas.png" },
+    { ed: "helenica", edImg: "helenica.png" },
+    { ed: "imperio", edImg: "imperio.png" },
+    { ed: "hijos_de_daana", edImg: "hijos_de_daana.png" },
+    { ed: "tierras_altas", edImg: "tierras_altas.png" },
+    { ed: "dominios-de-ra", edImg: "dominios_de_ra.png" },
+    { ed: "encrucijada", edImg: "encrucijada.png" },
+  ],
+};
+
 /*
 
 const formato = {
@@ -129,5 +147,6 @@ export const useCards = () => {
     homeText,
     escuelas,
     civilizaciones,
+    pb,
   };
 };

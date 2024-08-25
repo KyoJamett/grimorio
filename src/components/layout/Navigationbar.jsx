@@ -44,6 +44,15 @@ export const Navigationbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
+                <NavLink
+                  className="nav-link"
+                  to="/grimorio/primer-bloque"
+                  state={{ formatParam: "pb" }}
+                >
+                  Primer Bloque
+                </NavLink>
+              </li>
+              <li className="nav-item">
                 <a className="nav-link disabled" aria-disabled="true">
                   Proximamente
                 </a>
