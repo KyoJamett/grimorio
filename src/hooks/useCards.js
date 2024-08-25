@@ -58,15 +58,24 @@ const format = {
 };
 
 const escuelas = {
-  bu: "bushido",
-  sn: "sol-naciente",
-  dom: "dominio",
-  con: "contraataque",
-  agu: "aguila-imperial",
-  stm: "steampunk",
-  axs: "axis-mundi",
-  sol: "hijos-del-sol",
-  leg: "legado-gotico",
+  name: "Escuelas Elementales",
+  intro:
+    "Escuelas Elementales es un formato de nueva era, compuesto inicialmente por las ediciones Dominio, Contraataque, Águila Imperial, Steampunk, Axis Mundi, Hijos del Sol y Legado Gótico.",
+  details:
+    "El formato al ser actualmente sólo de comunidad, ha sido sometido a cambios, siendo el más aceptado por las comunidades la inclusión de las ediciones Bushido y Sol Naciente, a fin de dar algo de soporte extra a ciertas razas débiles. Adicionalmente se creó una edición recopilatoria también llamada Escuelas Elementales. \n La edición destaca por su mecánica de combinar dos razas para la construcción de mazos. Guerrero-Dragón, Caballero-Sacerdote, Faerie-Eterno y Sombra-Oni.",
+
+  ediciones: [
+    { ed: "bushido", edImg: "bushido.png" },
+    { ed: "sol-naciente", edImg: "sol_naciente.png" },
+    { ed: "dominio", edImg: "dominio.png" },
+    { ed: "contraataque", edImg: "contraataque.png" },
+    { ed: "aguila-imperial", edImg: "aguila_imperial.png" },
+    { ed: "steampunk", edImg: "steampunk.png" },
+    { ed: "axis-mundi", edImg: "axis-mundi.png" },
+    { ed: "hijos-del-sol", edImg: "hijos_del_sol.png" },
+    { ed: "legado-gotico", edImg: "legado-gotico.png" },
+    { ed: "escuelas_elementales", edImg: "escuelas_elementales.png" },
+  ],
 };
 
 export const useCards = () => {

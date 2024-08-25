@@ -29,6 +29,7 @@ export const Navigationbar = () => {
                 <NavLink
                   className="nav-link"
                   to="/grimorio/escuelas-elementales"
+                  state={{ formatParam: "escuelas" }}
                 >
                   Escuelas Elementales
                 </NavLink>
