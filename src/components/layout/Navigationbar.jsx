@@ -46,6 +46,15 @@ export const Navigationbar = () => {
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
+                  to="/grimorio/expediciones"
+                  state={{ formatParam: "expediciones" }}
+                >
+                  Expediciones
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link"
                   to="/grimorio/primer-bloque"
                   state={{ formatParam: "pb" }}
                 >

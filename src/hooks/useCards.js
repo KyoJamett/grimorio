@@ -89,6 +89,25 @@ const civilizaciones = {
   ],
 };
 
+const expediciones = {
+  name: "Expediciones",
+  intro:
+    "Expediciones abarca las ediciones desde Kilimanjaro hasta Conjuros y en la linea de tiempo de nueva era, corresponde a las ediciones posteriores al formato Civilizaciones.",
+  details:
+    "El formato posee un ritmo de juego, escala de poder y cantidad de habilidades por turno notoriamente más elevadas que en formatos previos.",
+
+  ediciones: [
+    { ed: "kilimanjaro", edImg: "kilimanjaro.png" },
+    { ed: "arsenal", edImg: "logo_arsenal.png" },
+    { ed: "invasion-oscura", edImg: "invasion_oscura.png" },
+    { ed: "dinastia-del-dragon", edImg: "dinastialogo.png" },
+    { ed: "keltoi", edImg: "keltoi.png" },
+    { ed: "terrores-nocturnos", edImg: "terrores_nocturnos.png" },
+    { ed: "tierra-austral", edImg: "tierra-austral.png" },
+    { ed: "conjuros", edImg: "conjuros.png" },
+  ],
+};
+
 const pb = {
   name: "Primer Bloque",
   intro:
@@ -152,6 +171,7 @@ export const useCards = () => {
     intro,
     escuelas,
     civilizaciones,
+    expediciones,
     pb,
   };
 };
