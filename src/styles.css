@@ -224,3 +224,14 @@ nota de nacho: el media query solucionó el problema de la tabla no ajustandose 
 .cursiva {
   font-style: italic;
 }
+
+/*color del fondo*/
+
+/*body {
+  background-color: #c8a57a
+  ; /* Este es un color que imita un tono de madera, pero puedes ajustar según lo necesites */
+/*}*/
+
+.black {
+  background-color: #333333;
+}
