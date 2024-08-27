@@ -108,6 +108,22 @@ const expediciones = {
   ],
 };
 
+const furia = {
+  name: "Bloque Furia",
+  intro:
+    "Bloque furia abarca las primeras 3 ediciones de nueva era con sus respectivas extensiones.",
+  details:
+    "El formato posee un ritmo de batalla bastante ameno, con turnos relativamente tranquilos y una base de anulaciones acotada. Recomendado para jugadores novatos.",
+  ediciones: [
+    { ed: "furia", edImg: "furia.png" },
+    { ed: "furiaext", edImg: "furiaext.png" },
+    { ed: "sumeria", edImg: "sumeria.png" },
+    { ed: "rebelion", edImg: "rebelion.png" },
+    { ed: "asgard", edImg: "asgard.png" },
+    { ed: "midgard", edImg: "midgard.png" },
+  ],
+};
+
 const pb = {
   name: "Primer Bloque",
   intro:
@@ -169,6 +185,7 @@ export const useCards = () => {
     handlerCloseForm,
     homeText,
     intro,
+    furia,
     escuelas,
     civilizaciones,
     expediciones,

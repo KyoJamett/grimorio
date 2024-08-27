@@ -28,6 +28,15 @@ export const Navigationbar = () => {
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
+                  to="/grimorio/furia"
+                  state={{ formatParam: "furia" }}
+                >
+                  Furia
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link"
                   to="/grimorio/escuelas-elementales"
                   state={{ formatParam: "escuelas" }}
                 >
