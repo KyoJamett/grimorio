@@ -153,6 +153,10 @@ const formato = {
 
 */
 
+const shortcut = {
+  text: 'Para agregar esta página a tu teléfono, abre el link en un pestaña nueva (importante que sea nueva, no una pestaña donde tuvieras abierta otra página para evitar errores). Luego en las opciones del navegador selecciona la opción "Agregar a la pantalla principal" y listo!',
+};
+
 export const useCards = () => {
   const [cardSelected, setCardSelected] = useState(initialCardSelected);
   const [visibleForm, setVisibleForm] = useState(false);
@@ -185,6 +189,7 @@ export const useCards = () => {
     handlerCloseForm,
     homeText,
     intro,
+    shortcut,
     furia,
     escuelas,
     civilizaciones,

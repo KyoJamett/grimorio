@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useCards } from "../hooks/useCards";
 
 export function Home() {
-  const { homeText, intro, escuelas } = useCards();
+  const { intro, shortcut } = useCards();
   const [inputValue, setInputValue] = useState(""); // Estado para el valor del input
   const [loading, setLoading] = useState(false); // Estado para gestionar la carga
   const [error, setError] = useState(null); // Estado para manejar errores
@@ -56,6 +56,9 @@ export function Home() {
         <h2>Grimorio</h2>
         <h6 className="cursiva">Sabiduría Infinita</h6>
         <p className="justificado">{intro.text}</p>
+
+        <h5>Agrega la página a tu teléfono</h5>
+        <p className="justificado">{shortcut.text}</p>
         {/* Formulario de entrada */}
         {/*
         <form onSubmit={handleSubmit} className="mb-4">
