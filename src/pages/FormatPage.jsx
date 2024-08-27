@@ -40,7 +40,7 @@ export function FormatPage() {
 
   // Verificar si formato está definido antes de intentar acceder a sus propiedades
   if (!formato) {
-    return <div className="lds-dual-ring"></div>;
+    return <p className="text-danger">Sin formato</p>;
   }
 
   return (

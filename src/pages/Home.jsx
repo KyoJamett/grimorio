@@ -3,10 +3,11 @@ import { NavLink } from "react-router-dom";
 import { useCards } from "../hooks/useCards";
 
 export function Home() {
-  const { homeText, intro, escuelas } = useCards();
+  const { intro } = useCards();
   const [inputValue, setInputValue] = useState(""); // Estado para el valor del input
   const [loading, setLoading] = useState(false); // Estado para gestionar la carga
   const [error, setError] = useState(null); // Estado para manejar errores
+  const [cards, setCards] = useState([]); // Estado para almacenar las cartas
 
   // Función para manejar el cambio en el input
   const handleChange = (e) => {
@@ -41,7 +42,20 @@ export function Home() {
       }
 
       const data = await response.json();
-      console.log(data);
+      const contents = JSON.parse(data.contents);
+
+      // Verifica el tipo y contenido de 'data'
+      /*console.log("Tipo de data:", typeof data);
+      console.log("Contenido de data:", data);
+      console.log("Contenido de contents:", contents);
+      console.log("Tipo de contents:", typeof contents);*/
+
+      if (data) {
+        setCards(contents.cards);
+      } else {
+        console.error("Formato de datos inesperado", data);
+        setError("Datos recibidos en un formato inesperado");
+      }
     } catch (error) {
       console.error("Error:", error);
       setError(error.message);
@@ -56,8 +70,9 @@ export function Home() {
         <h2>Grimorio</h2>
         <h6 className="cursiva">Sabiduría Infinita</h6>
         <p className="justificado">{intro.text}</p>
+        <br />
         {/* Formulario de entrada */}
-        {/*
+        <h4>Buscador de cartas</h4>
         <form onSubmit={handleSubmit} className="mb-4">
           <div className="row">
             <div className="col">
@@ -66,7 +81,7 @@ export function Home() {
                 value={inputValue}
                 onChange={handleChange}
                 className="form-control"
-                placeholder="Ingrese el valor"
+                placeholder="Ingrese el nombre de la carta"
                 required
               />
             </div>
@@ -79,7 +94,33 @@ export function Home() {
           {loading && <p>Cargando...</p>}
           {error && <p className="text-danger">Error: {error}</p>}
         </form>
-        */}
+
+        {/* Grid de cartas, visible solo cuando hay cartas */}
+        {cards.length > 0 && (
+          <div className="container my-4">
+            <h4>Resultados de búsqueda</h4>
+            <div className="grid-container">
+              {cards.map((card, index) => (
+                <div className="grid-item" key={index}>
+                  <span className="border border-secondary rounded p-3 mb-3 d-flex flex-column align-items-center black">
+                    <h6 className="card-title results-title">{card.name}</h6>
+                    <img
+                      src={`https://api.myl.cl/static/cards/${card.edition}/${card.edid}.png`}
+                      alt={card.edid}
+                      className="img-fluid"
+                      style={{
+                        width: "250px",
+                        height: "250px",
+                        objectFit: "contain",
+                      }}
+                    />
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Contenido existente */}
         {/*
         <div className="row">
