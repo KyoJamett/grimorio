@@ -72,6 +72,7 @@ const escuelas = {
     { ed: "legado-gotico", edImg: "legado-gotico.png" },
     { ed: "escuelas_elementales", edImg: "escuelas_elementales.png" },
   ],
+  folder: "ee",
 };
 
 const civilizaciones = {
@@ -87,6 +88,7 @@ const civilizaciones = {
     { ed: "calavera", edImg: "calavera.png" },
     { ed: "arsenal", edImg: "logo_arsenal.png" },
   ],
+  folder: "civi",
 };
 
 const expediciones = {
@@ -106,6 +108,7 @@ const expediciones = {
     { ed: "tierra-austral", edImg: "tierra-austral.png" },
     { ed: "conjuros", edImg: "conjuros.png" },
   ],
+  folder: "expe",
 };
 
 const furia = {
@@ -122,6 +125,7 @@ const furia = {
     { ed: "asgard", edImg: "asgard.png" },
     { ed: "midgard", edImg: "midgard.png" },
   ],
+  folder: "furia",
 };
 
 const pb = {
@@ -140,6 +144,7 @@ const pb = {
     { ed: "dominios-de-ra", edImg: "dominios_de_ra.png" },
     { ed: "encrucijada", edImg: "encrucijada.png" },
   ],
+  folder: "pb",
 };
 
 /*
@@ -152,6 +157,37 @@ const formato = {
 }
 
 */
+
+// Definición de documentos agrupados en categorías
+const documentos = [
+  {
+    categoria: "ee",
+    documentos: [
+      { name: "Banlist El Reino de los Duelos", file: "ee_formato_reino.pdf" },
+    ],
+  },
+  {
+    categoria: "civi",
+    documentos: [
+      { name: "Banlist Julio 2024", file: "civi_banlist_2024.pdf" },
+      {
+        name: "Banlist Enero 2022",
+        file: "civi_banlist_enero_2022.pdf",
+      },
+    ],
+  },
+  {
+    categoria: "expe",
+    documentos: [
+      { name: "Banlist Julio 2023", file: "expe_banlist_julio_2023.pdf" },
+    ],
+  },
+  {
+    categoria: "pb",
+    documentos: [{ name: "Dar Abril 2005", file: "dar_abril_2005.pdf" }],
+  },
+  // Añadir más categorías según sea necesario
+];
 
 export const useCards = () => {
   const [cardSelected, setCardSelected] = useState(initialCardSelected);
@@ -183,6 +219,7 @@ export const useCards = () => {
     cardSelected,
     handlerOpenForm,
     handlerCloseForm,
+    documentos,
     homeText,
     intro,
     furia,

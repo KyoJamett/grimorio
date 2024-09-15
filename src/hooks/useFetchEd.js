@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 
 export function useFetchEd(ed) {
   const [dataCards, setDataCards] = useState(null);
-
+  let url = "https://api.myl.cl/cards/edition/" + ed;
   useEffect(() => {
-    fetch("https://api.myl.cl/cards/edition/" + ed)
+    console.log("Haciendo solicitud a la URL:", url);
+    fetch(url)
       .then((response) => response.json())
       .then((data) => setDataCards(data));
   }, []);

@@ -52,7 +52,8 @@ export function CardsPage() {
     );
   }
 
-  //console.log(cardsArray);
+  console.log(dataCards);
+  console.log(cardsArray);
 
   return (
     <>

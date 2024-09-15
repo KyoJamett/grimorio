@@ -2,7 +2,8 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useCards } from "../hooks/useCards";
 
 export function FormatPage() {
-  const { furia, escuelas, civilizaciones, expediciones, pb } = useCards();
+  const { documentos, furia, escuelas, civilizaciones, expediciones, pb } =
+    useCards();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -43,6 +44,11 @@ export function FormatPage() {
     return <div className="lds-dual-ring"></div>;
   }
 
+  // Encuentra la categoría de documentos correspondiente al formato actual
+  const categoriaDocumentos = documentos.find(
+    (cat) => cat.categoria === formato.folder
+  );
+
   return (
     <>
       <div className="container my-4">
@@ -77,6 +83,28 @@ export function FormatPage() {
       </div>
       <div className="container my-4">
         <h4>Documentos</h4>
+        <div>
+          {categoriaDocumentos ? (
+            <ul>
+              {categoriaDocumentos.documentos.map((doc, index) => (
+                <>
+                  <li key={index}>
+                    <a
+                      href={`docs/${formato.folder}/${doc.file}`} // Ruta construida dinámicamente
+                      className="btn btn-primary"
+                      download
+                    >
+                      Descargar {doc.name}
+                    </a>
+                  </li>
+                  <br></br>
+                </>
+              ))}
+            </ul>
+          ) : (
+            <p>No hay documentos disponibles para esta categoría.</p>
+          )}
+        </div>
       </div>
     </>
   );
