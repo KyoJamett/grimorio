@@ -1,6 +1,13 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 export const Navigationbar = () => {
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const handleNavLinkClick = () => {
+    setIsNavOpen(false); // Oculta las opciones del menú al hacer clic en un navlink de las ediciones
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark  bg-dark">
@@ -10,7 +17,7 @@ export const Navigationbar = () => {
           </a>
 
           {/*-------------Collapsibe Button---------------- */}
-          <button
+          {/*<button
             className="navbar-toggler"
             type="button"
             data-toggle="collapse"
@@ -18,18 +25,30 @@ export const Navigationbar = () => {
             aria-controls="navbarCards"
             aria-expanded="false"
             aria-label="Toggle navigation"
+          >*/}
+          <button
+            className="navbar-toggler"
+            type="button"
+            onClick={() => setIsNavOpen(!isNavOpen)} // Alterna el estado
+            aria-controls="navbarCards"
+            aria-expanded={isNavOpen}
+            aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
           </button>
 
           {/*-------------NavBar Links---------------- */}
-          <div className="collapse navbar-collapse" id="navbarCards">
+          <div
+            className={`collapse navbar-collapse ${isNavOpen ? "show" : ""}`}
+            id="navbarCards"
+          >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
                   to="/grimorio/furia"
                   state={{ formatParam: "furia" }}
+                  onClick={handleNavLinkClick}
                 >
                   Furia
                 </NavLink>
@@ -39,6 +58,7 @@ export const Navigationbar = () => {
                   className="nav-link"
                   to="/grimorio/escuelas-elementales"
                   state={{ formatParam: "escuelas" }}
+                  onClick={handleNavLinkClick}
                 >
                   Escuelas Elementales
                 </NavLink>
@@ -48,6 +68,7 @@ export const Navigationbar = () => {
                   className="nav-link"
                   to="/grimorio/civilizaciones"
                   state={{ formatParam: "civilizaciones" }}
+                  onClick={handleNavLinkClick}
                 >
                   Civilizaciones
                 </NavLink>
@@ -57,6 +78,7 @@ export const Navigationbar = () => {
                   className="nav-link"
                   to="/grimorio/expediciones"
                   state={{ formatParam: "expediciones" }}
+                  onClick={handleNavLinkClick}
                 >
                   Expediciones
                 </NavLink>
@@ -66,6 +88,7 @@ export const Navigationbar = () => {
                   className="nav-link"
                   to="/grimorio/primer-bloque"
                   state={{ formatParam: "pb" }}
+                  onClick={handleNavLinkClick}
                 >
                   Primer Bloque
                 </NavLink>
