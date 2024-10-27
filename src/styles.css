@@ -79,6 +79,7 @@
 
   @media (min-width:1025px) { .container { width: 60% !important;} }
 
+/* componentes modal*/
   .modal-dialog-scrollable {
     max-height: 80vh; /* Ajusta esto según tus necesidades */
   }
@@ -90,11 +91,13 @@
   .skill-text {
     max-height: 290px; /* Ajusta este valor según tus necesidades */
     overflow-y: auto;
+    margin-right: 15px; /* Ajusta el valor según tus necesidades */
   }
 
   .card-text {
     font-size: 0.800rem; /* Tamaño de fuente específico para el texto dentro de la tarjeta */
     margin-bottom: 1rem; /* Espacio inferior para separar del siguiente contenido */
+    margin-right: 15px; /* Ajusta el valor según tus necesidades */
   }
 
 /* CSS personalizado para el botón de cierre */
@@ -234,4 +237,8 @@ nota de nacho: el media query solucionó el problema de la tabla no ajustandose 
 
 .black {
   background-color: #333333;
+}
+
+.justificado {
+  text-align: justify; /* Justifica el texto */
 }
