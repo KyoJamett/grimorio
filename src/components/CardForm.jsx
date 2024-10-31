@@ -94,7 +94,7 @@ export const CardForm = ({
             <div className="modal-body">
               <div className="card">
                 <div className="row">
-                  <div className="col">
+                  <div className="col card-col">
                     <img
                       src={
                         "https://api.myl.cl/static/cards/" +
@@ -103,7 +103,7 @@ export const CardForm = ({
                         onEdid(edid) +
                         ".png"
                       }
-                      className="card-img-top"
+                      className="card-img-top img-fluid"
                       alt="card"
                     />
                   </div>
@@ -124,11 +124,11 @@ export const CardForm = ({
                 <div className="row">
                   <div className="col-6">
                     <div className="card-body">
-                      <ul className="list-unstyled">
-                        <li className="mb-2">
+                      <ul className="list-unstyled dataText">
+                        <li className="mb-2 margin">
                           {"Tipo de carta: " + onTypes(type)}
                         </li>
-                        <li className="mb-2">
+                        <li className="mb-2 margin">
                           {"Costo: " + (cost === null ? "no aplica" : cost)}
                         </li>
                       </ul>
@@ -136,7 +136,7 @@ export const CardForm = ({
                   </div>
                   <div className="col-6">
                     <div className="card-body">
-                      <ul className="list-unstyled">
+                      <ul className="list-unstyled dataText">
                         <li className="mb-2">
                           {"Fuerza: " +
                             (damage === null ? "no aplica" : damage)}

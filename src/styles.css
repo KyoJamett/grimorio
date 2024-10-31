@@ -98,6 +98,10 @@
     margin-right: 15px; /* Ajusta el valor según tus necesidades */
   }
 
+  .dataText {
+    font-size: 1rem; /* Tamaño de fuente específico para el texto dentro de la tarjeta */
+  }
+
   .card-text {
     font-size: 0.800rem; /* Tamaño de fuente específico para el texto dentro de la tarjeta */
     margin-bottom: 1rem; /* Espacio inferior para separar del siguiente contenido */
@@ -245,4 +249,17 @@ nota de nacho: el media query solucionó el problema de la tabla no ajustandose 
 
 .justificado {
   text-align: justify; /* Justifica el texto */
+}
+
+/*ajustes imagen carta*/
+.card-col img {
+  max-width: 95%;
+  height: auto; /* Mantiene la proporción */
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 5px;
+}
+
+.margin {
+  margin-left: 5px;
 }
