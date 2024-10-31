@@ -94,6 +94,16 @@ export const Navigationbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
+                <NavLink
+                  className="nav-link"
+                  to="/grimorio/primera-era"
+                  state={{ formatParam: "pe" }}
+                  onClick={handleNavLinkClick}
+                >
+                  Primera Era
+                </NavLink>
+              </li>
+              <li className="nav-item">
                 <a className="nav-link disabled" aria-disabled="true">
                   Proximamente
                 </a>

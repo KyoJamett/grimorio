@@ -84,7 +84,9 @@ export function CardsPage() {
       <div className="container my-5 justify-content-center">
         <div className="row">
           {!dataCards ? (
-            <div className="lds-dual-ring"></div>
+            <div className="d-flex justify-content-center align-items-center custom-height">
+              <div className="lds-dual-ring"></div>
+            </div>
           ) : (
             <CardsList
               cards={cardsArray}

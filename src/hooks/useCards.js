@@ -147,6 +147,23 @@ const pb = {
   folder: "pb",
 };
 
+const pe = {
+  name: "Primera Era",
+  intro:
+    "Este es el formato compuesto por las primeras ediciones de Mitos y Leyendas, hasta la llegada de Espada Sagrada, donde comenzaría la llamada Segunda Era.",
+  details:
+    "El formato abarca las ediciones desde El Reto hasta Espíritu de Dragon. Ediciones lanzadas entre junio del año 2000 hasta julio del año 2002.",
+  ediciones: [
+    { ed: "el_reto", edImg: "el_reto.png" },
+    { ed: "mundo_gotico", edImg: "cruzadas.png" },
+    { ed: "ira_del_nahual", edImg: "helenica.png" },
+    { ed: "ragnarok", edImg: "imperio.png" },
+    { ed: "cofradia", edImg: "hijos_de_daana.png" },
+    { ed: "espiritu_del_dragon", edImg: "tierras_altas.png" },
+  ],
+  folder: "pe",
+};
+
 /*
 
 const formato = {
@@ -227,5 +244,6 @@ export const useCards = () => {
     civilizaciones,
     expediciones,
     pb,
+    pe,
   };
 };

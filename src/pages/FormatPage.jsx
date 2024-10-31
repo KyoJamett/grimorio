@@ -2,7 +2,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useCards } from "../hooks/useCards";
 
 export function FormatPage() {
-  const { documentos, furia, escuelas, civilizaciones, expediciones, pb } =
+  const { documentos, furia, escuelas, civilizaciones, expediciones, pb, pe } =
     useCards();
   const location = useLocation();
   const navigate = useNavigate();
@@ -34,6 +34,9 @@ export function FormatPage() {
     case "pb":
       formato = pb;
       break;
+    case "pe":
+      formato = pe;
+      break;
 
     default:
       break;
@@ -41,7 +44,13 @@ export function FormatPage() {
 
   // Verificar si formato está definido antes de intentar acceder a sus propiedades
   if (!formato) {
-    return <div className="lds-dual-ring"></div>;
+    return (
+      <>
+        <div className="container my-4">
+          <div className="lds-dual-ring"></div>
+        </div>
+      </>
+    );
   }
 
   // Encuentra la categoría de documentos correspondiente al formato actual

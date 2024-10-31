@@ -79,6 +79,10 @@
 
   @media (min-width:1025px) { .container { width: 60% !important;} }
 
+  .custom-height {
+    height: 300px; /* Altura del anillo de cargando */
+  }
+
 /* componentes modal*/
   .modal-dialog-scrollable {
     max-height: 80vh; /* Ajusta esto según tus necesidades */
