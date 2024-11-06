@@ -12,6 +12,15 @@ export const CardsList = ({
 }) => {
   const [searchInput, setSearchInput] = useState("");
 
+  // Función para filtrar las cartas
+  const filterCards = (cards, searchInput) => {
+    return cards.filter((card) => {
+      return searchInput.trim().toLowerCase() === ""
+        ? card
+        : card.name.toLowerCase().includes(searchInput.toLowerCase());
+    });
+  };
+
   return (
     <>
       <div className="table-responsive card">
@@ -41,6 +50,7 @@ export const CardsList = ({
             </div>
           )*/}
         </div>
+
         <table className="table table-hover table-striped rounded-3 border">
           <thead className="table-responsive table-dark">
             <tr>
@@ -48,56 +58,49 @@ export const CardsList = ({
               <th>Nombre</th>
               <th>Tipo</th>
               <th>Frecuencia</th>
-              {/*<th>Info</th>*/}
             </tr>
           </thead>
           <tbody>
-            {cards
-              .filter((card) => {
-                return searchInput.trim().toLowerCase() === ""
-                  ? card
-                  : card.name.toLowerCase().includes(searchInput.toLowerCase());
-              })
-              .map(
-                ({
-                  id,
-                  edid,
-                  slug,
-                  name,
-                  rarity,
-                  race,
-                  type,
-                  keywords,
-                  cost,
-                  damage,
-                  ability,
-                  flavour,
-                  ed_edid,
-                  ed_slug,
-                }) => (
-                  <CardRow
-                    key={id}
-                    id={id}
-                    edid={edid}
-                    slug={slug}
-                    name={name}
-                    rarity={rarity}
-                    race={race}
-                    type={type}
-                    keywords={keywords}
-                    cost={cost}
-                    damage={damage}
-                    ability={ability}
-                    flavour={flavour}
-                    ed_edid={ed_edid}
-                    ed_slug={ed_slug}
-                    rarities={rarities}
-                    types={types}
-                    handlerOpenForm={handlerOpenForm}
-                    handlerCardSelectedForm={handlerCardSelectedForm}
-                  />
-                )
-              )}
+            {filterCards(cards, searchInput).map(
+              ({
+                id,
+                edid,
+                slug,
+                name,
+                rarity,
+                race,
+                type,
+                keywords,
+                cost,
+                damage,
+                ability,
+                flavour,
+                ed_edid,
+                ed_slug,
+              }) => (
+                <CardRow
+                  key={id}
+                  id={id}
+                  edid={edid}
+                  slug={slug}
+                  name={name}
+                  rarity={rarity}
+                  race={race}
+                  type={type}
+                  keywords={keywords}
+                  cost={cost}
+                  damage={damage}
+                  ability={ability}
+                  flavour={flavour}
+                  ed_edid={ed_edid}
+                  ed_slug={ed_slug}
+                  rarities={rarities}
+                  types={types}
+                  handlerOpenForm={handlerOpenForm}
+                  handlerCardSelectedForm={handlerCardSelectedForm}
+                />
+              )
+            )}
           </tbody>
         </table>
       </div>
