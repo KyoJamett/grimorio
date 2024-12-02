@@ -80,7 +80,7 @@ export function FormatPage() {
                 />
                 <NavLink
                   className="btn btn-warning mt-2 d-flex justify-content-center"
-                  to={`/grimorio/cartas/${element.ed}`}
+                  to={`/cartas/${element.ed}`}
                   state={{ ed: element.ed }}
                 >
                   Ver

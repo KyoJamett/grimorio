@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { CardsPage } from "../pages/CardsPage";
 import { Navigationbar } from "../components/layout/Navigationbar";
 import { Home } from "../pages/Home";
@@ -14,15 +9,15 @@ export const CardRoutes = () => {
     <>
       <Navigationbar />
       <Routes>
-        <Route path="grimorio/cartas/:ed" element={<CardsPage />} />
-        <Route path="grimorio" element={<Home />} />
+        <Route path="/cartas/:ed" element={<CardsPage />} />
+        <Route path="/grimorio" element={<Home />} />
         <Route path="/" element={<Navigate to="/grimorio" />} />
-        <Route path="grimorio/furia" element={<FormatPage />} />
-        <Route path="grimorio/escuelas-elementales" element={<FormatPage />} />
-        <Route path="grimorio/civilizaciones" element={<FormatPage />} />
-        <Route path="grimorio/expediciones" element={<FormatPage />} />
-        <Route path="grimorio/primer-bloque" element={<FormatPage />} />
-        <Route path="grimorio/primera-era" element={<FormatPage />} />
+        <Route path="/furia" element={<FormatPage />} />
+        <Route path="/escuelas-elementales" element={<FormatPage />} />
+        <Route path="/civilizaciones" element={<FormatPage />} />
+        <Route path="/expediciones" element={<FormatPage />} />
+        <Route path="/primer-bloque" element={<FormatPage />} />
+        <Route path="/primera-era" element={<FormatPage />} />
       </Routes>
     </>
   );

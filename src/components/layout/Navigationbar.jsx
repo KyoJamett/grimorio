@@ -46,7 +46,7 @@ export const Navigationbar = () => {
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
-                  to="/grimorio/furia"
+                  to="/furia" // Cambiado a una ruta relativa
                   state={{ formatParam: "furia" }}
                   onClick={handleNavLinkClick}
                 >
@@ -56,7 +56,7 @@ export const Navigationbar = () => {
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
-                  to="/grimorio/escuelas-elementales"
+                  to="/escuelas-elementales" // Cambiado a una ruta relativa
                   state={{ formatParam: "escuelas" }}
                   onClick={handleNavLinkClick}
                 >
@@ -66,7 +66,7 @@ export const Navigationbar = () => {
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
-                  to="/grimorio/civilizaciones"
+                  to="/civilizaciones" // Cambiado a una ruta relativa
                   state={{ formatParam: "civilizaciones" }}
                   onClick={handleNavLinkClick}
                 >
@@ -76,7 +76,7 @@ export const Navigationbar = () => {
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
-                  to="/grimorio/expediciones"
+                  to="/expediciones" // Cambiado a una ruta relativa
                   state={{ formatParam: "expediciones" }}
                   onClick={handleNavLinkClick}
                 >
@@ -86,7 +86,7 @@ export const Navigationbar = () => {
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
-                  to="/grimorio/primer-bloque"
+                  to="/primer-bloque" // Cambiado a una ruta relativa
                   state={{ formatParam: "pb" }}
                   onClick={handleNavLinkClick}
                 >
@@ -96,7 +96,7 @@ export const Navigationbar = () => {
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
-                  to="/grimorio/primera-era"
+                  to="/primera-era" // Cambiado a una ruta relativa
                   state={{ formatParam: "pe" }}
                   onClick={handleNavLinkClick}
                 >
