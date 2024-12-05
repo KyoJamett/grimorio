@@ -101,10 +101,11 @@ const expediciones = {
   ediciones: [
     { ed: "kilimanjaro", edImg: "kilimanjaro.png" },
     { ed: "arsenal", edImg: "logo_arsenal.png" },
+    { ed: "terrores-nocturnos", edImg: "terrores_nocturnos.png" },
     { ed: "invasion-oscura", edImg: "invasion_oscura.png" },
     { ed: "dinastia-del-dragon", edImg: "dinastialogo.png" },
     { ed: "keltoi", edImg: "keltoi.png" },
-    { ed: "terrores-nocturnos", edImg: "terrores_nocturnos.png" },
+    { ed: "cuentos-de-ultratumba", edImg: "cuentos-de-ultratumba.png" },
     { ed: "tierra-austral", edImg: "tierra-austral.png" },
     { ed: "conjuros", edImg: "conjuros.png" },
   ],
@@ -124,6 +125,8 @@ const furia = {
     { ed: "rebelion", edImg: "rebelion.png" },
     { ed: "asgard", edImg: "asgard.png" },
     { ed: "midgard", edImg: "midgard.png" },
+    /*{ ed: "camelot", edImg: "camelot.png" },
+    { ed: "templarios", edImg: "templarios.png" },*/
   ],
   folder: "furia",
 };
