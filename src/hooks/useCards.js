@@ -183,14 +183,19 @@ const documentos = [
   {
     categoria: "ee",
     documentos: [
-      { name: "Banlist El Reino de los Duelos", file: "ee_formato_reino.pdf" },
+      {
+        id: "1",
+        name: "Banlist El Reino de los Duelos",
+        file: "ee_formato_reino.pdf",
+      },
     ],
   },
   {
     categoria: "civi",
     documentos: [
-      { name: "Banlist Julio 2024", file: "civi_banlist_2024.pdf" },
+      { id: "1", name: "Banlist Julio 2024", file: "civi_banlist_2024.pdf" },
       {
+        id: "2",
         name: "Banlist Enero 2022",
         file: "civi_banlist_enero_2022.pdf",
       },
@@ -199,12 +204,18 @@ const documentos = [
   {
     categoria: "expe",
     documentos: [
-      { name: "Banlist Julio 2023", file: "expe_banlist_julio_2023.pdf" },
+      {
+        id: "1",
+        name: "Banlist Julio 2023",
+        file: "expe_banlist_julio_2023.pdf",
+      },
     ],
   },
   {
     categoria: "pb",
-    documentos: [{ name: "Dar Abril 2005", file: "dar_abril_2005.pdf" }],
+    documentos: [
+      { id: "1", name: "Dar Abril 2005", file: "dar_abril_2005.pdf" },
+    ],
   },
   // Añadir más categorías según sea necesario
 ];

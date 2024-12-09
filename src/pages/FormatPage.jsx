@@ -99,6 +99,7 @@ export function FormatPage() {
                 <>
                   <li key={index}>
                     <a
+                      key={doc.id}
                       href={`docs/${formato.folder}/${doc.file}`} // Ruta construida dinámicamente
                       className="btn btn-primary"
                       download
