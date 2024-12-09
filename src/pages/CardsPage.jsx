@@ -92,6 +92,7 @@ export function CardsPage() {
               cards={cardsArray}
               rarities={rarities}
               types={types}
+              races={races}
               edition={edition}
               visibleForm={visibleForm}
               handlerOpenForm={handlerOpenForm}
