@@ -90,17 +90,17 @@ export const CardsList = ({
         {/*----------------------------------------- */}
         {console.log(rarities)} {console.log(types)} {console.log(races)}
         <div className="row rowDropdown">
-          <div className="col-2 mb-3 dropdown-column">
-            <div className="btn-group">
+          <div className="col-12 col-sm-4 mb-3 dropdown-column">
+            <div className="btn-group w-100">
               <button
                 type="button"
-                className="btn btn-warning dropdown-toggle"
+                className="btn btn-warning dropdown-toggle w-100"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
               >
                 {selectedType === ""
-                  ? "Tipo"
+                  ? "Tipo de carta"
                   : types.find((t) => t.id === selectedType)?.name}
               </button>
               <div className="dropdown-menu">
@@ -131,11 +131,11 @@ export const CardsList = ({
             </div>
           </div>
 
-          <div className="col-2 mb-3 dropdown-column">
-            <div className="btn-group">
+          <div className="col-12 col-sm-4 mb-3 dropdown-column">
+            <div className="btn-group w-100">
               <button
                 type="button"
-                className="btn btn-warning dropdown-toggle"
+                className="btn btn-warning dropdown-toggle w-100"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
@@ -172,11 +172,11 @@ export const CardsList = ({
             </div>
           </div>
 
-          <div className="col-2 mb-3 dropdown-column">
-            <div className="btn-group">
+          <div className="col-12 col-sm-4 mb-3 dropdown-column">
+            <div className="btn-group w-100">
               <button
                 type="button"
-                className="btn btn-warning dropdown-toggle"
+                className="btn btn-warning dropdown-toggle w-100"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
