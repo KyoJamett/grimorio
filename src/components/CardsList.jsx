@@ -43,12 +43,20 @@ export const CardsList = ({
         (card.rarity &&
           typeof card.rarity === "string" &&
           card.rarity.toLowerCase() === selectedRarity.toLowerCase());
+
       const isValidCard =
-        card.type &&
-        typeof card.type === "string" &&
-        card.rarity &&
-        typeof card.rarity === "string" &&
-        (selectedRace === "" || (card.race && typeof card.race === "string"));
+        (selectedType === "" ||
+          (card.type &&
+            typeof card.type === "string" &&
+            card.type.toLowerCase() === selectedType.toLowerCase())) &&
+        (selectedRace === "" ||
+          (card.race &&
+            typeof card.race === "string" &&
+            card.race.toLowerCase() === selectedRace.toLowerCase())) &&
+        (selectedRarity === "" ||
+          (card.rarity &&
+            typeof card.rarity === "string" &&
+            card.rarity.toLowerCase() === selectedRarity.toLowerCase()));
       return (
         matchesSearch &&
         matchesType &&
