@@ -205,6 +205,11 @@ const documentos = [
     categoria: "expe",
     documentos: [
       {
+        id: "2",
+        name: "Banlist Agosto 2024",
+        file: "expe_banlist_agosto_2024.pdf",
+      },
+      {
         id: "1",
         name: "Banlist Julio 2023",
         file: "expe_banlist_julio_2023.pdf",
