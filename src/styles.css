@@ -270,3 +270,8 @@ nota de nacho: el media query solucionó el problema de la tabla no ajustandose 
   position: absolute;   /* Necesario si estás usando dropdowns que deben aparecer sobre otros contenidos */
   z-index: 1050;        /* Asegúrate de que el dropdown esté por encima de otros elementos */
 }
+
+/*estilos lista de documentos*/
+.li_docs {
+  margin-bottom: 0.7rem; /* Separa cada <li> con un margen inferior */
+}

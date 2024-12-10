@@ -95,20 +95,16 @@ export function FormatPage() {
         <div>
           {categoriaDocumentos ? (
             <ul>
-              {categoriaDocumentos.documentos.map((doc, index) => (
-                <>
-                  <li key={index}>
-                    <a
-                      key={doc.id}
-                      href={`docs/${formato.folder}/${doc.file}`} // Ruta construida dinámicamente
-                      className="btn btn-primary"
-                      download
-                    >
-                      Descargar {doc.name}
-                    </a>
-                  </li>
-                  <br></br>
-                </>
+              {categoriaDocumentos.documentos.map((doc) => (
+                <li key={doc.id} className="li_docs">
+                  <a
+                    href={`docs/${formato.folder}/${doc.file}`} // Ruta construida dinámicamente
+                    className="btn btn-primary"
+                    download
+                  >
+                    Descargar {doc.name}
+                  </a>
+                </li>
               ))}
             </ul>
           ) : (

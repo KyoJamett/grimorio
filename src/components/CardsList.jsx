@@ -16,6 +16,11 @@ export const CardsList = ({
   const [selectedRace, setSelectedRace] = useState("");
   const [selectedRarity, setSelectedRarity] = useState("");
 
+  const filteredRaces = races.filter((race) =>
+    cards.some((card) => card.race === race.id)
+  );
+  console.log(filteredRaces, "filteredRaces");
+
   // Función para filtrar las cartas
   const filterCards = (
     cards,
@@ -150,7 +155,7 @@ export const CardsList = ({
               >
                 {selectedRace === ""
                   ? "Raza"
-                  : races.find((r) => r.id === selectedRace)?.name}
+                  : filteredRaces.find((r) => r.id === selectedRace)?.name}
               </button>
               <div className="dropdown-menu">
                 <a
@@ -163,7 +168,7 @@ export const CardsList = ({
                 >
                   Todos
                 </a>
-                {races.map(({ id, name, slug }) => (
+                {filteredRaces.map(({ id, name, slug }) => (
                   <a
                     key={id}
                     className="dropdown-item"
