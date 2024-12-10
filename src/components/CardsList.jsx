@@ -21,6 +21,14 @@ export const CardsList = ({
   );
   console.log(filteredRaces, "filteredRaces");
 
+  const filteredRarities = rarities.filter((rarity) =>
+    cards.some((card) => card.rarity === rarity.id)
+  );
+
+  const filteredTypes = types.filter((type) =>
+    cards.some((card) => card.type === type.id)
+  );
+
   // Función para filtrar las cartas
   const filterCards = (
     cards,
@@ -114,7 +122,7 @@ export const CardsList = ({
               >
                 {selectedType === ""
                   ? "Tipo de carta"
-                  : types.find((t) => t.id === selectedType)?.name}
+                  : filteredTypes.find((t) => t.id === selectedType)?.name}
               </button>
               <div className="dropdown-menu">
                 <a
@@ -127,7 +135,7 @@ export const CardsList = ({
                 >
                   Todos
                 </a>
-                {types.map(({ id, name, slug }) => (
+                {filteredTypes.map(({ id, name, slug }) => (
                   <a
                     key={id}
                     className="dropdown-item"
@@ -196,7 +204,7 @@ export const CardsList = ({
               >
                 {selectedRarity === ""
                   ? "Frecuencia"
-                  : rarities.find((r) => r.id === selectedRarity)?.name}
+                  : filteredRarities.find((r) => r.id === selectedRarity)?.name}
               </button>
               <div className="dropdown-menu">
                 <a
@@ -209,7 +217,7 @@ export const CardsList = ({
                 >
                   Todos
                 </a>
-                {rarities.map(({ id, name, slug }) => (
+                {filteredRarities.map(({ id, name, slug }) => (
                   <a
                     key={id}
                     className="dropdown-item"
