@@ -116,7 +116,7 @@ export const CardsList = ({
               <button
                 type="button"
                 className="btn btn-warning dropdown-toggle w-100"
-                data-toggle="dropdown"
+                data-bs-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
               >
@@ -157,7 +157,7 @@ export const CardsList = ({
               <button
                 type="button"
                 className="btn btn-warning dropdown-toggle w-100"
-                data-toggle="dropdown"
+                data-bs-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
               >
@@ -198,7 +198,7 @@ export const CardsList = ({
               <button
                 type="button"
                 className="btn btn-warning dropdown-toggle w-100"
-                data-toggle="dropdown"
+                data-bs-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
               >
