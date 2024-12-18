@@ -3,6 +3,7 @@ import { CardsPage } from "../pages/CardsPage";
 import { Navigationbar } from "../components/layout/Navigationbar";
 import { Home } from "../pages/Home";
 import { FormatPage } from "../pages/FormatPage";
+import { Glossary } from "../pages/Glossary";
 
 export const CardRoutes = () => {
   return (
@@ -18,6 +19,7 @@ export const CardRoutes = () => {
         <Route path="/expediciones" element={<FormatPage />} />
         <Route path="/primer-bloque" element={<FormatPage />} />
         <Route path="/primera-era" element={<FormatPage />} />
+        <Route path="/glosario" element={<Glossary />} />
       </Routes>
     </>
   );
