@@ -4,7 +4,7 @@ import { useFetchEd } from "../hooks/useFetchEd";
 export function Glossary() {
   const [data, setData] = useState(null);
   const { dataCards } = useFetchEd("glosario");
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndexes, setActiveIndexes] = useState({});
 
   useEffect(() => {
     if (dataCards) {
@@ -16,8 +16,11 @@ export function Glossary() {
     }
   }, [dataCards]);
 
-  const handlerAccordionToggle = (index) => {
-    setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
+  const handlerAccordionToggle = (accordionIndex, subIndex) => {
+    setActiveIndexes((prev) => ({
+      ...prev,
+      [accordionIndex]: prev[accordionIndex] === subIndex ? null : subIndex,
+    }));
   };
 
   console.log(data);
@@ -34,43 +37,48 @@ export function Glossary() {
               <>
                 <h1>Diccionario</h1>
                 {data.map((item, index) => {
+                  const accordionId = `accordion-${index}`;
                   return (
                     <>
-                      <div className="accordion" id="accordionExample">
+                      <div className="accordion" id={accordionId} key={index}>
                         <h5>{item.title}</h5>
-                        {item.content.map((item, index) => {
-                          const collapseId = `collapse${index}`;
-                          const headingId = `heading${index}`;
+                        {item.content.map((subItem, subIndex) => {
+                          const collapseId = `collapse-${index}-${subIndex}`;
+                          const headingId = `heading-${index}-${subIndex}`;
                           return (
                             <>
-                              <div className="accordion-item" key={index}>
+                              <div className="accordion-item" key={subIndex}>
                                 <h2 className="accordion-header" id={headingId}>
                                   <button
                                     className={`accordion-button ${
-                                      activeIndex === index ? "" : "collapsed"
+                                      activeIndexes === subIndex
+                                        ? ""
+                                        : "collapsed"
                                     }`}
                                     type="button"
                                     data-bs-toggle="collapse"
                                     data-bs-target={`#${collapseId}`}
                                     aria-expanded={
-                                      activeIndex === index ? "true" : "false"
+                                      activeIndexes === subIndex
+                                        ? "true"
+                                        : "false"
                                     }
                                     aria-controls={collapseId}
                                     onClick={() =>
-                                      handlerAccordionToggle(index)
+                                      handlerAccordionToggle(subIndex)
                                     }
                                   >
-                                    {item.title}
+                                    {subItem.title}
                                   </button>
                                 </h2>
                                 <div
                                   id={collapseId}
                                   className={`accordion-collapse collapse`}
                                   aria-labelledby={headingId}
-                                  data-bs-parent="#accordionExample"
+                                  data-bs-parent={`#${accordionId}`}
                                 >
                                   <div className="accordion-body">
-                                    <strong>{item.definition}</strong>
+                                    <strong>{subItem.definition}</strong>
                                   </div>
                                 </div>
                               </div>
@@ -78,7 +86,6 @@ export function Glossary() {
                           );
                         })}
                       </div>
-                      <br></br>
                     </>
                   );
                 })}
