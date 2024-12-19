@@ -8,7 +8,11 @@ export function Glossary() {
 
   useEffect(() => {
     if (dataCards) {
-      setData(dataCards);
+      // Si es un objeto, conviértelo en un array, de lo contrario, mantenlo como está
+      const convertedData = Array.isArray(dataCards)
+        ? dataCards
+        : Object.values(dataCards);
+      setData(convertedData);
     }
   }, [dataCards]);
 
@@ -29,45 +33,55 @@ export function Glossary() {
             ) : (
               <>
                 <h1>Diccionario</h1>
-
-                <div className="accordion" id="accordionExample">
-                  <h5>Keywords</h5>
-                  {data.map((item, index) => {
-                    const collapseId = `collapse${index}`;
-                    const headingId = `heading${index}`;
-                    return (
-                      <div className="accordion-item" key={index}>
-                        <h2 className="accordion-header" id={headingId}>
-                          <button
-                            className={`accordion-button ${
-                              activeIndex === index ? "" : "collapsed"
-                            }`}
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target={`#${collapseId}`}
-                            aria-expanded={
-                              activeIndex === index ? "true" : "false"
-                            }
-                            aria-controls={collapseId}
-                            onClick={() => handlerAccordionToggle(index)}
-                          >
-                            {item.title}
-                          </button>
-                        </h2>
-                        <div
-                          id={collapseId}
-                          className={`accordion-collapse collapse`}
-                          aria-labelledby={headingId}
-                          data-bs-parent="#accordionExample"
-                        >
-                          <div className="accordion-body">
-                            <strong>{item.definition}</strong>
-                          </div>
-                        </div>
+                {data.map((item, index) => {
+                  return (
+                    <>
+                      <div className="accordion" id="accordionExample">
+                        <h5>{item.title}</h5>
+                        {item.content.map((item, index) => {
+                          const collapseId = `collapse${index}`;
+                          const headingId = `heading${index}`;
+                          return (
+                            <>
+                              <div className="accordion-item" key={index}>
+                                <h2 className="accordion-header" id={headingId}>
+                                  <button
+                                    className={`accordion-button ${
+                                      activeIndex === index ? "" : "collapsed"
+                                    }`}
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target={`#${collapseId}`}
+                                    aria-expanded={
+                                      activeIndex === index ? "true" : "false"
+                                    }
+                                    aria-controls={collapseId}
+                                    onClick={() =>
+                                      handlerAccordionToggle(index)
+                                    }
+                                  >
+                                    {item.title}
+                                  </button>
+                                </h2>
+                                <div
+                                  id={collapseId}
+                                  className={`accordion-collapse collapse`}
+                                  aria-labelledby={headingId}
+                                  data-bs-parent="#accordionExample"
+                                >
+                                  <div className="accordion-body">
+                                    <strong>{item.definition}</strong>
+                                  </div>
+                                </div>
+                              </div>
+                            </>
+                          );
+                        })}
                       </div>
-                    );
-                  })}
-                </div>
+                      <br></br>
+                    </>
+                  );
+                })}
               </>
             )}
           </div>
