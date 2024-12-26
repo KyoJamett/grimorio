@@ -8,6 +8,7 @@ export function Home() {
   const [inputValue, setInputValue] = useState(""); // Estado para el valor del input
   const [loading, setLoading] = useState(false); // Estado para gestionar la carga
   const [error, setError] = useState(null); // Estado para manejar errores
+  const [cards, setCards] = useState([]); // Estado para almacenar las cartas
 
   // Función para manejar el cambio en el input
   const handleChange = (e) => {
@@ -41,8 +42,22 @@ export function Home() {
         throw new Error(`Network response was not ok: ${response.statusText}`);
       }
 
-      const data = await response.json();
+      const data = await response.json(); //data recibida por el metodo post
       console.log(data);
+      const contents = JSON.parse(data.contents); //aquí convertimos el atributo contents, el cual contiene las cartas que respondió la api, en un json
+
+      // Verifica el tipo y contenido de 'data'
+      console.log("Tipo de data:", typeof data);
+      console.log("Contenido de data:", data);
+      console.log("Contenido de contents:", contents);
+      console.log("Tipo de contents:", typeof contents);
+
+      if (data) {
+        setCards(contents.cards);
+      } else {
+        console.error("Formato de datos inesperado", data);
+        setError("Datos recibidos en un formato inesperado");
+      }
     } catch (error) {
       console.error("Error:", error);
       setError(error.message);
@@ -59,29 +74,68 @@ export function Home() {
         <p className="justificado">{intro.text}</p>
         <ShortcutComponent />
         {/* Formulario de entrada */}
-        {/*
-        <form onSubmit={handleSubmit} className="mb-4">
-          <div className="row">
-            <div className="col">
-              <input
-                type="text"
-                value={inputValue}
-                onChange={handleChange}
-                className="form-control"
-                placeholder="Ingrese el valor"
-                required
-              />
+        {
+          <form onSubmit={handleSubmit} className="mb-4">
+            <div className="row">
+              <div className="col">
+                <input
+                  type="text"
+                  value={inputValue}
+                  onChange={handleChange}
+                  className="form-control"
+                  placeholder="Ingrese el valor"
+                  required
+                />
+              </div>
+              <div className="col">
+                <button type="submit" className="btn btn-primary">
+                  Enviar
+                </button>
+              </div>
             </div>
-            <div className="col">
-              <button type="submit" className="btn btn-primary">
-                Enviar
-              </button>
-            </div>
-          </div>
-          {loading && <p>Cargando...</p>}
-          {error && <p className="text-danger">Error: {error}</p>}
-        </form>
-        */}
+            {loading && <p>Cargando...</p>}
+            {error && <p className="text-danger">Error: {error}</p>}
+          </form>
+        }
+
+        {/* Grid de cartas, visible solo cuando hay cartas */}
+        <div className="container my-4">
+          {Array.isArray(cards) && cards.length > 0 ? (
+            <>
+              <h4>Resultados de búsqueda</h4>
+              <div className="grid-container">
+                {cards.map((card, index) => (
+                  <div
+                    className="grid-item"
+                    key={`${card.edition}-${card.edid}`}
+                  >
+                    <span className="border border-secondary rounded p-3 mb-3 d-flex flex-column align-items-center black">
+                      <h6 className="card-title results-title text-warning">
+                        {card.name}
+                      </h6>
+                      <img
+                        src={`https://api.myl.cl/static/cards/${card.edition}/${card.edid}.png`}
+                        alt={card.edid}
+                        className="img-fluid"
+                        style={{
+                          width: "250px",
+                          height: "250px",
+                          objectFit: "contain",
+                        }}
+                      />
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : Array.isArray(cards) && cards.length == 0 ? (
+            ""
+          ) : (
+            // Si cards no es un array o está vacío
+            <p>No se encontraron resultados.</p>
+          )}
+        </div>
+
         {/* Contenido existente */}
         {/*
         <div className="row">
