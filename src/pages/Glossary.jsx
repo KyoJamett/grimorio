@@ -8,7 +8,6 @@ export function Glossary() {
 
   useEffect(() => {
     if (dataCards) {
-      // Si es un objeto, conviértelo en un array, de lo contrario, mantenlo como está
       const convertedData = Array.isArray(dataCards)
         ? dataCards
         : Object.values(dataCards);
@@ -23,77 +22,112 @@ export function Glossary() {
     }));
   };
 
-  console.log(data);
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const navHeight = document.querySelector(".navbar")?.offsetHeight || 0;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elementPosition - navHeight - 20,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
-    <>
-      <div className="container my-4">
-        <div className="container my-5 justify-content-center">
-          <div className="row">
-            {!data ? (
-              <div className="d-flex justify-content-center align-items-center custom-height">
-                <div className="lds-dual-ring"></div>
-              </div>
-            ) : (
-              <>
-                <h1>Diccionario</h1>
-                {data.map((item, index) => {
-                  const accordionId = `accordion-${index}`;
-                  return (
-                    <>
-                      <div className="accordion" id={accordionId} key={index}>
-                        <h5>{item.title}</h5>
-                        {item.content.map((subItem, subIndex) => {
-                          const collapseId = `collapse-${index}-${subIndex}`;
-                          const headingId = `heading-${index}-${subIndex}`;
+    <div className="container my-4">
+      <div className="container my-5 justify-content-center">
+        <div className="row">
+          {!data ? (
+            <div className="d-flex justify-content-center align-items-center custom-height">
+              <div className="lds-dual-ring"></div>
+            </div>
+          ) : (
+            <>
+              <h1>Diccionario</h1>
+              <div className="row">
+                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                  <div className="container-fluid">
+                    <span className="navbar-brand">Secciones</span>
+                    <button
+                      className="navbar-toggler"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarNavDropdown"
+                      aria-controls="navbarNavDropdown"
+                      aria-expanded="false"
+                      aria-label="Toggle navigation"
+                    >
+                      <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div
+                      className="collapse navbar-collapse"
+                      id="navbarNavDropdown"
+                    >
+                      <ul className="navbar-nav">
+                        {data.map((item, index) => {
+                          const sectionId = `section-${index}`;
                           return (
-                            <>
-                              <div className="accordion-item" key={subIndex}>
-                                <h2 className="accordion-header" id={headingId}>
-                                  <button
-                                    className={`accordion-button ${
-                                      activeIndexes === subIndex
-                                        ? ""
-                                        : "collapsed"
-                                    }`}
-                                    type="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target={`#${collapseId}`}
-                                    aria-expanded={
-                                      activeIndexes === subIndex
-                                        ? "true"
-                                        : "false"
-                                    }
-                                    aria-controls={collapseId}
-                                    onClick={() =>
-                                      handlerAccordionToggle(subIndex)
-                                    }
-                                  >
-                                    {subItem.title}
-                                  </button>
-                                </h2>
-                                <div
-                                  id={collapseId}
-                                  className={`accordion-collapse collapse`}
-                                  aria-labelledby={headingId}
-                                  data-bs-parent={`#${accordionId}`}
-                                >
-                                  <div className="accordion-body">
-                                    <strong>{subItem.definition}</strong>
-                                  </div>
-                                </div>
-                              </div>
-                            </>
+                            <li className="nav-item" key={index}>
+                              <button
+                                className="nav-link btn btn-link"
+                                onClick={() => scrollToSection(sectionId)}
+                              >
+                                {item.title}
+                              </button>
+                            </li>
                           );
                         })}
-                      </div>
-                    </>
-                  );
-                })}
-              </>
-            )}
-          </div>
+                      </ul>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+
+              {data.map((item, index) => {
+                const sectionId = `section-${index}`;
+                return (
+                  <div id={sectionId} className="accordion" key={index}>
+                    <h5>{item.title}</h5>
+                    {item.content.map((subItem, subIndex) => {
+                      const collapseId = `collapse-${index}-${subIndex}`;
+                      const headingId = `heading-${index}-${subIndex}`;
+
+                      return (
+                        <div className="accordion-item" key={subIndex}>
+                          <h2 className="accordion-header" id={headingId}>
+                            <button
+                              className="accordion-button collapsed"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target={`#${collapseId}`}
+                              aria-expanded="false"
+                              aria-controls={collapseId}
+                            >
+                              {subItem.title}
+                            </button>
+                          </h2>
+                          <div
+                            id={collapseId}
+                            className="accordion-collapse collapse"
+                            aria-labelledby={headingId}
+                            data-bs-parent={`#section-${index}`}
+                          >
+                            <div className="accordion-body">
+                              <strong>{subItem.definition}</strong>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              })}
+            </>
+          )}
         </div>
       </div>
-    </>
+    </div>
   );
 }
