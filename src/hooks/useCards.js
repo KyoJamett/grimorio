@@ -147,7 +147,7 @@ const furia = {
     "El formato posee un ritmo de batalla bastante ameno, con turnos relativamente tranquilos y una base de anulaciones acotada. Recomendado para jugadores novatos.",
   ediciones: [
     { ed: "furia", edImg: "https://api.myl.cl/static/furia.png" },
-    { ed: "furiaext", edImg: "https://api.myl.cl/static/furiaext.png" },
+    { ed: "furia-extension", edImg: "https://api.myl.cl/static/furiaext.png" },
     { ed: "sumeria", edImg: "https://api.myl.cl/static/sumeria.png" },
     { ed: "rebelion", edImg: "https://api.myl.cl/static/rebelion.png" },
     { ed: "asgard", edImg: "https://api.myl.cl/static/asgard.png" },
@@ -173,11 +173,11 @@ const pb = {
     { ed: "helenica", edImg: "https://api.myl.cl/static/helenica.png" },
     { ed: "imperio", edImg: "https://api.myl.cl/static/imperio.png" },
     {
-      ed: "hijos_de_daana",
+      ed: "hijos-de-daana",
       edImg: "https://api.myl.cl/static/hijos_de_daana.png",
     },
     {
-      ed: "tierras_altas",
+      ed: "tierras-altas",
       edImg: "https://api.myl.cl/static/tierras_altas.png",
     },
     {
