@@ -196,12 +196,12 @@ const pe = {
   details:
     "El formato abarca las ediciones desde El Reto hasta Espíritu de Dragon. Ediciones lanzadas entre junio del año 2000 hasta julio del año 2002.",
   ediciones: [
-    { ed: "el_reto", edImg: "https://api.myl.cl/static/el_reto.png" },
-    { ed: "mundo_gotico", edImg: "logos/mundo-gotico.png" },
-    { ed: "ira_del_nahual", edImg: "logos/la-ira-del-nahual.png" },
+    { ed: "el-reto", edImg: "https://api.myl.cl/static/el_reto.png" },
+    { ed: "mundo-gotico", edImg: "logos/mundo-gotico.png" },
+    { ed: "ira-del-nahual", edImg: "logos/la-ira-del-nahual.png" },
     { ed: "ragnarok", edImg: "logos/ragnarok.png" },
     { ed: "cofradia", edImg: "logos/la-cofradia.png" },
-    { ed: "espiritu_del_dragon", edImg: "logos/espiritu-del-dragon.png" },
+    { ed: "espiritu-del-dragon", edImg: "logos/espiritu-del-dragon.png" },
   ],
   folder: "pe",
 };
