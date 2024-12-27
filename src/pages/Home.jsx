@@ -9,6 +9,7 @@ export function Home() {
   const [loading, setLoading] = useState(false); // Estado para gestionar la carga
   const [error, setError] = useState(null); // Estado para manejar errores
   const [cards, setCards] = useState([]); // Estado para almacenar las cartas
+  const [selectedImage, setSelectedImage] = useState(null);
 
   // Función para manejar el cambio en el input
   const handleChange = (e) => {
@@ -64,6 +65,15 @@ export function Home() {
     } finally {
       setLoading(false);
     }
+  };
+
+  //constantes para el manejo del modal de cartas
+  const handleImageClick = (card) => {
+    setSelectedImage(card);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedImage(null);
   };
 
   return (
@@ -123,7 +133,9 @@ export function Home() {
                           width: "250px",
                           height: "250px",
                           objectFit: "contain",
+                          cursor: "pointer",
                         }}
+                        onClick={() => handleImageClick(card)}
                       />
                     </span>
                   </div>
@@ -138,46 +150,41 @@ export function Home() {
           )}
         </div>
 
-        {/* Contenido existente */}
-        {/*
-        <div className="row">
-          <p className="text-start">{homeText.text}</p>
-        </div>
-        <div className="container my-4">
-          <div className="row">
-            <div className="col">
-              Hijos del Sol
-              <NavLink
-                className="btn btn-dark"
-                to={`/grimorio/cartas/${escuelas.sol}`}
-                state={{ ed: "hijos-del-sol" }}
+        {/* Modal para mostrar imagen expandida */}
+        {selectedImage && (
+          <div
+            className="modal show d-block abrir-modal animacion fadeIn"
+            style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+            onClick={handleCloseModal}
+          >
+            <div className="modal-dialog modal-lg modal-dialog-centered">
+              <div
+                className="modal-content"
+                onClick={(e) => e.stopPropagation()}
               >
-                Dark
-              </NavLink>
-            </div>
-            <div className="col">
-              Legado Gótico
-              <NavLink
-                className="btn btn-dark"
-                to={`/grimorio/cartas/${escuelas.leg}`}
-                state={{ ed: "legado-gotico" }}
-              >
-                Dark
-              </NavLink>
-            </div>
-            <div className="col">
-              Águila Imperial
-              <NavLink
-                className="btn btn-dark"
-                to={`/grimorio/cartas/${escuelas.agu}`}
-                state={{ ed: "aguila-imperial" }}
-              >
-                Dark
-              </NavLink>
+                <div className="modal-header">
+                  <h5 className="modal-title">{selectedImage.name}</h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    onClick={handleCloseModal}
+                  />
+                </div>
+                <div className="modal-body text-center">
+                  <img
+                    src={`https://api.myl.cl/static/cards/${selectedImage.edition}/${selectedImage.edid}.png`}
+                    alt={selectedImage.edid}
+                    className="img-fluid"
+                    style={{
+                      maxHeight: "80vh",
+                      width: "auto",
+                    }}
+                  />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-       */}
+        )}
       </div>
     </>
   );
