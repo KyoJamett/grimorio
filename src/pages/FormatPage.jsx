@@ -69,7 +69,7 @@ export function FormatPage() {
             <div className="grid-item" key={element.ed}>
               <span className="border border-secondary rounded p-3 mb-3 d-flex flex-column align-items-center black">
                 <img
-                  src={`https://api.myl.cl/static/${element.edImg}`}
+                  src={`${element.edImg}`}
                   alt={element.ed}
                   className="img-fluid"
                   style={{

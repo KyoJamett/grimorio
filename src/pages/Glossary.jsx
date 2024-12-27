@@ -46,7 +46,7 @@ export function Glossary() {
           ) : (
             <>
               <h1>Diccionario</h1>
-              <div className="row">
+              <div className="row margin-bottom-15">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                   <div className="container-fluid">
                     <span className="navbar-brand">Secciones</span>
@@ -88,39 +88,42 @@ export function Glossary() {
               {data.map((item, index) => {
                 const sectionId = `section-${index}`;
                 return (
-                  <div id={sectionId} className="accordion" key={index}>
-                    <h5>{item.title}</h5>
-                    {item.content.map((subItem, subIndex) => {
-                      const collapseId = `collapse-${index}-${subIndex}`;
-                      const headingId = `heading-${index}-${subIndex}`;
+                  <div className="row" key={index}>
+                    <div id={sectionId} className="accordion" key={index}>
+                      <h5>{item.title}</h5>
+                      {item.content.map((subItem, subIndex) => {
+                        const collapseId = `collapse-${index}-${subIndex}`;
+                        const headingId = `heading-${index}-${subIndex}`;
 
-                      return (
-                        <div className="accordion-item" key={subIndex}>
-                          <h2 className="accordion-header" id={headingId}>
-                            <button
-                              className="accordion-button collapsed"
-                              type="button"
-                              data-bs-toggle="collapse"
-                              data-bs-target={`#${collapseId}`}
-                              aria-expanded="false"
-                              aria-controls={collapseId}
+                        return (
+                          <div className="accordion-item" key={subIndex}>
+                            <h2 className="accordion-header" id={headingId}>
+                              <button
+                                className="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target={`#${collapseId}`}
+                                aria-expanded="false"
+                                aria-controls={collapseId}
+                              >
+                                {subItem.title}
+                              </button>
+                            </h2>
+                            <div
+                              id={collapseId}
+                              className="accordion-collapse collapse"
+                              aria-labelledby={headingId}
+                              data-bs-parent={`#section-${index}`}
                             >
-                              {subItem.title}
-                            </button>
-                          </h2>
-                          <div
-                            id={collapseId}
-                            className="accordion-collapse collapse"
-                            aria-labelledby={headingId}
-                            data-bs-parent={`#section-${index}`}
-                          >
-                            <div className="accordion-body">
-                              <strong>{subItem.definition}</strong>
+                              <div className="accordion-body">
+                                <strong>{subItem.definition}</strong>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      );
-                    })}
+                        );
+                      })}
+                      <br />
+                    </div>
                   </div>
                 );
               })}

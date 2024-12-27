@@ -268,6 +268,10 @@ nota de nacho: el media query solucionó el problema de la tabla no ajustandose 
   margin-bottom: 5px;
 }
 
+.margin-bottom-15 {
+  margin-bottom: 15px;
+}
+
 .dropdown-menu {
   max-height: 300px;   /* Puedes ajustar este valor según el diseño que desees */
   overflow-y: auto;     /* Habilita el scroll cuando el contenido excede el máximo */
