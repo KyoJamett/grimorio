@@ -74,29 +74,31 @@ export function Home() {
         <p className="justificado">{intro.text}</p>
         <ShortcutComponent />
         {/* Formulario de entrada */}
-        {
-          <form onSubmit={handleSubmit} className="mb-4">
-            <div className="row">
-              <div className="col">
-                <input
-                  type="text"
-                  value={inputValue}
-                  onChange={handleChange}
-                  className="form-control"
-                  placeholder="Ingrese el valor"
-                  required
-                />
-              </div>
-              <div className="col">
-                <button type="submit" className="btn btn-primary">
-                  Enviar
-                </button>
-              </div>
+        <br></br>
+        <div className="row">
+          <h5>Busqueda de cartas</h5>
+        </div>
+        <form onSubmit={handleSubmit} className="mb-4">
+          <div className="row">
+            <div className="col">
+              <input
+                type="text"
+                value={inputValue}
+                onChange={handleChange}
+                className="form-control"
+                placeholder="Ingrese el nombre de la carta"
+                required
+              />
             </div>
-            {loading && <p>Cargando...</p>}
-            {error && <p className="text-danger">Error: {error}</p>}
-          </form>
-        }
+            <div className="col">
+              <button type="submit" className="btn btn-primary">
+                Buscar
+              </button>
+            </div>
+          </div>
+          {loading && <p>Cargando...</p>}
+          {error && <p className="text-danger">Error: {error}</p>}
+        </form>
 
         {/* Grid de cartas, visible solo cuando hay cartas */}
         <div className="container my-4">
@@ -110,7 +112,7 @@ export function Home() {
                     key={`${card.edition}-${card.edid}`}
                   >
                     <span className="border border-secondary rounded p-3 mb-3 d-flex flex-column align-items-center black">
-                      <h6 className="card-title results-title text-warning">
+                      <h6 className="card-title results-title text-warning margin-bottom">
                         {card.name}
                       </h6>
                       <img
