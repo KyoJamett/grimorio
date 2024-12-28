@@ -110,7 +110,7 @@ export const CardForm = ({
                   <div className="col card-col">
                     <div className="card-body">
                       {/*<h5 className="card-title">{name.toUpperCase()}</h5>*/}
-                      <p className="card-text skill-text justificado">
+                      <p className="card-text skill-text justificado backslash">
                         {"Habilidad: " +
                           (ability === null ? "no aplica" : ability)}
                       </p>

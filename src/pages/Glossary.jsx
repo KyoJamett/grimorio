@@ -115,7 +115,7 @@ export function Glossary() {
                               aria-labelledby={headingId}
                               data-bs-parent={`#section-${index}`}
                             >
-                              <div className="accordion-body">
+                              <div className="accordion-body backslash">
                                 <strong>{subItem.definition}</strong>
                               </div>
                             </div>

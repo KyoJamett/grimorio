@@ -283,3 +283,8 @@ nota de nacho: el media query solucionó el problema de la tabla no ajustandose 
 .li_docs {
   margin-bottom: 0.7rem; /* Separa cada <li> con un margen inferior */
 }
+
+/*estilos para reconocer caracteres especiales*/
+.backslash {
+  white-space: pre-line;
+}
