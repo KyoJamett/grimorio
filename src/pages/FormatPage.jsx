@@ -100,7 +100,8 @@ export function FormatPage() {
                   <a
                     href={`docs/${formato.folder}/${doc.file}`} // Ruta construida dinámicamente
                     className="btn btn-primary"
-                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Descargar {doc.name}
                   </a>
