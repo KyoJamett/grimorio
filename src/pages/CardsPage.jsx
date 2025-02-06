@@ -11,7 +11,6 @@ export function CardsPage() {
   const {
     cards,
     cardSelected,
-    handlerCardSelectedForm,
     visibleForm,
     handlerOpenForm,
     handlerCloseForm,
@@ -96,7 +95,6 @@ export function CardsPage() {
               edition={edition}
               visibleForm={visibleForm}
               handlerOpenForm={handlerOpenForm}
-              handlerCardSelectedForm={handlerCardSelectedForm}
             />
           )}
         </div>

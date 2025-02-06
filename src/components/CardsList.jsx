@@ -7,9 +7,7 @@ export const CardsList = ({
   types = [],
   edition = [],
   races = [],
-  visibleForm,
   handlerOpenForm,
-  handlerCardSelectedForm,
 }) => {
   const [searchInput, setSearchInput] = useState("");
   const [selectedType, setSelectedType] = useState("");
@@ -287,7 +285,6 @@ export const CardsList = ({
                   rarities={rarities}
                   types={types}
                   handlerOpenForm={handlerOpenForm}
-                  handlerCardSelectedForm={handlerCardSelectedForm}
                 />
               )
             )}

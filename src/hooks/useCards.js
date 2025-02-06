@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useReducer, useState } from "react";
 import { cardsReducer } from "../reducers/cardsReducer";
 
 const initialCards = [
@@ -39,8 +39,8 @@ const initialCardSelected = {
   keywords: "arreglo_de_keywords",
   cost: "costo_de_carta",
   damage: "fuerza_de_carta",
-  ability: "habilidad de carta",
-  flavour: "lore de carta",
+  ability: "habilidad_de_carta",
+  flavour: "lore_de_carta",
   ed_edid: "",
   ed_slug: "",
 };
@@ -267,13 +267,12 @@ const documentos = [
 export const useCards = () => {
   const [cardSelected, setCardSelected] = useState(initialCardSelected);
   const [visibleForm, setVisibleForm] = useState(false);
-
+  const [cards, dispatch] = useReducer(cardsReducer, initialCards);
+  
   const handlerCardSelectedForm = (card) => {
     console.log(card);
     setCardSelected({ ...card });
   };
-
-  const [cards, dispatch] = useReducer(cardsReducer, initialCards);
 
   const handlerOpenForm = (card) => {
     handlerCardSelectedForm(card);
@@ -287,7 +286,6 @@ export const useCards = () => {
 
   return {
     cards,
-    handlerCardSelectedForm,
     initialCards,
     initialCardSelected,
     visibleForm,
