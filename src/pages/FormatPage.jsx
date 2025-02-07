@@ -17,32 +17,8 @@ export function FormatPage() {
     }
   }
 
-  const formatParams = getFormatParams();
-  let formato;
-
-  switch (formatParams) {
-    case "furia":
-      formato = formatos.furia;
-      break;
-    case "escuelas":
-      formato = formatos.escuelas;
-      break;
-    case "civilizaciones":
-      formato = formatos.civilizaciones;
-      break;
-    case "expediciones":
-      formato = formatos.expediciones;
-      break;
-    case "pb":
-      formato = formatos.pb;
-      break;
-    case "pe":
-      formato = formatos.pe;
-      break;
-
-    default:
-      break;
-  }
+  //Obtengo el formato a partir de los parámetros enviados al hacer click en la barra de navegacion
+  const formato = formatos[getFormatParams()];
 
   // Verificar si formato está definido antes de intentar acceder a sus propiedades
   if (!formato) {
@@ -63,9 +39,12 @@ export function FormatPage() {
   return (
     <>
       <div className="container my-4">
+        {/*----------------------------------------------- Componentes de info del formato */}
         <h3>{formato.name}</h3>
         <p className="justificado">{formato.intro}</p>
         <p className="justificado">{formato.details}</p>
+        {/* Fin componentes de info del formato */}
+        {/* --------------------------------------------------Componente grid de ediciones*/ }
         <div className="grid-container">
           {formato.ediciones.map((element) => (
             <div className="grid-item" key={element.ed}>
@@ -91,8 +70,10 @@ export function FormatPage() {
             </div>
           ))}
         </div>
+        {/* Fin componente grid de ediciones*/ }
       </div>
       <div className="container my-4">
+        {/* --------------------------------------------------------Componente de documentos */ }
         <h4>Documentos</h4>
         <div>
           {categoriaDocumentos ? (
@@ -114,6 +95,7 @@ export function FormatPage() {
             <p>No hay documentos disponibles para esta categoría.</p>
           )}
         </div>
+        {/* ---------------------------------------------Fin componente grid de ediciones*/ }
       </div>
     </>
   );

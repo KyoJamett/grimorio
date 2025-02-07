@@ -4,6 +4,7 @@ const formatos = {
 
     escuelas : {
        name: "Escuelas Elementales",
+       slug: "escuelas-elementales",
        intro:
          "Escuelas Elementales es un formato de nueva era, compuesto inicialmente por las ediciones Dominio, Contraataque, Águila Imperial, Steampunk, Axis Mundi, Hijos del Sol y Legado Gótico.",
        details:
@@ -38,6 +39,7 @@ const formatos = {
      
      civilizaciones : {
        name: "Civilizaciones",
+       slug: "civilizaciones",
        intro:
          "Civilizaciones es un formato de nueva era que comprende las ediciones de Kemet, Dharma, Olimpia, Calavera y la edición recopilatoria Arsenal.",
        details:
@@ -54,6 +56,7 @@ const formatos = {
      
      expediciones : {
        name: "Expediciones",
+       slug: "expediciones",
        intro:
          "Expediciones abarca las ediciones desde Kilimanjaro hasta Conjuros y en la linea de tiempo de nueva era, corresponde a las ediciones posteriores al formato Civilizaciones.",
        details:
@@ -90,6 +93,7 @@ const formatos = {
      
      furia : {
        name: "Bloque Furia",
+       slug: "bloque-furia",
        intro:
          "Bloque furia abarca las primeras 3 ediciones de nueva era con sus respectivas extensiones.",
        details:
@@ -109,6 +113,7 @@ const formatos = {
      
      pb : {
        name: "Primer Bloque",
+       slug: "primer-bloque",
        intro:
          "Primer bloque es un formato perteneciente a la segunda Era de la época Salo y abarca las primeras cuatro ediciones de dicha era, junto a sus respectivas extensiones.",
        details:
@@ -140,6 +145,7 @@ const formatos = {
      
      pe : {
        name: "Primera Era",
+       slug: "primera-era",
        intro:
          "Este es el formato compuesto por las primeras ediciones de Mitos y Leyendas, hasta la llegada de Espada Sagrada, donde comenzaría la llamada Segunda Era.",
        details:
