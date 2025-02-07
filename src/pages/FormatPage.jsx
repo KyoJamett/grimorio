@@ -1,9 +1,11 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useCards } from "../hooks/useCards";
+import { UseFormats } from "../hooks/useFormats";
 
 export function FormatPage() {
-  const { documentos, furia, escuelas, civilizaciones, expediciones, pb, pe } =
-    useCards();
+  // const { furia, escuelas, civilizaciones, expediciones, pb, pe } =
+  //   useCards();
+  const {documentos, formatos} = UseFormats()
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -20,22 +22,22 @@ export function FormatPage() {
 
   switch (formatParams) {
     case "furia":
-      formato = furia;
+      formato = formatos.furia;
       break;
     case "escuelas":
-      formato = escuelas;
+      formato = formatos.escuelas;
       break;
     case "civilizaciones":
-      formato = civilizaciones;
+      formato = formatos.civilizaciones;
       break;
     case "expediciones":
-      formato = expediciones;
+      formato = formatos.expediciones;
       break;
     case "pb":
-      formato = pb;
+      formato = formatos.pb;
       break;
     case "pe":
-      formato = pe;
+      formato = formatos.pe;
       break;
 
     default:
