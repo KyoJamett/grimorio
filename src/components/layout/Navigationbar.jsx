@@ -45,27 +45,22 @@ export const Navigationbar = () => {
             id="navbarCards"
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              {
-                Object.entries(formatos).map(([key,formato]) => (
-                  
-                    <li key={key} className="nav-item">
-                    <NavLink
-                      className="nav-link"
-                      to={`/${formato.slug}`}
-                      state={{ formatParam: key }}
-                      onClick={handleNavLinkClick}
-                    >
-                      {formato.name}
-                    </NavLink>
-                  </li>
-                ))
-
-
-              }
+              {Object.entries(formatos).map(([key, formato]) => (
+                <li key={key} className="nav-item">
+                  <NavLink
+                    className="nav-link"
+                    to={`/${formato.slug}`}
+                    state={{ formatParam: key }}
+                    onClick={handleNavLinkClick}
+                  >
+                    {formato.name}
+                  </NavLink>
+                </li>
+              ))}
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
-                  to="/glosario" // Cambiado a una ruta relativa
+                  to="/diccionario"
                   onClick={handleNavLinkClick}
                 >
                   Diccionario

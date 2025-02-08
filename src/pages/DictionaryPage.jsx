@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useFetchEd } from "../hooks/useFetchEd";
 
-export function Glossary() {
+export function DictionaryPage() {
   const [data, setData] = useState(null);
   const { dataCards } = useFetchEd("glosario");
   const [activeIndexes, setActiveIndexes] = useState({});
@@ -14,13 +14,6 @@ export function Glossary() {
       setData(convertedData);
     }
   }, [dataCards]);
-
-  const handlerAccordionToggle = (accordionIndex, subIndex) => {
-    setActiveIndexes((prev) => ({
-      ...prev,
-      [accordionIndex]: prev[accordionIndex] === subIndex ? null : subIndex,
-    }));
-  };
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
