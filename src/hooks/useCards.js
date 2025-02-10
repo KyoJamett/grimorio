@@ -47,9 +47,7 @@ const initialCardSelected = {
 };
 /*  objetos iniciales de array crads y cardSelected */
 
-const homeText = {
-  text: "Seleccione la edición que desea consultar",
-};
+
 
 const intro = {
   text: "Bienvenido, aquí podrás encontrar información sobre los formatos de mitos y leyendas, las ediciones que los componen y buscar información sobre las cartas. Accede a los formatos mediante la barra de navegación. Página en desarrollo.",
@@ -83,7 +81,6 @@ export const useCards = () => {
     cardSelected,
     handlerOpenForm,
     handlerCloseForm,
-    homeText,
     intro
   };
 };
