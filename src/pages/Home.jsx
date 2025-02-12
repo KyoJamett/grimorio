@@ -25,7 +25,7 @@ export function Home() {
         <h2>Grimorio</h2>
         <h6 className="cursiva">Sabiduría Infinita</h6>
         <p className="justificado">{intro.text}</p>
-        <ShortcutComponent />
+        
         <br></br>
         {/* Barra de busqueda */}
         <CardSearch setCards={setCards}/>
@@ -35,6 +35,9 @@ export function Home() {
 
         {/* Modal para mostrar imagen expandida */}
         <CardSearchModal handleCloseModal={handleCloseModal} selectedImage={selectedImage}/>
+
+        {/*Instrucciones para agregar al celu */}
+        <ShortcutComponent />
       </div>
     </>
   );
