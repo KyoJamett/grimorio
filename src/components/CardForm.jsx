@@ -41,9 +41,11 @@ export const CardForm = ({
   };
 
   const onRarity = (rarity) => {
-    return rarities.find((r) => r.id == rarity).name;
+    return rarities.find((r) => r.id == rarity)
+    ? rarities.find((r) => r.id == rarity).name
+      : "";
   };
-  console.log("tipo: " + type);
+  console.log("fuerza: " + damage);
   const onTypes = (type) => {
     return types.find((t) => t.id == type)
       ? types.find((t) => t.id == type).name
@@ -110,48 +112,46 @@ export const CardForm = ({
                   <div className="col card-col">
                     <div className="card-body">
                       {/*<h5 className="card-title">{name.toUpperCase()}</h5>*/}
-                      <p className="card-text skill-text justificado backslash">
-                        {"Habilidad: " +
-                          (ability === null ? "no aplica" : ability)}
-                      </p>
-                      <p className="card-text cursiva justificado">
-                        {"Texto épico: " +
-                          (flavour === null ? "no aplica" : flavour)}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-6">
-                    <div className="card-body">
+                      
                       <ul className="list-unstyled dataText">
                         <li className="mb-2 margin">
-                          {"Tipo de carta: " + onTypes(type)}
+                          {"Tipo: " + onTypes(type)}
                         </li>
                         <li className="mb-2 margin">
-                          {"Costo: " + (cost === null ? "no aplica" : cost)}
+                          {"Costo: " + (cost === null || cost === undefined ? "no aplica" : cost)}
                         </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="col-6">
-                    <div className="card-body">
-                      <ul className="list-unstyled dataText">
-                        <li className="mb-2">
+                        <li className="mb-2 margin">
                           {"Fuerza: " +
-                            (damage === null ? "no aplica" : damage)}
+                            (damage === null || damage === undefined ? "no aplica" : damage)}
                         </li>
-                        <li className="mb-2">
+                        <li className="mb-2 margin">
                           {"Raza: " +
-                            (race === null ? "no aplica" : onRace(race))}
+                            (race === null || race === undefined ? "no aplica" : onRace(race))}
+                        </li>
+                        <li className="mb-2 margin">
+                          {"Frecuencia: " +
+                            (rarity === null || rarity === undefined ? "no aplica" : onRarity(rarity))}
+                        </li>
+                        <li className="mb-2 margin">
+                          {"Edición: " +
+                            (edition === null || edition === undefined ? "no aplica" : edition.title)}
                         </li>
                       </ul>
                     </div>
                   </div>
                 </div>
-                {/*<p className="card-text">
-                  {"Texto épico: " + (flavour === null ? "no aplica" : flavour)}
-                </p>*/}
+                <div className="card-body">
+                        <p className="card-text skill-text justificado backslash">
+                          {"Habilidad: " +
+                            (ability === null || ability === undefined ? "Carta sin habilidad" : ability)}
+                        </p>
+                    </div>
+                <div className="card-body">
+                <p className="card-text cursiva justificado">
+                        {"Texto épico: " +
+                          (flavour === null || flavour === undefined ? "No contiene texto épico" : flavour)}
+                      </p>
+                </div>
               </div>
             </div>
             {/*<div className="modal-footer">

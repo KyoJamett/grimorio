@@ -85,7 +85,7 @@
 
 /* componentes modal*/
   .modal-dialog-scrollable {
-    max-height: 80vh; /* Ajusta esto según tus necesidades */
+    max-height: 95vh; /* Ajusta esto según tus necesidades */
   }
   
   .modal-body {
@@ -99,7 +99,7 @@
   }
 
   .dataText {
-    font-size: 1rem; /* Tamaño de fuente específico para el texto dentro de la tarjeta */
+    font-size: 0.9rem; /* Tamaño de fuente específico para el texto dentro de la tarjeta */
   }
 
   .card-text {
