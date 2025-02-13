@@ -43,9 +43,9 @@ export const CardForm = ({
   const onRarity = (rarity) => {
     return rarities.find((r) => r.id == rarity)
     ? rarities.find((r) => r.id == rarity).name
-      : "";
+      : "No aplica";
   };
-  console.log("fuerza: " + damage);
+
   const onTypes = (type) => {
     return types.find((t) => t.id == type)
       ? types.find((t) => t.id == type).name
@@ -55,7 +55,7 @@ export const CardForm = ({
   const onRace = (race) => {
     return races.find((r) => r.id == race)
       ? races.find((r) => r.id == race).name
-      : "";
+      : "No aplica";
   };
 
   const onEd = (ed_edid) => {
@@ -73,6 +73,35 @@ export const CardForm = ({
       return edid;
     }
   };
+
+  const onAbility = (ability) => {
+    //limpiar habilidades con saltos de linea /n presentes en algunas cartas
+    return ability.replace(/\/n|↵|\r\n|\r|\n/g, "\n");
+  };
+
+  const onCost = (cost) => {
+    // el operador de fusion nulla retorna no aplica sólo si cost en null o undefined
+    return cost ?? "No aplica";
+  }
+
+  const onDamage = (damage) => {
+    return damage ?? "No aplica";
+  }
+
+  const onEdition = (edition) => {
+    return edition?.title ?? "No aplica";
+  }
+
+  const dataCard = () => {
+    return [
+      { label: "Tipo", value: onTypes(type) },
+      { label: "Costo", value: onCost(cost)},
+      { label: "Raza", value: onRace(race)},
+      { label: "Fuerza", value:  onDamage(damage)},
+      { label: "Rareza", value: onRarity(rarity)},
+      { label: "Edición", value: onEdition(edition) },
+    ];
+  }
 
   return (
     <>
@@ -110,59 +139,32 @@ export const CardForm = ({
                     />
                   </div>
                   <div className="col card-col">
-                    <div className="card-body">
-                      {/*<h5 className="card-title">{name.toUpperCase()}</h5>*/}
-                      
-                      <ul className="list-unstyled dataText">
-                        <li className="mb-2 margin">
-                          {"Tipo: " + onTypes(type)}
+                  <div className="card-body">
+                    <ul className="list-unstyled dataText">
+                      {dataCard().map((item, index) => (
+                        <li key={index} className="mb-2 row">
+                          <div className="col-5 fw-bold text-end">{item.label}:</div>
+                          <div className="col-7">{item.value}</div>
                         </li>
-                        <li className="mb-2 margin">
-                          {"Costo: " + (cost === null || cost === undefined ? "no aplica" : cost)}
-                        </li>
-                        <li className="mb-2 margin">
-                          {"Fuerza: " +
-                            (damage === null || damage === undefined ? "no aplica" : damage)}
-                        </li>
-                        <li className="mb-2 margin">
-                          {"Raza: " +
-                            (race === null || race === undefined ? "no aplica" : onRace(race))}
-                        </li>
-                        <li className="mb-2 margin">
-                          {"Frecuencia: " +
-                            (rarity === null || rarity === undefined ? "no aplica" : onRarity(rarity))}
-                        </li>
-                        <li className="mb-2 margin">
-                          {"Edición: " +
-                            (edition === null || edition === undefined ? "no aplica" : edition.title)}
-                        </li>
-                      </ul>
-                    </div>
+                      ))}
+                    </ul>
                   </div>
                 </div>
+                </div>
                 <div className="card-body">
-                        <p className="card-text skill-text justificado backslash">
-                          {"Habilidad: " +
-                            (ability === null || ability === undefined ? "Carta sin habilidad" : ability)}
-                        </p>
-                    </div>
+                  <h6>Habilidad</h6>
+                  <p className="card-text skill-text justificado backslash">
+                    {(ability === null || ability === undefined ? "Carta sin habilidad" : onAbility(ability))}
+                  </p>
+                </div>
                 <div className="card-body">
+                  <h6>Texto épico</h6>
                 <p className="card-text cursiva justificado">
-                        {"Texto épico: " +
-                          (flavour === null || flavour === undefined ? "No contiene texto épico" : flavour)}
+                        {(flavour === null || flavour === undefined ? "No contiene texto épico." : flavour)}
                       </p>
                 </div>
               </div>
             </div>
-            {/*<div className="modal-footer">
-          <button
-            className="btn btn-primary"
-            type="button"
-            onClick={onCloseForm}
-          >
-            Cerrar
-          </button>
-        </div>*/}
           </div>
         </div>
       </div>

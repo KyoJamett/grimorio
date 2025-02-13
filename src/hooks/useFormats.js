@@ -56,7 +56,7 @@ const formatos = {
         edImg: "https://api.myl.cl/static/legado-gotico.png",
       },
       {
-        ed: "escuelas_elementales",
+        ed: "escuelas-elementales",
         edImg: "https://api.myl.cl/static/escuelas_elementales.png",
       },
     ],
