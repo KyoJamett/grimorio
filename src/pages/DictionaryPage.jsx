@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useFetchEd } from "../hooks/useFetchEd";
 import { DictionaryNav } from "../components/DictionaryNav";
+import { DictionarySection } from "../components/DictionarySection";
 
 export function DictionaryPage() {
   const [data, setData] = useState(null);
   const { dataCards } = useFetchEd("glosario");
-  const [activeIndexes, setActiveIndexes] = useState({});
 
   useEffect(() => {
     if (dataCards) {
@@ -48,41 +48,11 @@ export function DictionaryPage() {
                 const sectionId = `section-${index}`;
                 return (
                   <div className="row" key={index}>
-                    <div id={sectionId} className="accordion" key={index}>
-                      <h5>{item.title}</h5>
-                      {item.content.map((subItem, subIndex) => {
-                        const collapseId = `collapse-${index}-${subIndex}`;
-                        const headingId = `heading-${index}-${subIndex}`;
-
-                        return (
-                          <div className="accordion-item" key={subIndex}>
-                            <h2 className="accordion-header" id={headingId}>
-                              <button
-                                className="accordion-button collapsed"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target={`#${collapseId}`}
-                                aria-expanded="false"
-                                aria-controls={collapseId}
-                              >
-                                {subItem.title}
-                              </button>
-                            </h2>
-                            <div
-                              id={collapseId}
-                              className="accordion-collapse collapse"
-                              aria-labelledby={headingId}
-                              data-bs-parent={`#section-${index}`}
-                            >
-                              <div className="accordion-body backslash">
-                                <strong>{subItem.definition}</strong>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })}
-                      <br />
-                    </div>
+                    <DictionarySection
+                      index={index}
+                      item={item}
+                      sectionId={sectionId}
+                    />
                   </div>
                 );
               })}
