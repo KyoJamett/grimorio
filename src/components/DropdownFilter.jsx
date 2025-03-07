@@ -20,7 +20,7 @@ export const DropdownFilter = ({label, onSelect, options, selected}) => {
                   href="#"
                   onClick={(e) => {
                     e.preventDefault();
-                    setSelectedType("");
+                    onSelect("");
                   }}
                 >
                   Todos
