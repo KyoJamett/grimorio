@@ -104,7 +104,7 @@ export const CardForm = ({
   }
 
   return (
-    <>
+    <div className="container my-4">
       <div
         className="modal fade show"
         tabIndex="-1"
@@ -168,6 +168,6 @@ export const CardForm = ({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
