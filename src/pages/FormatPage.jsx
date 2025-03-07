@@ -1,11 +1,9 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useCards } from "../hooks/useCards";
 import { UseFormats } from "../hooks/useFormats";
 import { EditionGrid } from "../components/EditionGrid";
+import { DocumentList } from "../components/DocumentList";
 
 export function FormatPage() {
-  // const { furia, escuelas, civilizaciones, expediciones, pb, pe } =
-  //   useCards();
   const {documentos, formatos} = UseFormats()
   const location = useLocation();
   const navigate = useNavigate();
@@ -44,36 +42,13 @@ export function FormatPage() {
         <h3>{formato.name}</h3>
         <p className="justificado">{formato.intro}</p>
         <p className="justificado">{formato.details}</p>
-        {/* Fin componentes de info del formato */}
         {/* --------------------------------------------------Componente grid de ediciones*/ }
         <EditionGrid ediciones={formato.ediciones}/>
-        {/* Fin componente grid de ediciones*/ }
       </div>
-      <div className="container my-4">
-        {/* --------------------------------------------------------Componente de documentos */ }
-        <h4>Documentos</h4>
-        <div>
-          {categoriaDocumentos ? (
-            <ul>
-              {categoriaDocumentos.documentos.map((doc) => (
-                <li key={doc.id} className="li_docs">
-                  <a
-                    href={`docs/${formato.folder}/${doc.file}`} // Ruta construida dinámicamente
-                    className="btn btn-primary"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Descargar {doc.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>No hay documentos disponibles para esta categoría.</p>
-          )}
-        </div>
-        {/* ---------------------------------------------Fin componente grid de ediciones*/ }
-      </div>
+      
+      {/* --------------------------------------------------------Componente de documentos */ }
+      <DocumentList documentos={categoriaDocumentos.documentos} formato={formato}/>
+      
     </>
   );
 }
