@@ -69,31 +69,31 @@ export const CardSearch = ({setCards}) => {
 
 
     return (
-        <>
-            <div className="row">
-          <h5>Busqueda de cartas</h5>
-        </div>
-        <form onSubmit={handleFormSubmit} className="mb-4">
+        <div className="container my-4">
           <div className="row">
-            <div className="col">
-              <input
-                type="text"
-                value={inputValue}
-                onChange={handleChange}
-                className="form-control"
-                placeholder="Ingrese el nombre de la carta"
-                required
-              />
-            </div>
-            <div className="col">
-              <button type="submit" className="btn btn-primary">
-                Buscar
-              </button>
-            </div>
+          <h5>Busqueda de cartas</h5>
           </div>
-          {loading && <p>Cargando...</p>}
-          {error && <p className="text-danger">Error: {error}</p>}
-        </form>
-        </>
+          <form onSubmit={handleFormSubmit} className="mb-4">
+            <div className="row">
+              <div className="col">
+                <input
+                  type="text"
+                  value={inputValue}
+                  onChange={handleChange}
+                  className="form-control"
+                  placeholder="Ingrese el nombre de la carta"
+                  required
+                />
+              </div>
+              <div className="col">
+                <button type="submit" className="btn btn-primary">
+                  Buscar
+                </button>
+              </div>
+            </div>
+            {loading && <p>Cargando...</p>}
+            {error && <p className="text-danger">Error: {error}</p>}
+          </form>
+        </div>
     );
 }

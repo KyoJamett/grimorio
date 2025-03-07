@@ -3,7 +3,7 @@
 export const CardSearchModal = ({handleCloseModal, selectedImage}) => {
 
     return (
-        <>
+        <div className="container my-4">
         {
             selectedImage && (
             <div
@@ -40,6 +40,6 @@ export const CardSearchModal = ({handleCloseModal, selectedImage}) => {
             </div>
             )
         }
-        </>
+        </div>
     );
 }
