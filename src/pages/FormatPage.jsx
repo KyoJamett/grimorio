@@ -1,4 +1,4 @@
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { UseFormats } from "../hooks/useFormats";
 import { EditionGrid } from "../components/EditionGrid";
 import { DocumentList } from "../components/DocumentList";
@@ -42,9 +42,7 @@ export function FormatPage() {
       <FormatInfo formato={formato}/>
     
       {/* --------------------------------------------------Componente grid de ediciones*/ }
-      <div className="container my-4">
-        <EditionGrid ediciones={formato.ediciones}/>
-      </div>
+      <EditionGrid ediciones={formato.ediciones}/>
       
       {/* --------------------------------------------------------Componente de documentos */ }
       <DocumentList documentos={categoriaDocumentos?.documentos} formato={formato}/>
