@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CardRow } from "./CardRow";
 import { SearchBarEd } from "./SearchBarEd";
+import { DropdownFilter } from "./DropdownFilter";
 
 export const CardsList = ({
   cards = [],
@@ -92,128 +93,9 @@ export const CardsList = ({
         {/*----------------------------------------- */}
         {console.log("frecuencias: ",rarities)} {console.log("tipos de cartas: ",types)} {console.log("razas: ",races)}
         <div className="row rowDropdown">
-          <div className="col-12 col-sm-4 mb-3 dropdown-column">
-            <div className="btn-group w-100">
-              <button
-                type="button"
-                className="btn btn-warning dropdown-toggle w-100"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                {selectedType === ""
-                  ? "Tipo de carta"
-                  : filteredTypes.find((t) => t.id === selectedType)?.name}
-              </button>
-              <div className="dropdown-menu">
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setSelectedType("");
-                  }}
-                >
-                  Todos
-                </a>
-                {filteredTypes.map(({ id, name, slug }) => (
-                  <a
-                    key={id}
-                    className="dropdown-item"
-                    href="#"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setSelectedType(id);
-                    }}
-                  >
-                    {name}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="col-12 col-sm-4 mb-3 dropdown-column">
-            <div className="btn-group w-100">
-              <button
-                type="button"
-                className="btn btn-warning dropdown-toggle w-100"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                {selectedRace === ""
-                  ? "Raza"
-                  : filteredRaces.find((r) => r.id === selectedRace)?.name}
-              </button>
-              <div className="dropdown-menu">
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setSelectedRace("");
-                  }}
-                >
-                  Todos
-                </a>
-                {filteredRaces.map(({ id, name, slug }) => (
-                  <a
-                    key={id}
-                    className="dropdown-item"
-                    href="#"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setSelectedRace(id);
-                    }}
-                  >
-                    {name}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="col-12 col-sm-4 mb-3 dropdown-column">
-            <div className="btn-group w-100">
-              <button
-                type="button"
-                className="btn btn-warning dropdown-toggle w-100"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                {selectedRarity === ""
-                  ? "Frecuencia"
-                  : filteredRarities.find((r) => r.id === selectedRarity)?.name}
-              </button>
-              <div className="dropdown-menu">
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setSelectedRarity("");
-                  }}
-                >
-                  Todos
-                </a>
-                {filteredRarities.map(({ id, name, slug }) => (
-                  <a
-                    key={id}
-                    className="dropdown-item"
-                    href="#"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setSelectedRarity(id);
-                    }}
-                  >
-                    {name}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
+          <DropdownFilter label='Tipo de Carta' onSelect={setSelectedType} options={filteredTypes} selected={selectedType}/>
+          <DropdownFilter label='Raza' onSelect={setSelectedRace} options={filteredRaces} selected={selectedRace}/>
+          <DropdownFilter label='Frecuencia' onSelect={setSelectedRarity} options={filteredRarities} selected={selectedRarity}/>
         </div>
         {/*----------------------------------------- */}
         <table className="table table-hover table-striped rounded-3 border">
