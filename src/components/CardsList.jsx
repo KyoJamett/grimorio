@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { CardRow } from "./CardRow";
+import { SearchBarEd } from "./SearchBarEd";
 
 export const CardsList = ({
   cards = [],
@@ -86,28 +87,10 @@ export const CardsList = ({
         <h5>Lista de cartas</h5>
         <br></br>
         <div className="col-4 mb-3">
-          <form className="d-flex" role="search">
-            <input
-              className="form-control form-control-xl custom-search-input me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-              onChange={(e) => setSearchInput(e.target.value)}
-            />
-          </form>
-          {/*visibleForm || (
-            <div className="col">
-              <button
-                className="btn btn-primary my-2"
-                onClick={handlerOpenForm}
-              >
-                Agregar especie
-              </button>
-            </div>
-          )*/}
+          <SearchBarEd setSearchInput={setSearchInput}/>
         </div>
         {/*----------------------------------------- */}
-        {console.log(rarities)} {console.log(types)} {console.log(races)}
+        {console.log("frecuencias: ",rarities)} {console.log("tipos de cartas: ",types)} {console.log("razas: ",races)}
         <div className="row rowDropdown">
           <div className="col-12 col-sm-4 mb-3 dropdown-column">
             <div className="btn-group w-100">
