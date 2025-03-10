@@ -6,6 +6,7 @@ import { CardModalForm } from "../components/CardModalForm";
 import { useFetch } from "../hooks/useFetch";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useFetchEd } from "../hooks/useFetchEd";
+import { Loading } from "../components/Loading";
 
 export function CardsPage() {
   const {
@@ -56,19 +57,6 @@ export function CardsPage() {
 
   return (
     <>
-      <div className="container my-4">
-        {/*<div className="col-4 mb-3">
-          <CardForm
-            cardSelected={cardSelected}
-            handlerCloseForm={handlerCloseForm}
-            races={races}
-            rarities={rarities}
-            types={types}
-            keywords={keywords}
-            edition={edition}
-          />
-        </div>*/}
-      </div>
       {!visibleForm || (
         <CardModalForm
           cardSelected={cardSelected}
@@ -83,9 +71,7 @@ export function CardsPage() {
       <div className="container my-5 justify-content-center">
         <div className="row">
           {!dataCards ? (
-            <div className="d-flex justify-content-center align-items-center custom-height">
-              <div className="lds-dual-ring"></div>
-            </div>
+            <Loading/>
           ) : (
             <CardsList
               cards={cardsArray}

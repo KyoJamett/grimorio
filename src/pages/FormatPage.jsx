@@ -3,6 +3,7 @@ import { UseFormats } from "../hooks/useFormats";
 import { EditionGrid } from "../components/EditionGrid";
 import { DocumentList } from "../components/DocumentList";
 import { FormatInfo } from "../components/FormatInfo";
+import { Loading } from "../components/Loading";
 
 export function FormatPage() {
   const {documentos, formatos} = UseFormats()
@@ -24,9 +25,7 @@ export function FormatPage() {
   if (!formato) {
     return (
       <>
-        <div className="container my-4">
-          <div className="lds-dual-ring"></div>
-        </div>
+        <Loading/>
       </>
     );
   }

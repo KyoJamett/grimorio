@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useFetchEd } from "../hooks/useFetchEd";
 import { DictionaryNav } from "../components/DictionaryNav";
 import { DictionarySection } from "../components/DictionarySection";
+import { Loading } from "../components/Loading";
 
 export function DictionaryPage() {
   const [data, setData] = useState(null);
@@ -34,9 +35,7 @@ export function DictionaryPage() {
       <div className="container my-5 justify-content-center">
         <div className="row">
           {!data ? (
-            <div className="d-flex justify-content-center align-items-center custom-height">
-              <div className="lds-dual-ring"></div>
-            </div>
+            <Loading/>
           ) : (
             <>
               <h1>Diccionario</h1>
