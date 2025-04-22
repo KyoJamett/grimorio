@@ -3,8 +3,10 @@ import { CardRoutes } from "./routes/CardRoutes";
 
 export const MainApp = () => {
   return (
-    <Routes>
-      <Route path="/*" element={<CardRoutes />} />
-    </Routes>
+    <div className="app-background pb-4">
+      <Routes>
+        <Route path="/*" element={<CardRoutes />} />
+      </Routes>
+    </div>
   );
 };

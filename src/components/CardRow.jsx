@@ -1,7 +1,3 @@
-import { NavLink } from "react-router-dom";
-import { CardModalForm } from "./CardModalForm";
-import { useCards } from "../hooks/useCards";
-
 export const CardRow = ({
   id,
   edid,
@@ -23,7 +19,12 @@ export const CardRow = ({
 }) => {
   const onRarity = (rarity) => {
     const foundRarity = rarities.find((r) => r.id == rarity);
-    return foundRarity ? foundRarity.name || "sin rareza" : "sin nombre";
+    return foundRarity ? foundRarity.name || "sin rareza" : "sin rareza";
+  };
+
+  const onRaritySlug = (rarity) => {
+    const foundRarity = rarities.find((r) => r.id == rarity);
+    return foundRarity ? foundRarity.slug || "sin rareza" : "default";
   };
 
   const onTypes = (type) => {
@@ -51,23 +52,14 @@ export const CardRow = ({
   const handleRowClick = () => {
     handlerOpenForm(card);
   };
-
+  console.log("slug: ", onRaritySlug(rarity));
   return (
     <>
-      <tr onClick={handleRowClick} style={{ cursor: "pointer" }}>
+      <tr onClick={handleRowClick} style={{ cursor: "pointer" }} data-rarity-color={onRaritySlug(rarity)} className="rarity">
         <td>{edid}</td>
         <td>{name.toUpperCase()}</td>
         <td>{onTypes(type)}</td>
         <td>{onRarity(rarity)}</td>
-        {/*
-          <td>
-            <button
-              className="btn btn-primary my-2"
-              onClick={() => handlerOpenForm(card)}
-            >
-              Detalles
-            </button>
-          </td>*/}
       </tr>
     </>
   );

@@ -11,8 +11,8 @@ export const Navigationbar = () => {
   };
 
   return (
-    <>
-      <nav className="navbar navbar-expand-lg navbar-dark  bg-dark">
+    <div className="pb-6">
+      <nav className="navbar navbar-expand-lg navbar-dark  bg-dark main-navbar">
         <div className="container-fluid">
           <a className="navbar-brand" href="/grimorio/">
             Grimorio
@@ -75,6 +75,6 @@ export const Navigationbar = () => {
           </div>
         </div>
       </nav>
-    </>
+    </div>
   );
 };

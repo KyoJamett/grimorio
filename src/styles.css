@@ -1,112 +1,116 @@
 .abrir-modal {
-    background-color: rgba(0, 0, 0, 0.7);
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
 }
- 
+
 .animacion {
-    animation-duration: 2s;
-    animation-fill-mode: both;
-    -webkit-animation-duration: 2s;
-    -webkit-animation-fill-mode: both;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
 }
- 
+
 .fadeIn {
-    animation-name: fadeIn;
-    -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-name: fadeIn;
 }
- 
+
 @keyframes fadeIn {
-    0% {
-        opacity: 0
-    }
- 
-    to {
-        opacity: 1
-    }
+  0% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
- 
+
 @-webkit-keyframes fadeIn {
-    0% {
-        opacity: 0
-    }
- 
-    to {
-        opacity: 1
-    }
+  0% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 #image_cards {
-    max-width: 40%;
+  max-width: 40%;
 }
 
 .lds-dual-ring {
-    /* change color here */
-    color: #1c4c5b
+  /* change color here */
+  color: #1c4c5b;
+}
+.lds-dual-ring,
+.lds-dual-ring:after {
+  box-sizing: border-box;
+}
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6.4px solid currentColor;
+  border-color: currentColor transparent currentColor transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
   }
-  .lds-dual-ring,
-  .lds-dual-ring:after {
-    box-sizing: border-box;
+  100% {
+    transform: rotate(360deg);
   }
-  .lds-dual-ring {
-    display: inline-block;
-    width: 80px;
-    height: 80px;
-  }
-  .lds-dual-ring:after {
-    content: " ";
-    display: block;
-    width: 64px;
-    height: 64px;
-    margin: 8px;
-    border-radius: 50%;
-    border: 6.4px solid currentColor;
-    border-color: currentColor transparent currentColor transparent;
-    animation: lds-dual-ring 1.2s linear infinite;
-  }
-  @keyframes lds-dual-ring {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
+}
 
-  @media (min-width:1025px) { .container { width: 60% !important;} }
-
-  .custom-height {
-    height: 300px; /* Altura del anillo de cargando */
+@media (min-width: 1025px) {
+  .container {
+    width: 60% !important;
   }
+}
+
+.custom-height {
+  height: 300px; /* Altura del anillo de cargando */
+}
 
 /* componentes modal*/
-  .modal-dialog-scrollable {
-    max-height: 95vh; /* Ajusta esto según tus necesidades */
-  }
-  
-  .modal-body {
-    overflow-y: auto;
-  }
-  
-  .skill-text {
-    max-height: 290px; /* Ajusta este valor según tus necesidades */
-    overflow-y: auto;
-    margin-right: 15px; /* Ajusta el valor según tus necesidades */
-  }
+.modal-dialog-scrollable {
+  max-height: 95vh; /* Ajusta esto según tus necesidades */
+}
 
-  .dataText {
-    font-size: 0.9rem; /* Tamaño de fuente específico para el texto dentro de la tarjeta */
-  }
+.modal-body {
+  overflow-y: auto;
+}
 
-  .card-text {
-    font-size: 0.800rem; /* Tamaño de fuente específico para el texto dentro de la tarjeta */
-    margin-bottom: 1rem; /* Espacio inferior para separar del siguiente contenido */
-    margin-right: 15px; /* Ajusta el valor según tus necesidades */
-  }
+.skill-text {
+  max-height: 290px; /* Ajusta este valor según tus necesidades */
+  overflow-y: auto;
+  margin-right: 15px; /* Ajusta el valor según tus necesidades */
+}
+
+.dataText {
+  font-size: 0.9rem; /* Tamaño de fuente específico para el texto dentro de la tarjeta */
+}
+
+.card-text {
+  font-size: 0.8rem; /* Tamaño de fuente específico para el texto dentro de la tarjeta */
+  margin-bottom: 1rem; /* Espacio inferior para separar del siguiente contenido */
+  margin-right: 15px; /* Ajusta el valor según tus necesidades */
+}
 
 /* CSS personalizado para el botón de cierre */
 .btn-close {
@@ -138,7 +142,6 @@
   padding-bottom: 5px;
   padding-left: 5px;
 }
-
 
 .grid-container {
   display: grid;
@@ -172,7 +175,8 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 8px;
   text-align: left;
   border: 1px solid #ddd;
@@ -184,7 +188,8 @@ th, td {
     font-size: 12px; /* Reduce el tamaño de la fuente en pantallas pequeñas */
   }
 
-  th, td {
+  th,
+  td {
     padding: 4px; /* Reduce el padding para ajustarse mejor */
   }
 }
@@ -273,10 +278,10 @@ nota de nacho: el media query solucionó el problema de la tabla no ajustandose 
 }
 
 .dropdown-menu {
-  max-height: 300px;   /* Puedes ajustar este valor según el diseño que desees */
-  overflow-y: auto;     /* Habilita el scroll cuando el contenido excede el máximo */
-  position: absolute;   /* Necesario si estás usando dropdowns que deben aparecer sobre otros contenidos */
-  z-index: 1050;        /* Asegúrate de que el dropdown esté por encima de otros elementos */
+  max-height: 300px; /* Puedes ajustar este valor según el diseño que desees */
+  overflow-y: auto; /* Habilita el scroll cuando el contenido excede el máximo */
+  position: absolute; /* Necesario si estás usando dropdowns que deben aparecer sobre otros contenidos */
+  z-index: 1050; /* Asegúrate de que el dropdown esté por encima de otros elementos */
 }
 
 /*estilos lista de documentos*/
@@ -287,4 +292,75 @@ nota de nacho: el media query solucionó el problema de la tabla no ajustandose 
 /*estilos para reconocer caracteres especiales*/
 .backslash {
   white-space: pre-line;
+}
+
+/* colores de la pagina */
+.rarity[data-rarity-color="cortesano"] td {
+  background: #ff6b6b;
+}
+
+.rarity[data-rarity-color="vasallo"] td {
+  background: #6b8ff6;
+}
+
+.rarity[data-rarity-color="oro"] td {
+  background: #ffd966;
+}
+
+.rarity[data-rarity-color="real"] td {
+  background: #ffd700;
+}
+
+.rarity[data-rarity-color="mega-real"] td {
+  background: #f2f2f2;
+}
+
+.rarity[data-rarity-color="ultra-real"] td {
+  color: #ddd;
+  background: #333333;
+}
+
+.rarity[data-rarity-color="legendaria"] td {
+  background: #9b59b6;
+}
+
+.rarity[data-rarity-color="milenaria"] td {
+  background: #9b59b6;
+}
+
+.rarity[data-rarity-color="promo"] td {
+  background: #90ee90;
+}
+
+/* body {
+  background-color: #b76e31; /* Cambia el color según tu paleta */
+/*color: white; /* Ajusta el color del texto para contraste */
+/*} */
+
+/* background */
+.app-background {
+  background-image: url("/grunge-paper.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  width: 100vw;
+  height: auto;
+  min-height: 100vh;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.main-navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.pb-6 {
+  padding-bottom: 3.5rem;
 }
