@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { CardRow } from "./CardRow";
-import { SearchBarEd } from "./SearchBarEd";
-import { DropdownFilter } from "./DropdownFilter";
-import { CardTable } from "./CardTable";
+import { SearchBarEd } from "../SearchBarEd";
+import { DropdownFilter } from "../DropdownFilter";
+import { CardTable } from "../CardTable";
 
 export const CardsList = ({
   cards = [],
@@ -31,9 +30,7 @@ export const CardsList = ({
   );
 
   // Función para filtrar las cartas
-  const filterCards = (
-    cards
-  ) => {
+  const filterCards = (cards) => {
     return cards.filter((card) => {
       const matchesSearch =
         searchInput.trim().toLowerCase() === "" ||
@@ -85,17 +82,39 @@ export const CardsList = ({
         <h5>Lista de cartas</h5>
         <br></br>
         <div className="col-4 mb-3">
-          <SearchBarEd setSearchInput={setSearchInput}/>
+          <SearchBarEd setSearchInput={setSearchInput} />
         </div>
         {/*----------------------------------------- */}
-        {console.log("frecuencias: ",rarities)} {console.log("tipos de cartas: ",types)} {console.log("razas: ",races)}
+        {console.log("frecuencias: ", rarities)}{" "}
+        {console.log("tipos de cartas: ", types)}{" "}
+        {console.log("razas: ", races)}
         <div className="row rowDropdown">
-          <DropdownFilter label='Tipo de Carta' onSelect={setSelectedType} options={filteredTypes} selected={selectedType}/>
-          <DropdownFilter label='Raza' onSelect={setSelectedRace} options={filteredRaces} selected={selectedRace}/>
-          <DropdownFilter label='Frecuencia' onSelect={setSelectedRarity} options={filteredRarities} selected={selectedRarity}/>
+          <DropdownFilter
+            label="Tipo de Carta"
+            onSelect={setSelectedType}
+            options={filteredTypes}
+            selected={selectedType}
+          />
+          <DropdownFilter
+            label="Raza"
+            onSelect={setSelectedRace}
+            options={filteredRaces}
+            selected={selectedRace}
+          />
+          <DropdownFilter
+            label="Frecuencia"
+            onSelect={setSelectedRarity}
+            options={filteredRarities}
+            selected={selectedRarity}
+          />
         </div>
         {/*----------------------------------------- */}
-        <CardTable cards={filterCards(cards)} rarities={rarities} types={types} handlerOpenForm={handlerOpenForm}/>
+        <CardTable
+          cards={filterCards(cards)}
+          rarities={rarities}
+          types={types}
+          handlerOpenForm={handlerOpenForm}
+        />
       </div>
     </>
   );

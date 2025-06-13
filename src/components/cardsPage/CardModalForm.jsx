@@ -1,4 +1,4 @@
-import { CardForm } from "./CardForm";
+import { CardForm } from "../CardForm";
 
 export const CardModalForm = ({
   cardSelected,

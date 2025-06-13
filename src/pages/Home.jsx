@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { useCards } from "../hooks/useCards";
-import ShortcutComponent from "../components/ShortCutComponent";
-import { CardSearch } from "../components/CardSearch";
-import { CardGrid } from "../components/CardGrid";
-import { CardSearchModal } from "../components/CardSearchModal";
+import { CardSearch } from "../components/home/CardSearch";
+import { CardGrid } from "../components/home/CardGrid";
+import { CardSearchModal } from "../components/home/CardSearchModal";
 
 export function Home() {
   const [cards, setCards] = useState([]); // Estado para almacenar las cartas halladas con la barra de busqueda

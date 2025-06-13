@@ -1,12 +1,9 @@
-import { useReducer, useState } from "react";
-import { CardForm } from "../components/CardForm";
-import { CardsList } from "../components/CardsList";
 import { useCards } from "../hooks/useCards";
-import { CardModalForm } from "../components/CardModalForm";
-import { useFetch } from "../hooks/useFetch";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useFetchEd } from "../hooks/useFetchEd";
 import { Loading } from "../components/Loading";
+import { CardModalForm } from "../components/cardsPage/CardModalForm";
+import { CardsList } from "../components/cardsPage/CardsList";
 
 export function CardsPage() {
   const {
@@ -71,7 +68,7 @@ export function CardsPage() {
       <div className="container my-5 justify-content-center">
         <div className="row">
           {!dataCards ? (
-            <Loading/>
+            <Loading />
           ) : (
             <CardsList
               cards={cardsArray}

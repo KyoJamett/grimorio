@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Loading } from "./Loading";
+import { Loading } from "../Loading";
 
 export const CardSearch = ({ setCards }) => {
   const [inputValue, setInputValue] = useState(""); // Estado para el valor del input
