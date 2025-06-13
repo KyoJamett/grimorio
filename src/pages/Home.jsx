@@ -6,7 +6,6 @@ import { CardGrid } from "../components/CardGrid";
 import { CardSearchModal } from "../components/CardSearchModal";
 
 export function Home() {
-  const { intro } = useCards();
   const [cards, setCards] = useState([]); // Estado para almacenar las cartas halladas con la barra de busqueda
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -23,22 +22,19 @@ export function Home() {
     <>
       <div className="container my-4">
         <h2>Grimorio</h2>
-        <h6 className="cursiva">Sabiduría Infinita</h6>
-        <p className="justificado">{intro.text}</p>
       </div>
-        
+
       {/* Barra de busqueda */}
-      <CardSearch setCards={setCards}/>
-      
+      <CardSearch setCards={setCards} />
+
       {/* Grid de cartas, visible solo cuando hay cartas */}
-      <CardGrid cards={cards} handleImageClick={handleImageClick}/>
-      
+      <CardGrid cards={cards} handleImageClick={handleImageClick} />
+
       {/* Modal para mostrar imagen expandida */}
-      <CardSearchModal handleCloseModal={handleCloseModal} selectedImage={selectedImage}/>
-      
-      {/*Instrucciones para agregar al celu */}
-      <ShortcutComponent />
-      
+      <CardSearchModal
+        handleCloseModal={handleCloseModal}
+        selectedImage={selectedImage}
+      />
     </>
   );
 }

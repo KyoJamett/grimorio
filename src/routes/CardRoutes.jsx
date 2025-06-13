@@ -4,6 +4,7 @@ import { Navigationbar } from "../components/layout/Navigationbar";
 import { Home } from "../pages/Home";
 import { FormatPage } from "../pages/FormatPage";
 import { DictionaryPage } from "../pages/DictionaryPage";
+import { AboutPage } from "../pages/AboutPage";
 
 export const CardRoutes = () => {
   return (
@@ -20,6 +21,7 @@ export const CardRoutes = () => {
         <Route path="/primer-bloque" element={<FormatPage />} />
         <Route path="/primera-era" element={<FormatPage />} />
         <Route path="/diccionario" element={<DictionaryPage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
     </>
   );
