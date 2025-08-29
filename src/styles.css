@@ -345,7 +345,7 @@ nota de nacho: el media query solucionó el problema de la tabla no ajustandose 
   background-attachment: fixed;
   width: 100vw;
   height: auto;
-  min-height: 100vh;
+  min-height: 93vh;
 }
 html,
 body {

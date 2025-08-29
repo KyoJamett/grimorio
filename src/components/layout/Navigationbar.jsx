@@ -77,7 +77,7 @@ export const Navigationbar = () => {
               </li>
               <li className="nav-item">
                 <a className="nav-link disabled" aria-disabled="true">
-                  Proximamente
+                  Deckbuilder (Proximamente)
                 </a>
               </li>
             </ul>

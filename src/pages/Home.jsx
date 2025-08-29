@@ -17,9 +17,9 @@ export function Home() {
   };
 
   return (
-    <>
-      <div className="container my-4">
-        <h2>Grimorio</h2>
+    <div className="d-inline justify-content-center">
+      <div className="container my-4 text-center">
+        <h1>Grimorio</h1>
       </div>
 
       {/* Barra de busqueda */}
@@ -33,6 +33,6 @@ export function Home() {
         handleCloseModal={handleCloseModal}
         selectedImage={selectedImage}
       />
-    </>
+    </div>
   );
 }

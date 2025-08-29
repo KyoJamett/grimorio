@@ -68,23 +68,22 @@ export const CardSearch = ({ setCards }) => {
 
   return (
     <div className="container my-4">
-      <div className="row">
-        <h5>Busqueda de cartas</h5>
+      <div className="row justify-content-center">
+        <h3 className="text-center">Busqueda de cartas</h3>
       </div>
       <form onSubmit={handleFormSubmit} className="mb-4">
-        <div className="row">
-          <div className="col">
+        <div className="d-flex w-auto justify-content-center">
+          <div className="col-8 d-flex">
             <input
               type="text"
               value={inputValue}
               onChange={handleChange}
-              className="form-control"
+              className="form-control me-2"
               placeholder="Ingrese el nombre de la carta"
               required
             />
-          </div>
-          <div className="col">
-            <button type="submit" className="btn btn-primary">
+
+            <button type="submit" className="btn btn-primary btn-lg">
               Buscar
             </button>
           </div>
