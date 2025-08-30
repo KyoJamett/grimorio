@@ -61,8 +61,10 @@ export const CardSearch = ({ setCards }) => {
     setInputValue(e.target.value);
   };
 
+  //setCards limpia el array Cards para que al buscar cartas por segunda vez, las cartas previamente buscadas se borren
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    setCards([]);
     handleSubmit(inputValue);
   };
 
@@ -79,7 +81,7 @@ export const CardSearch = ({ setCards }) => {
               value={inputValue}
               onChange={handleChange}
               className="form-control me-2"
-              placeholder="Ingrese el nombre de la carta"
+              placeholder="Carta"
               required
             />
 
