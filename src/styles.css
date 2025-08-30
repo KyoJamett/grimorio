@@ -252,10 +252,6 @@ nota de nacho: el media query solucionó el problema de la tabla no ajustandose 
   background-color: #333333;
 }
 
-.justificado {
-  text-align: justify; /* Justifica el texto */
-}
-
 /*ajustes imagen carta*/
 .card-col img {
   max-width: 95%;
@@ -294,7 +290,7 @@ nota de nacho: el media query solucionó el problema de la tabla no ajustandose 
   white-space: pre-line;
 }
 
-/* colores de la pagina */
+/* colores de las rarezas de las cartas */
 .rarity[data-rarity-color="cortesano"] td {
   background: #ff6b6b;
 }
@@ -367,4 +363,13 @@ body {
 
 .font-footer {
   color: #f2f2f2;
+}
+
+/*estilos de modal de cartas*/
+.madera {
+  background-color: #3b2f2f;
+}
+
+.burdeos {
+  background-color: #4b2c2c;
 }

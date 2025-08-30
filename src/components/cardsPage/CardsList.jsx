@@ -76,7 +76,7 @@ export const CardsList = ({
 
   return (
     <>
-      <div className="table-responsive card">
+      <div className="table-responsive card madera text-light">
         <br></br>
         <h2>Edición {edition.title}</h2>
         <h5>Lista de cartas</h5>

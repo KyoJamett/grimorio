@@ -42,7 +42,7 @@ export const CardForm = ({
 
   const onRarity = (rarity) => {
     return rarities.find((r) => r.id == rarity)
-    ? rarities.find((r) => r.id == rarity).name
+      ? rarities.find((r) => r.id == rarity).name
       : "No aplica";
   };
 
@@ -80,28 +80,29 @@ export const CardForm = ({
   };
 
   const onCost = (cost) => {
-    // el operador de fusion nulla retorna no aplica sólo si cost en null o undefined
+    // el "operador de fusion nula" retorna el string "no aplica"
+    // sólo si cost tiene valor null o undefined
     return cost ?? "No aplica";
-  }
+  };
 
   const onDamage = (damage) => {
     return damage ?? "No aplica";
-  }
+  };
 
   const onEdition = (edition) => {
     return edition?.title ?? "No aplica";
-  }
+  };
 
   const dataCard = () => {
     return [
       { label: "Tipo", value: onTypes(type) },
-      { label: "Costo", value: onCost(cost)},
-      { label: "Raza", value: onRace(race)},
-      { label: "Fuerza", value:  onDamage(damage)},
-      { label: "Rareza", value: onRarity(rarity)},
+      { label: "Costo", value: onCost(cost) },
+      { label: "Raza", value: onRace(race) },
+      { label: "Fuerza", value: onDamage(damage) },
+      { label: "Rareza", value: onRarity(rarity) },
       { label: "Edición", value: onEdition(edition) },
     ];
-  }
+  };
 
   return (
     <div className="container my-4">
@@ -112,7 +113,7 @@ export const CardForm = ({
         style={{ display: "block" }}
       >
         <div className="modal-dialog modal-dialog-scrollable" role="document">
-          <div className="modal-content">
+          <div className="modal-content madera text-warning">
             <div className="modal-header">
               <h5 className="modal-title">{name.toUpperCase()}</h5>
               <button
@@ -123,7 +124,7 @@ export const CardForm = ({
               ></button>
             </div>
             <div className="modal-body">
-              <div className="card">
+              <div className="card burdeos text-warning">
                 <div className="row">
                   <div className="col card-col">
                     <img
@@ -139,29 +140,35 @@ export const CardForm = ({
                     />
                   </div>
                   <div className="col card-col">
-                  <div className="card-body">
-                    <ul className="list-unstyled dataText">
-                      {dataCard().map((item, index) => (
-                        <li key={index} className="mb-2 row">
-                          <div className="col-5 fw-bold text-end">{item.label}:</div>
-                          <div className="col-7">{item.value}</div>
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="card-body">
+                      <ul className="list-unstyled dataText">
+                        {dataCard().map((item, index) => (
+                          <li key={index} className="mb-2 row">
+                            <div className="col-5 fw-bold text-end">
+                              {item.label}:
+                            </div>
+                            <div className="col-7">{item.value}</div>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                </div>
                 </div>
                 <div className="card-body">
                   <h6>Habilidad</h6>
                   <p className="card-text skill-text justificado backslash">
-                    {(ability === null || ability === undefined ? "Carta sin habilidad" : onAbility(ability))}
+                    {ability === null || ability === undefined
+                      ? "Carta sin habilidad"
+                      : onAbility(ability)}
                   </p>
                 </div>
                 <div className="card-body">
                   <h6>Texto épico</h6>
-                <p className="card-text cursiva justificado">
-                        {(flavour === null || flavour === undefined ? "No contiene texto épico." : flavour)}
-                      </p>
+                  <p className="card-text cursiva justificado">
+                    {flavour === null || flavour === undefined
+                      ? "No contiene texto épico."
+                      : flavour}
+                  </p>
                 </div>
               </div>
             </div>

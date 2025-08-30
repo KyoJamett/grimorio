@@ -20,6 +20,7 @@ export function Home() {
     <div className="d-inline justify-content-center">
       <div className="container my-4 text-center">
         <h1>Grimorio</h1>
+        <h6 className="cursiva">Sabiduría Infinita</h6>
       </div>
 
       {/* Barra de busqueda */}
