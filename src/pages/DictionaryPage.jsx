@@ -35,18 +35,18 @@ export function DictionaryPage() {
       <div className="container my-5 justify-content-center">
         <div className="row">
           {!data ? (
-            <Loading/>
+            <Loading />
           ) : (
             <>
               <h1>Diccionario</h1>
-              <div className="row margin-bottom-15">
+              <div className="row">
                 <DictionaryNav data={data} scrollToSection={scrollToSection} />
               </div>
 
               {data.map((item, index) => {
                 const sectionId = `section-${index}`;
                 return (
-                  <div className="row" key={index}>
+                  <div className="row margin-top" key={index}>
                     <DictionarySection
                       index={index}
                       item={item}

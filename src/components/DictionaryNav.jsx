@@ -1,6 +1,9 @@
 export const DictionaryNav = ({ data, scrollToSection }) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav
+      className="navbar navbar-expand-lg bg-dark rounded"
+      data-bs-theme="dark"
+    >
       <div className="container-fluid">
         <span className="navbar-brand">Secciones</span>
         <button

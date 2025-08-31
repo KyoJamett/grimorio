@@ -1,7 +1,12 @@
 export const DictionarySection = ({ index, item, sectionId }) => {
   return (
-    <div id={sectionId} className="accordion" key={index}>
-      <h5>{item.title}</h5>
+    <div
+      id={sectionId}
+      className="accordion bg-dark rounded"
+      data-bs-theme="dark"
+      key={index}
+    >
+      <h5 className="text-light margin-top">{item.title}</h5>
       {item.content.map((subItem, subIndex) => {
         const collapseId = `collapse-${index}-${subIndex}`;
         const headingId = `heading-${index}-${subIndex}`;
