@@ -83,6 +83,7 @@ export const CardSearch = ({ setCards }) => {
               className="form-control me-2"
               placeholder="Carta"
               required
+              data-bs-theme="dark"
             />
 
             <button type="submit" className="btn btn-primary btn-lg">
