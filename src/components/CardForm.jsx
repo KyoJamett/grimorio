@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useCards } from "../hooks/useCards";
+import { getCardImageUrl } from '../helpers/cardImageUrl';
 
 export const CardForm = ({
   cardSelected,
@@ -58,22 +59,6 @@ export const CardForm = ({
       : "No aplica";
   };
 
-  const onEd = (ed_edid) => {
-    if (ed_edid === "") {
-      return "00";
-    } else {
-      return ed_edid;
-    }
-  };
-
-  const onEdid = (edid) => {
-    if (edid === "") {
-      return "000";
-    } else {
-      return edid;
-    }
-  };
-
   const onAbility = (ability) => {
     //limpiar habilidades con saltos de linea /n presentes en algunas cartas
     return ability.replace(/\/n|↵|\r\n|\r|\n/g, "\n");
@@ -128,9 +113,7 @@ export const CardForm = ({
                 <div className="row">
                   <div className="col card-col">
                     <img
-                      src={
-                        `http://localhost:3001/api/cards/${onEd(ed_edid)}/${onEdid(edid)}`
-                      }
+                      src={getCardImageUrl(ed_edid, edid)}
                       className="card-img-top img-fluid"
                       alt="card"
                     />

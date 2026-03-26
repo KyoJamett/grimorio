@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { useFetchEd } from "../hooks/useFetchEd";
+import { useEdition } from "../hooks/useEdition";
 import { DictionaryNav } from "../components/DictionaryNav";
 import { DictionarySection } from "../components/DictionarySection";
 import { Loading } from "../components/Loading";
 
 export function DictionaryPage() {
   const [data, setData] = useState(null);
-  const { dataCards } = useFetchEd("glosario");
+  const { dataCards } = useEdition("glosario");
 
   useEffect(() => {
     if (dataCards) {

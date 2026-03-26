@@ -1,6 +1,6 @@
 import { useCards } from "../hooks/useCards";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { useFetchEd } from "../hooks/useFetchEd";
+import { useEdition } from "../hooks/useEdition";
 import { Loading } from "../components/Loading";
 import { CardModalForm } from "../components/cardsPage/CardModalForm";
 import { CardsList } from "../components/cardsPage/CardsList";
@@ -30,7 +30,7 @@ export function CardsPage() {
 
   function handlerRedirect() {}
 
-  const { dataCards } = useFetchEd(ed);
+  const { dataCards } = useEdition(ed);
   let races = null;
   let rarities = null;
   let types = null;

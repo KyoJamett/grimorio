@@ -1,12 +1,12 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { UseFormats } from "../hooks/useFormats";
+import { useFormats, useDocuments } from "../hooks/useResource";
 import { EditionGrid } from "../components/EditionGrid";
 import { DocumentList } from "../components/DocumentList";
 import { FormatInfo } from "../components/FormatInfo";
 import { Loading } from "../components/Loading";
 
 export function FormatPage() {
-  const {documentos, formatos} = UseFormats()
+  const { formatos} = useFormats()
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -21,6 +21,8 @@ export function FormatPage() {
   //Obtengo el formato a partir de los parámetros enviados al hacer click en la barra de navegacion
   const formato = formatos[getFormatParams()];
 
+  const { documentos } = useDocuments(formato?.folder)
+
   // Verificar si formato está definido antes de intentar acceder a sus propiedades
   if (!formato) {
     return (
@@ -29,11 +31,6 @@ export function FormatPage() {
       </>
     );
   }
-
-  // Encuentra la categoría de documentos correspondiente al formato actual
-  const categoriaDocumentos = documentos.find(
-    (cat) => cat.categoria === formato.folder
-  );
 
   return (
     <>
@@ -44,7 +41,7 @@ export function FormatPage() {
       <EditionGrid ediciones={formato.ediciones}/>
       
       {/* --------------------------------------------------------Componente de documentos */ }
-      <DocumentList documentos={categoriaDocumentos?.documentos} formato={formato}/>
+      <DocumentList documentos={documentos} formato={formato}/>
       
     </>
   );

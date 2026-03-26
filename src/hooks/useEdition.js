@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function useFetchEd(ed) {
+export function useEdition(ed) {
   const [dataCards, setDataCards] = useState(null);
   let url = `http://localhost:3001/api/edition/${ed}`;
   useEffect(() => {

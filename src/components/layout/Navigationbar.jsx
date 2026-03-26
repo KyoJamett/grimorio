@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { UseFormats } from "../../hooks/useFormats";
+import { useFormats } from "../../hooks/useResource";
 
 export const Navigationbar = () => {
-  const { formatos } = UseFormats();
+  const { formatos } = useFormats();
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const handleNavLinkClick = () => {
