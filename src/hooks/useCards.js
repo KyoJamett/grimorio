@@ -59,7 +59,7 @@ export const useCards = () => {
   const [cards, dispatch] = useReducer(cardsReducer, initialCards);
   
   const handlerCardSelectedForm = (card) => {
-    console.log(card);
+    //console.log(card);
     setCardSelected({ ...card });
   };
 

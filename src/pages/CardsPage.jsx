@@ -16,10 +16,10 @@ export function CardsPage() {
 
   const navigate = useNavigate();
   const { ed } = useParams();
-  console.log(ed);
+  //console.log(ed);
   function getEd() {
     const location = useLocation();
-    console.log(location);
+    //console.log(location);
     if (location.state) {
       return location.state.ed;
     } else {
@@ -49,8 +49,8 @@ export function CardsPage() {
     );
   }
 
-  console.log(dataCards);
-  console.log(cardsArray);
+  //console.log(dataCards);
+  //console.log(cardsArray);
 
   return (
     <>

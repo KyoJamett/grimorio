@@ -19,7 +19,7 @@ export const CardsList = ({
   const filteredRaces = races.filter((race) =>
     cards.some((card) => card.race === race.id)
   );
-  console.log(filteredRaces, "filteredRaces");
+  //console.log(filteredRaces, "filteredRaces");
 
   const filteredRarities = rarities.filter((rarity) =>
     cards.some((card) => card.rarity === rarity.id)
@@ -85,9 +85,6 @@ export const CardsList = ({
           <SearchBarEd setSearchInput={setSearchInput} />
         </div>
         {/*----------------------------------------- */}
-        {console.log("frecuencias: ", rarities)}{" "}
-        {console.log("tipos de cartas: ", types)}{" "}
-        {console.log("razas: ", races)}
         <div className="row rowDropdown">
           <DropdownFilter
             label="Tipo de Carta"

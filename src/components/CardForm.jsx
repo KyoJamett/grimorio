@@ -129,11 +129,7 @@ export const CardForm = ({
                   <div className="col card-col">
                     <img
                       src={
-                        "https://api.myl.cl/static/cards/" +
-                        onEd(ed_edid) +
-                        "/" +
-                        onEdid(edid) +
-                        ".png"
+                        `http://localhost:3001/api/cards/${onEd(ed_edid)}/${onEdid(edid)}`
                       }
                       className="card-img-top img-fluid"
                       alt="card"

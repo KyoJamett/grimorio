@@ -33,14 +33,8 @@ export const CardSearch = ({ setCards }) => {
       }
 
       const data = await response.json(); //data recibida por el metodo post
-      console.log(data);
+      //console.log(data);
       const contents = JSON.parse(data.contents); //aquí convertimos el atributo contents, el cual contiene las cartas que respondió la api, en un json
-
-      // Verifica el tipo y contenido de 'data'
-      console.log("Tipo de data:", typeof data);
-      console.log("Contenido de data:", data);
-      console.log("Contenido de contents:", contents);
-      console.log("Tipo de contents:", typeof contents);
 
       if (data) {
         setCards(contents.cards);

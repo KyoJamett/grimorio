@@ -51,8 +51,9 @@ export const CardRow = ({
 
   const handleRowClick = () => {
     handlerOpenForm(card);
+    console.log(`SOlicitando imagen a URL: http://localhost:3001/api/cards/${card.ed_edid}/${card.edid}.png`);
   };
-  console.log("slug: ", onRaritySlug(rarity));
+  //console.log("slug: ", onRaritySlug(rarity));
   return (
     <>
       <tr onClick={handleRowClick} style={{ cursor: "pointer" }} data-rarity-color={onRaritySlug(rarity)} className="rarity">
