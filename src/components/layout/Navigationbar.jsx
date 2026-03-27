@@ -67,6 +67,17 @@ export const Navigationbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
+                
+                  <NavLink
+                  className="nav-link"
+                  to="/deckbuilder"
+                  onClick={handleNavLinkClick}
+                  >
+                    Deckbuilder
+                  </NavLink>
+                
+              </li>
+              <li className="nav-item">
                 <NavLink
                   className="nav-link"
                   to="/about"
@@ -75,11 +86,7 @@ export const Navigationbar = () => {
                   Acerca de
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <a className="nav-link disabled" aria-disabled="true">
-                  Deckbuilder (Proximamente)
-                </a>
-              </li>
+              
             </ul>
           </div>
         </div>

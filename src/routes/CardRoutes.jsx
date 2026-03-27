@@ -5,6 +5,7 @@ import { Home } from "../pages/Home";
 import { FormatPage } from "../pages/FormatPage";
 import { DictionaryPage } from "../pages/DictionaryPage";
 import { AboutPage } from "../pages/AboutPage";
+import { DeckbuilderPage } from "../pages/DeckbuilderPage";
 
 export const CardRoutes = () => {
   return (
@@ -22,6 +23,7 @@ export const CardRoutes = () => {
         <Route path="/primera-era" element={<FormatPage />} />
         <Route path="/diccionario" element={<DictionaryPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/deckbuilder" element={<DeckbuilderPage/>}/>
       </Routes>
     </>
   );

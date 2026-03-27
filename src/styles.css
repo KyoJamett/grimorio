@@ -380,3 +380,16 @@ body {
 }
 
 /*estilos para subir footer*/
+
+/*estilos para deckbuilder*/
+
+/*estilo para aprovechar mejor el ancho de la pantalla*/
+@media (min-width: 1025px) {
+  .container-pro {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* fin estilos para deckbuilder */
