@@ -339,7 +339,7 @@ nota de nacho: el media query solucionó el problema de la tabla no ajustandose 
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  width: 100vw;
+  width: 100%;
   height: auto;
   min-height: 93vh;
 }
@@ -386,9 +386,13 @@ body {
 /*estilo para aprovechar mejor el ancho de la pantalla*/
 @media (min-width: 1025px) {
   .container-pro {
-    width: 90%;
+    width: 100%;
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
     margin-left: auto;
     margin-right: auto;
+    box-sizing: border-box;
   }
 }
 
