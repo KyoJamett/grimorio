@@ -1,64 +1,34 @@
 export const DeckbuilderPage = () => {
   return (
     <>
-      <div className="container-pro justify-content-center">
-        <h2>Deckbuilder</h2>
+      <div className="container-pro justify-content-center pt-2">
         <div className="border rounded overflow-hidden">
           <div className="row g-0">
-            <div className="col-3 border pb-2">
-              <div className="p-2">
-                {" "}
-                {/* este padding regular los margenes de los detalles del mazo, ajustar aqui*/}
-                <div>
-                  <h4>Mazo</h4>
-                  <div className="d-flex flex-column flex-md-row gap-2">
-                    <button
-                      type="button"
-                      className="btn btn-warning dropdown-toggle w-100"
-                      data-bs-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      Bloque
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-warning dropdown-toggle w-100"
-                      data-bs-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      Formato
-                    </button>
-                  </div>
-                </div>
-                <div>
-                  <h5>Aliados</h5>
-                </div>
-                <div>
-                  <h5>Talismanes</h5>
-                </div>
-                <div>
-                  <h5>Totems</h5>
-                </div>
-                <div>
-                  <h5>Armas</h5>
-                </div>
-                <div>
-                  <h5>Oros</h5>
-                </div>
-                <div className="row">
-                  <h5>Total</h5>
-                  <h5>Av. Coste</h5>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-9 border">
+            <div className="col-8 border">
               <div className="p-2">
                 {" "}
                 {/* este padding regular los margenes de la tabla pool de cartas, ajustar aqui*/}
-                <h4>Pool de cartas</h4>
+                <div className="d-flex gap-2 mb-3 align-items-center">
+                  <h4>Pool de cartas</h4>
+                  <button
+                    type="button"
+                    className="btn btn-warning dropdown-toggle btn-sm"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Bloque
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-warning dropdown-toggle btn-sm"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Formato
+                  </button>
+                </div>
                 <div className="row g-2 mb-3 align-items-center">
                   <div className="col-12 col-md-4">
                     <input
@@ -97,7 +67,7 @@ export const DeckbuilderPage = () => {
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
-                        Raza
+                        Frecuencia
                       </button>
                       <div className="dropdown-menu">
                         <a
@@ -118,7 +88,7 @@ export const DeckbuilderPage = () => {
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
-                        Frecuencia
+                        Raza
                       </button>
                       <div className="dropdown-menu">
                         <a
@@ -167,6 +137,43 @@ export const DeckbuilderPage = () => {
                     </tbody>
                   </table>
                 </div>
+              </div>
+            </div>
+            <div className="col-4 border pb-2">
+              <div className="p-2">
+                {" "}
+                {/* este padding regular los margenes de los detalles del mazo, ajustar aqui*/}
+                <h4>Mazo</h4>
+                <ul className="list-group list-group-flush">
+                  <li className="list-group-item d-flex justify-content-between">
+                    <span>Aliados</span>{" "}
+                    <span className="badge bg-warning text-dark">0</span>
+                  </li>
+                  <li className="list-group-item d-flex justify-content-between">
+                    <span>Talismanes</span>{" "}
+                    <span className="badge bg-warning text-dark">0</span>
+                  </li>
+                  <li className="list-group-item d-flex justify-content-between">
+                    <span>Totems</span>{" "}
+                    <span className="badge bg-warning text-dark">0</span>
+                  </li>
+                  <li className="list-group-item d-flex justify-content-between">
+                    <span>Armas</span>{" "}
+                    <span className="badge bg-warning text-dark">0</span>
+                  </li>
+                  <li className="list-group-item d-flex justify-content-between">
+                    <span>Oros</span>{" "}
+                    <span className="badge bg-warning text-dark">0</span>
+                  </li>
+                </ul>
+                <ul className="list-group mt-2">
+                  <li className="list-group-item d-flex justify-content-between fw-bold">
+                    <span>Total</span> <span>0</span>
+                  </li>
+                  <li className="list-group-item d-flex justify-content-between fw-bold">
+                    <span>Costo promedio</span> <span>0</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
