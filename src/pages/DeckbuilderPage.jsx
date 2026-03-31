@@ -1,4 +1,14 @@
+import { useState } from "react";
+import { useFormats } from "../hooks/useResource";
+import { useDeckCards } from "../hooks/useDeckCards";
+
 export const DeckbuilderPage = () => {
+  const { formatos } = useFormats();
+  const [formatoKey, setFormatoKey] = useState(null);
+
+  const formato = formatoKey ? formatos[formatoKey] : null;
+  const { cards, loading, progress } = useDeckCards(formato);
+
   return (
     <>
       <div className="container-pro justify-content-center pt-2">
@@ -28,6 +38,20 @@ export const DeckbuilderPage = () => {
                   >
                     Formato
                   </button>
+                  <select
+                    className="form-select"
+                    onChange={(e) => setFormatoKey(e.target.value)}
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Selecciona un formato
+                    </option>
+                    {Object.entries(formatos).map(([key, f]) => (
+                      <option key={key} value={key}>
+                        {f.name}
+                      </option>
+                    ))}
+                  </select>
                 </div>
                 <div className="row g-2 mb-3 align-items-center">
                   <div className="col-12 col-md-4">
@@ -115,25 +139,29 @@ export const DeckbuilderPage = () => {
                         <th style={{ width: "5%" }}>+</th>
                       </tr>
                     </thead>
+                    {loading && (
+                      <div className="progress my-2" style={{ height: "4px" }}>
+                        <div
+                          className="progress-bar bg-warning"
+                          style={{
+                            width: `${progress}%`,
+                            transition: "width 0.3s",
+                          }}
+                        />
+                      </div>
+                    )}
                     <tbody>
-                      <tr>
-                        <td>001</td>
-                        <td>Morgana</td>
-                        <td>Aliado</td>
-                        <td>Faerie</td>
-                        <td>4</td>
-                        <td>Real</td>
-                        <td>+</td>
-                      </tr>
-                      <tr>
-                        <td>001</td>
-                        <td>Morgana</td>
-                        <td>Aliado</td>
-                        <td>Faerie</td>
-                        <td>4</td>
-                        <td>Real</td>
-                        <td>+</td>
-                      </tr>
+                      {cards.map((card) => (
+                        <tr key={`${card.ed_edid}-${card.edid}`}>
+                          <td>{card.edid}</td>
+                          <td>{card.name}</td>
+                          <td>{card.type}</td>
+                          <td>{card.race}</td>
+                          <td>{card.cost ?? "—"}</td>
+                          <td>{card.rarity}</td>
+                          <td>+</td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>
