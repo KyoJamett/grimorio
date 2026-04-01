@@ -9,7 +9,7 @@ export function useDeckCards(format) {
     const [rarities, setRarities] = useState([]);
     const [types, setTypes] = useState([]);
     const [keywords, setKeyWords] = useState([]);
-    const [editions, setEditions] = useState([]);
+    const [ediciones, setEdiciones] = useState([])
 
     const mergeUnique = (prev, incoming) => {
         if(!incoming) return prev;
@@ -30,6 +30,7 @@ export function useDeckCards(format) {
         setKeyWords([]);
 
         const editions = format.ediciones;
+        setEdiciones(editions);
         let loaded = 0;
 
         editions.forEach(({ed}) => {
@@ -52,8 +53,9 @@ export function useDeckCards(format) {
                 loaded++;
                 if(loaded === editions.length) setLoading(false);
             });
-        });
+        }
+    );
     }, [format?.folder]);
 
-    return {cards, loading, progress, races, rarities, types, keywords };
+    return {cards, loading, progress, races, rarities, types, keywords, ediciones };
 }

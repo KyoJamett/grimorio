@@ -408,4 +408,10 @@ body {
   }
 }
 
+/*estilo creado porque la cabecera de la tabla del deckbuilder se ve por encima del modal de carta*/
+.modal-custom {
+  position: fixed;
+  z-index: 2000; /* mayor que sticky-top */
+}
+
 /* fin estilos para deckbuilder */

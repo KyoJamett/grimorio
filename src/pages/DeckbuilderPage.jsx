@@ -9,9 +9,21 @@ export const DeckbuilderPage = () => {
   const [formatoKey, setFormatoKey] = useState(null);
 
   const formato = formatoKey ? formatos[formatoKey] : null;
-  const { cards, loading, progress, races, rarities, types, keywords } =
-    useDeckCards(formato);
-  console.log(races);
+  const {
+    cards,
+    loading,
+    progress,
+    races,
+    rarities,
+    types,
+    keywords,
+    ediciones,
+  } = useDeckCards(formato);
+  //-----------------------------------
+
+  const [deck, setDeck] = useState([]);
+
+  //-----------------------------------
   const { cardSelected, handlerCloseForm, handlerOpenForm, visibleForm } =
     useCards();
 
@@ -25,8 +37,26 @@ export const DeckbuilderPage = () => {
     return foundRarity ? foundRarity.slug || "sin rareza" : "default";
   };
 
+  const handleRowClick = (card) => {
+    handlerOpenForm(card);
+    console.log(
+      `SOlicitando imagen a URL: http://localhost:3001/api/cards/${card.ed_edid}/${card.edid}.png`,
+    );
+  };
+
   return (
     <>
+      {!visibleForm || (
+        <CardModalForm
+          cardSelected={cardSelected}
+          handlerCloseForm={handlerCloseForm}
+          races={races}
+          rarities={rarities}
+          types={types}
+          keywords={keywords}
+          edition={ediciones}
+        />
+      )}
       <div className="container-pro justify-content-center pt-2">
         <div className="border rounded overflow-hidden">
           <div className="row g-0">
@@ -141,64 +171,83 @@ export const DeckbuilderPage = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="table-responsive rounded-3">
-                  <div style={{ height: "60vh", overflowY: "auto" }}>
-                    <table className="table table-sm table-hover table-striped">
-                      <thead className="table-responsive table-dark sticky-top">
-                        <tr>
-                          <th style={{ width: "10%" }}>N°</th>
-                          <th style={{ width: "30%" }}>Nombre</th>
-                          <th style={{ width: "15%" }}>Tipo</th>
-                          <th style={{ width: "10%" }}>Coste</th>
-                          <th style={{ width: "5%" }}></th>
-                        </tr>
-                      </thead>
-                      {loading && (
-                        <div
-                          className="progress my-2"
-                          style={{ height: "4px" }}
+                  <div className="col-4 col-md-auto">
+                    <div className="btn-group w-100">
+                      <button
+                        type="button"
+                        className="btn btn-warning dropdown-toggle w-100"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        Edición
+                      </button>
+                      <div className="dropdown-menu">
+                        <a
+                          className="dropdown-item"
+                          href="#"
+                          onClick={(e) => e.preventDefault()}
                         >
-                          <div
-                            className="progress-bar bg-warning"
-                            style={{
-                              width: `${progress}%`,
-                              transition: "width 0.3s",
-                            }}
-                          />
-                        </div>
-                      )}
-                      <tbody>
-                        {cards.map((card) => (
-                          <tr
-                            key={`${card.ed_edid}-${card.edid}`}
-                            style={{ cursor: "pointer" }}
-                            data-rarity-color={onRaritySlug(card.rarity)}
-                            className="rarity"
-                          >
-                            <td>{card.edid}</td>
-                            <td>{card.name}</td>
-                            <td>{onTypes(card.type)}</td>
-                            <td>{card.cost ?? "—"}</td>
-                            <td>
-                              <div
-                                class="btn-group"
-                                role="group"
-                                aria-label="Copias"
-                              >
-                                <button type="button" class="btn btn-danger">
-                                  -1
-                                </button>
-                                <button type="button" class="btn btn-primary">
-                                  +1
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                          Todos
+                        </a>
+                      </div>
+                    </div>
                   </div>
+                </div>
+              </div>
+              <div className="table-responsive rounded-2">
+                <div style={{ height: "60vh", overflowY: "auto" }}>
+                  <table className="table table-sm table-hover table-striped">
+                    <thead className="table-responsive table-dark sticky-top">
+                      <tr>
+                        <th style={{ width: "10%" }}>N°</th>
+                        <th style={{ width: "30%" }}>Nombre</th>
+                        <th style={{ width: "15%" }}>Tipo</th>
+                        <th style={{ width: "10%" }}>Coste</th>
+                        <th style={{ width: "5%" }}></th>
+                      </tr>
+                    </thead>
+                    {loading && (
+                      <div className="progress my-2" style={{ height: "4px" }}>
+                        <div
+                          className="progress-bar bg-warning"
+                          style={{
+                            width: `${progress}%`,
+                            transition: "width 0.3s",
+                          }}
+                        />
+                      </div>
+                    )}
+                    <tbody>
+                      {cards.map((card) => (
+                        <tr
+                          onClick={() => handleRowClick(card)}
+                          key={`${card.ed_edid}-${card.edid}`}
+                          style={{ cursor: "pointer" }}
+                          data-rarity-color={onRaritySlug(card.rarity)}
+                          className="rarity"
+                        >
+                          <td>{card.edid}</td>
+                          <td>{card.name}</td>
+                          <td>{onTypes(card.type)}</td>
+                          <td>{card.cost ?? "—"}</td>
+                          <td>
+                            <div
+                              className="btn-group"
+                              role="group"
+                              aria-label="Copias"
+                            >
+                              <button type="button" className="btn btn-danger">
+                                -1
+                              </button>
+                              <button type="button" className="btn btn-primary">
+                                +1
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>

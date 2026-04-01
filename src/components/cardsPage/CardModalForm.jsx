@@ -18,7 +18,7 @@ export const CardModalForm = ({
 
   return (
     <>
-      <div className="abrir-modal animacion fadeIn">
+      <div className="abrir-modal animacion fadeIn modal-custom">
         <div
           className="modal"
           style={{ display: "block" }}
