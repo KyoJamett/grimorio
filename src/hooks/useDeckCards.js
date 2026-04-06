@@ -28,25 +28,27 @@ export function useDeckCards(format) {
         setRarities([]);
         setTypes([]);
         setKeyWords([]);
+        setEdiciones([]);
 
         const editions = format.ediciones;
-        setEdiciones(editions);
+        //setEdiciones(editions);
         let loaded = 0;
+        const allCards = [];
 
         editions.forEach(({ed}) => {
             fetch(`http://localhost:3001/api/edition/${ed}`)
             .then(res => res.json())
             .then(data => {
-                if(data?.cards){
-                    setCards(prev => [...prev, ...data.cards]);
-                }
+                if(data?.cards) allCards.push(...data.cards);
                 if(data?.races) setRaces(prev => mergeUnique(prev, data.races));
                 if(data?.rarities) setRarities(prev => mergeUnique(prev, data.rarities));
                 if(data?.types) setTypes(prev => mergeUnique(prev, data.types));
                 if(data?.keywords) setKeyWords(prev => mergeUnique(prev, data.keywords));
+                if(data?.edition) setEdiciones(prev => mergeUnique(prev, [data.edition]));
 
                 loaded++;
                 setProgress(Math.round((loaded / editions.length) * 100));
+                setCards([...allCards]);
                 if(loaded === editions.length) setLoading(false);
             })
             .catch(() => {

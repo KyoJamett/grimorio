@@ -7,6 +7,11 @@ import { useCards } from "../hooks/useCards";
 export const DeckbuilderPage = () => {
   const { formatos } = useFormats();
   const [formatoKey, setFormatoKey] = useState(null);
+  const [searchInput, setSearchInput] = useState("");
+  const [selectedType, setSelectedType] = useState("");
+  const [selectedRace, setSelectedRace] = useState("");
+  const [selectedRarity, setSelectedRarity] = useState("");
+  const [selectedEdition, setSelectedEdition] = useState("");
 
   const formato = formatoKey ? formatos[formatoKey] : null;
   const {
@@ -37,12 +42,58 @@ export const DeckbuilderPage = () => {
     return foundRarity ? foundRarity.slug || "sin rareza" : "default";
   };
 
+  const filteredRaces = races.filter((race) =>
+    cards.some((card) => String(card.race) === race.id),
+  );
+
+  const filteredRarities = rarities.filter((rarity) =>
+    cards.some((card) => String(card.rarity) === rarity.id),
+  );
+
+  const filteredTypes = types.filter((type) =>
+    cards.some((card) => String(card.type) === type.id),
+  );
+
   const handleRowClick = (card) => {
     handlerOpenForm(card);
     console.log(
       `SOlicitando imagen a URL: http://localhost:3001/api/cards/${card.ed_edid}/${card.edid}.png`,
     );
   };
+
+  // Función para filtrar las cartas
+  const filterCards = (cards) => {
+    return cards.filter((card) => {
+      const matchesSearch =
+        searchInput.trim() === "" ||
+        (card.name ?? "")
+          .toLowerCase()
+          .includes(searchInput.trim().toLowerCase());
+
+      const matchesType =
+        selectedType === "" || String(card.type ?? "") === String(selectedType);
+
+      const matchesRace =
+        selectedRace === "" || String(card.race ?? "") === String(selectedRace);
+
+      const matchesRarity =
+        selectedRarity === "" ||
+        String(card.rarity ?? "") === String(selectedRarity);
+
+      const matchesEdition =
+        selectedEdition === "" ||
+        String(card.ed_edid ?? "") === String(selectedEdition);
+      return (
+        matchesSearch &&
+        matchesType &&
+        matchesRace &&
+        matchesRarity &&
+        matchesEdition
+      );
+    });
+  };
+
+  const filteredCards = filterCards(cards);
 
   return (
     <>
@@ -58,7 +109,7 @@ export const DeckbuilderPage = () => {
         />
       )}
       <div className="container-pro justify-content-center pt-2">
-        <div className="border rounded overflow-hidden">
+        <div className="border rounded overflow-hidden madera text-light">
           <div className="row g-0">
             <div className="col-8 border">
               <div className="p-2">
@@ -106,6 +157,8 @@ export const DeckbuilderPage = () => {
                       type="search"
                       placeholder="Buscar carta..."
                       aria-label="Search"
+                      data-bs-theme="dark"
+                      onChange={(e) => setSearchInput(e.target.value)}
                     />
                   </div>
                   <div className="col-4 col-md-auto">
@@ -116,16 +169,36 @@ export const DeckbuilderPage = () => {
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
-                        Tipo
+                        {selectedType === ""
+                          ? "Tipo de carta"
+                          : filteredTypes.find(
+                              (t) => String(t.id) === String(selectedType),
+                            )?.name}
                       </button>
                       <div className="dropdown-menu">
                         <a
                           className="dropdown-item"
                           href="#"
-                          onClick={(e) => e.preventDefault()}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setSelectedType("");
+                          }}
                         >
                           Todos
                         </a>
+                        {filteredTypes.map(({ id, name }) => (
+                          <a
+                            key={id}
+                            className="dropdown-item"
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setSelectedType(String(id));
+                            }}
+                          >
+                            {name}
+                          </a>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -137,16 +210,36 @@ export const DeckbuilderPage = () => {
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
-                        Frecuencia
+                        {selectedRarity === ""
+                          ? "Frecuencia"
+                          : filteredRarities.find(
+                              (t) => String(t.id) === String(selectedRarity),
+                            )?.name}
                       </button>
                       <div className="dropdown-menu">
                         <a
                           className="dropdown-item"
                           href="#"
-                          onClick={(e) => e.preventDefault()}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setSelectedRarity("");
+                          }}
                         >
-                          Todos
+                          Todas
                         </a>
+                        {filteredRarities.map(({ id, name }) => (
+                          <a
+                            key={id}
+                            className="dropdown-item"
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setSelectedRarity(String(id));
+                            }}
+                          >
+                            {name}
+                          </a>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -158,16 +251,36 @@ export const DeckbuilderPage = () => {
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
-                        Raza
+                        {selectedRace === ""
+                          ? "Raza"
+                          : filteredRaces.find(
+                              (t) => String(t.id) === String(selectedRace),
+                            )?.name}
                       </button>
                       <div className="dropdown-menu">
                         <a
                           className="dropdown-item"
                           href="#"
-                          onClick={(e) => e.preventDefault()}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setSelectedRace("");
+                          }}
                         >
                           Todos
                         </a>
+                        {filteredRaces.map(({ id, name }) => (
+                          <a
+                            key={id}
+                            className="dropdown-item"
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setSelectedRace(String(id));
+                            }}
+                          >
+                            {name}
+                          </a>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -179,16 +292,36 @@ export const DeckbuilderPage = () => {
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
-                        Edición
+                        {selectedEdition === ""
+                          ? "Edición"
+                          : ediciones.find(
+                              (t) => String(t.id) === String(selectedEdition),
+                            )?.title}
                       </button>
                       <div className="dropdown-menu">
                         <a
                           className="dropdown-item"
                           href="#"
-                          onClick={(e) => e.preventDefault()}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setSelectedEdition("");
+                          }}
                         >
                           Todos
                         </a>
+                        {ediciones.map(({ id, title }) => (
+                          <a
+                            key={id}
+                            className="dropdown-item"
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setSelectedEdition(String(id));
+                            }}
+                          >
+                            {title}
+                          </a>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -218,10 +351,10 @@ export const DeckbuilderPage = () => {
                       </div>
                     )}
                     <tbody>
-                      {cards.map((card) => (
+                      {filteredCards.map((card) => (
                         <tr
                           onClick={() => handleRowClick(card)}
-                          key={`${card.ed_edid}-${card.edid}`}
+                          key={`${card.id}`}
                           style={{ cursor: "pointer" }}
                           data-rarity-color={onRaritySlug(card.rarity)}
                           className="rarity"
@@ -246,6 +379,8 @@ export const DeckbuilderPage = () => {
                           </td>
                         </tr>
                       ))}
+                      {/*console.log("cartas en tabla")*/}
+                      {/*console.log(filteredCards)*/}
                     </tbody>
                   </table>
                 </div>
