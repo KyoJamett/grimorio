@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFormats } from "../hooks/useResource";
 import { useDeckCards } from "../hooks/useDeckCards";
 import { CardModalForm } from "../components/cardsPage/CardModalForm";
@@ -12,6 +12,7 @@ export const DeckbuilderPage = () => {
   const [selectedRace, setSelectedRace] = useState("");
   const [selectedRarity, setSelectedRarity] = useState("");
   const [selectedEdition, setSelectedEdition] = useState("");
+  const [deck, setDeck] = useState([]);
 
   const formato = formatoKey ? formatos[formatoKey] : null;
   const {
@@ -24,11 +25,7 @@ export const DeckbuilderPage = () => {
     keywords,
     ediciones,
   } = useDeckCards(formato);
-  //-----------------------------------
 
-  const [deck, setDeck] = useState([]);
-
-  //-----------------------------------
   const { cardSelected, handlerCloseForm, handlerOpenForm, visibleForm } =
     useCards();
 
@@ -60,6 +57,47 @@ export const DeckbuilderPage = () => {
       `SOlicitando imagen a URL: http://localhost:3001/api/cards/${card.ed_edid}/${card.edid}.png`,
     );
   };
+
+  const handlerAddCard = (card) => {
+    setDeck((prevDeck) => {
+      const existing = prevDeck.find((c) => c.id === card.id);
+
+      if (existing) {
+        return prevDeck.map((c) => {
+          return c.id === card.id ? { ...c, quantity: c.quantity + 1 } : c;
+        });
+      }
+      return [
+        ...prevDeck,
+        {
+          id: card.id,
+          edId: card.ed_edid,
+          name: card.name,
+          type: card.type,
+          quantity: 1,
+        },
+      ];
+    });
+  };
+
+  const handlerRemoveCard = (card) => {
+    setDeck((prevDeck) => {
+      const existing = prevDeck.find((c) => c.id === card.id);
+
+      if (existing) {
+        if (existing.quantity > 1) {
+          return prevDeck.map((c) => {
+            return c.id === card.id ? { ...c, quantity: c.quantity - 1 } : c;
+          });
+        }
+      }
+      return prevDeck.filter((c) => c.id !== card.id);
+    });
+  };
+
+  useEffect(() => {
+    console.log(deck);
+  }, [deck]);
 
   // Función para filtrar las cartas
   const filterCards = (cards) => {
@@ -339,18 +377,26 @@ export const DeckbuilderPage = () => {
                         <th style={{ width: "5%" }}></th>
                       </tr>
                     </thead>
-                    {loading && (
-                      <div className="progress my-2" style={{ height: "4px" }}>
-                        <div
-                          className="progress-bar bg-warning"
-                          style={{
-                            width: `${progress}%`,
-                            transition: "width 0.3s",
-                          }}
-                        />
-                      </div>
-                    )}
+
                     <tbody>
+                      {loading && (
+                        <tr>
+                          <td colSpan="5">
+                            <div
+                              className="progress my-2"
+                              style={{ height: "4px" }}
+                            >
+                              <div
+                                className="progress-bar bg-warning"
+                                style={{
+                                  width: `${progress}%`,
+                                  transition: "width 0.3s",
+                                }}
+                              />
+                            </div>
+                          </td>
+                        </tr>
+                      )}
                       {filteredCards.map((card) => (
                         <tr
                           onClick={() => handleRowClick(card)}
@@ -369,10 +415,24 @@ export const DeckbuilderPage = () => {
                               role="group"
                               aria-label="Copias"
                             >
-                              <button type="button" className="btn btn-danger">
+                              <button
+                                type="button"
+                                className="btn btn-danger"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handlerRemoveCard(card);
+                                }}
+                              >
                                 -1
                               </button>
-                              <button type="button" className="btn btn-primary">
+                              <button
+                                type="button"
+                                className="btn btn-primary"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handlerAddCard(card);
+                                }}
+                              >
                                 +1
                               </button>
                             </div>
