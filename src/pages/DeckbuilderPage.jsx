@@ -452,30 +452,155 @@ export const DeckbuilderPage = () => {
                 {/* este padding regular los margenes de los detalles del mazo, ajustar aqui*/}
                 <h4>Mazo</h4>
                 <ul className="list-group list-group-flush">
-                  <li className="list-group-item d-flex justify-content-between">
-                    <span>Aliados</span>{" "}
-                    <span className="badge bg-warning text-dark">0</span>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between">
-                    <span>Talismanes</span>{" "}
-                    <span className="badge bg-warning text-dark">0</span>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between">
-                    <span>Totems</span>{" "}
-                    <span className="badge bg-warning text-dark">0</span>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between">
-                    <span>Armas</span>{" "}
-                    <span className="badge bg-warning text-dark">0</span>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between">
-                    <span>Oros</span>{" "}
-                    <span className="badge bg-warning text-dark">0</span>
-                  </li>
+                  {deck.length > 0 && (
+                    <>
+                      {deck.some((c) => String(c.type) === "1") && (
+                        <>
+                          <li className="list-group-item d-flex justify-content-between">
+                            <span>Aliados</span>{" "}
+                            <span className="badge bg-warning text-dark">
+                              {deck
+                                .filter((c) => c.type === "1")
+                                .reduce((total, c) => total + c.quantity, 0)}
+                            </span>
+                          </li>
+                          {deck
+                            .filter((c) => c.type === "1")
+                            .map((card) => {
+                              return (
+                                <>
+                                  <span>
+                                    {card.name + " x" + card.quantity}
+                                  </span>
+                                </>
+                              );
+                            })}
+                        </>
+                      )}
+                      {deck.some((c) => String(c.type) === "2") && (
+                        <>
+                          <li className="list-group-item d-flex justify-content-between">
+                            <span>Talismanes</span>{" "}
+                            <span className="badge bg-warning text-dark">
+                              {deck
+                                .filter((c) => c.type === "2")
+                                .reduce((total, c) => total + c.quantity, 0)}
+                            </span>
+                          </li>
+                          {deck
+                            .filter((c) => c.type === "2")
+                            .map((card) => {
+                              return (
+                                <>
+                                  <span>
+                                    {card.name + " x" + card.quantity}
+                                  </span>
+                                </>
+                              );
+                            })}
+                        </>
+                      )}
+                      {deck.some((c) => String(c.type) === "3") && (
+                        <>
+                          <li className="list-group-item d-flex justify-content-between">
+                            <span>Armas</span>{" "}
+                            <span className="badge bg-warning text-dark">
+                              {deck
+                                .filter((c) => c.type === "3")
+                                .reduce((total, c) => total + c.quantity, 0)}
+                            </span>
+                          </li>
+                          {deck
+                            .filter((c) => c.type === "3")
+                            .map((card) => {
+                              return (
+                                <>
+                                  <span>
+                                    {card.name + " x" + card.quantity}
+                                  </span>
+                                </>
+                              );
+                            })}
+                        </>
+                      )}
+                      {deck.some((c) => String(c.type) === "4") && (
+                        <>
+                          <li className="list-group-item d-flex justify-content-between">
+                            <span>Tótems</span>{" "}
+                            <span className="badge bg-warning text-dark">
+                              {deck
+                                .filter((c) => c.type === "4")
+                                .reduce((total, c) => total + c.quantity, 0)}
+                            </span>
+                          </li>
+                          {deck
+                            .filter((c) => c.type === "4")
+                            .map((card) => {
+                              return (
+                                <>
+                                  <span>
+                                    {card.name + " x" + card.quantity}
+                                  </span>
+                                </>
+                              );
+                            })}
+                        </>
+                      )}
+                      {deck.some((c) => String(c.type) === "5") && (
+                        <>
+                          <li className="list-group-item d-flex justify-content-between">
+                            <span>Oros</span>{" "}
+                            <span className="badge bg-warning text-dark">
+                              {deck
+                                .filter((c) => c.type === "5")
+                                .reduce((total, c) => total + c.quantity, 0)}
+                            </span>
+                          </li>
+                          {deck
+                            .filter((c) => c.type === "5")
+                            .map((card) => {
+                              return (
+                                <>
+                                  <span>
+                                    {card.name + " x" + card.quantity}
+                                  </span>
+                                </>
+                              );
+                            })}
+                        </>
+                      )}
+                      {deck.some((c) => String(c.type) === "6") && (
+                        <>
+                          <li className="list-group-item d-flex justify-content-between">
+                            <span>Monumento</span>{" "}
+                            <span className="badge bg-warning text-dark">
+                              {deck
+                                .filter((c) => c.type === "6")
+                                .reduce((total, c) => total + c.quantity, 0)}
+                            </span>
+                          </li>
+                          {deck
+                            .filter((c) => c.type === "6")
+                            .map((card) => {
+                              return (
+                                <>
+                                  <span>
+                                    {card.name + " x" + card.quantity}
+                                  </span>
+                                </>
+                              );
+                            })}
+                        </>
+                      )}
+                    </>
+                  )}
                 </ul>
                 <ul className="list-group mt-2">
                   <li className="list-group-item d-flex justify-content-between fw-bold">
-                    <span>Total</span> <span>0</span>
+                    <span>Total</span>{" "}
+                    <span>
+                      {deck.reduce((total, c) => total + c.quantity, 0)}
+                    </span>
                   </li>
                   <li className="list-group-item d-flex justify-content-between fw-bold">
                     <span>Costo promedio</span> <span>0</span>
