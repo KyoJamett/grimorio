@@ -407,7 +407,7 @@ export const DeckbuilderPage = () => {
                           className="rarity"
                         >
                           <td>{card.edid}</td>
-                          <td>{card.name}</td>
+                          <td>{card.name.toUpperCase()}</td>
                           <td>{onTypes(card.type)}</td>
                           <td>{card.cost ?? "—"}</td>
                           <td>
@@ -459,26 +459,37 @@ export const DeckbuilderPage = () => {
                         deck={deck}
                         type={"1"}
                         sectionName={"Aliados"}
+                        handlerAddCard={handlerAddCard}
+                        handlerRemoveCard={handlerRemoveCard}
                       />
+
                       <DeckSection
                         deck={deck}
                         type={"2"}
                         sectionName={"Talismanes"}
+                        handlerAddCard={handlerAddCard}
+                        handlerRemoveCard={handlerRemoveCard}
                       />
                       <DeckSection
                         deck={deck}
                         type={"3"}
                         sectionName={"Armas"}
+                        handlerAddCard={handlerAddCard}
+                        handlerRemoveCard={handlerRemoveCard}
                       />
                       <DeckSection
                         deck={deck}
                         type={"4"}
                         sectionName={"Totems"}
+                        handlerAddCard={handlerAddCard}
+                        handlerRemoveCard={handlerRemoveCard}
                       />
                       <DeckSection
                         deck={deck}
                         type={"5"}
                         sectionName={"Oros"}
+                        handlerAddCard={handlerAddCard}
+                        handlerRemoveCard={handlerRemoveCard}
                       />
                       <DeckSection
                         deck={deck}
