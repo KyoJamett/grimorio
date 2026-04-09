@@ -4,6 +4,7 @@ import { useDeckCards } from "../hooks/useDeckCards";
 import { CardModalForm } from "../components/cardsPage/CardModalForm";
 import { useCards } from "../hooks/useCards";
 import { DeckSection } from "../components/deckbuilderPage/DeckSection";
+import { DeckModal } from "../components/deckbuilderPage/DeckModal";
 
 export const DeckbuilderPage = () => {
   const { formatos } = useFormats();
@@ -14,6 +15,8 @@ export const DeckbuilderPage = () => {
   const [selectedRarity, setSelectedRarity] = useState("");
   const [selectedEdition, setSelectedEdition] = useState("");
   const [deck, setDeck] = useState([]);
+  const [showPreview, setShowPreview] = useState(false);
+  const [deckName, setDeckName] = useState("");
 
   const formato = formatoKey ? formatos[formatoKey] : null;
   const {
@@ -72,7 +75,8 @@ export const DeckbuilderPage = () => {
         ...prevDeck,
         {
           id: card.id,
-          edId: card.ed_edid,
+          ed_edid: card.ed_edid,
+          edid: card.edid,
           name: card.name,
           type: card.type,
           quantity: 1,
@@ -133,9 +137,19 @@ export const DeckbuilderPage = () => {
   };
 
   const filteredCards = filterCards(cards);
-
+  console.log("formatos", formato);
   return (
     <>
+      {!showPreview || (
+        <DeckModal
+          deck={deck}
+          deckName={deckName}
+          formato={formato.name}
+          showPreview={showPreview}
+          setShowPreview={setShowPreview}
+        />
+      )}
+
       {!visibleForm || (
         <CardModalForm
           cardSelected={cardSelected}
@@ -447,58 +461,67 @@ export const DeckbuilderPage = () => {
                 </div>
               </div>
             </div>
+
             <div className="col-4 border pb-2">
               <div className="p-2">
                 {" "}
                 {/* este padding regular los margenes de los detalles del mazo, ajustar aqui*/}
-                <h4>Mazo</h4>
-                <ul className="list-group list-group-flush">
-                  {deck.length > 0 && (
-                    <>
-                      <DeckSection
-                        deck={deck}
-                        type={"1"}
-                        sectionName={"Aliados"}
-                        handlerAddCard={handlerAddCard}
-                        handlerRemoveCard={handlerRemoveCard}
-                      />
+                <input
+                  type="text"
+                  className="form-control mb-2"
+                  placeholder="Nombre del mazo..."
+                  value={deckName}
+                  onChange={(e) => setDeckName(e.target.value)}
+                />
+                <div style={{ height: "50vh", overflowY: "auto" }}>
+                  <ul className="list-group list-group-flush">
+                    {deck.length > 0 && (
+                      <>
+                        <DeckSection
+                          deck={deck}
+                          type={"1"}
+                          sectionName={"Aliados"}
+                          handlerAddCard={handlerAddCard}
+                          handlerRemoveCard={handlerRemoveCard}
+                        />
 
-                      <DeckSection
-                        deck={deck}
-                        type={"2"}
-                        sectionName={"Talismanes"}
-                        handlerAddCard={handlerAddCard}
-                        handlerRemoveCard={handlerRemoveCard}
-                      />
-                      <DeckSection
-                        deck={deck}
-                        type={"3"}
-                        sectionName={"Armas"}
-                        handlerAddCard={handlerAddCard}
-                        handlerRemoveCard={handlerRemoveCard}
-                      />
-                      <DeckSection
-                        deck={deck}
-                        type={"4"}
-                        sectionName={"Totems"}
-                        handlerAddCard={handlerAddCard}
-                        handlerRemoveCard={handlerRemoveCard}
-                      />
-                      <DeckSection
-                        deck={deck}
-                        type={"5"}
-                        sectionName={"Oros"}
-                        handlerAddCard={handlerAddCard}
-                        handlerRemoveCard={handlerRemoveCard}
-                      />
-                      <DeckSection
-                        deck={deck}
-                        type={"6"}
-                        sectionName={"Monumento"}
-                      />
-                    </>
-                  )}
-                </ul>
+                        <DeckSection
+                          deck={deck}
+                          type={"2"}
+                          sectionName={"Talismanes"}
+                          handlerAddCard={handlerAddCard}
+                          handlerRemoveCard={handlerRemoveCard}
+                        />
+                        <DeckSection
+                          deck={deck}
+                          type={"3"}
+                          sectionName={"Armas"}
+                          handlerAddCard={handlerAddCard}
+                          handlerRemoveCard={handlerRemoveCard}
+                        />
+                        <DeckSection
+                          deck={deck}
+                          type={"4"}
+                          sectionName={"Totems"}
+                          handlerAddCard={handlerAddCard}
+                          handlerRemoveCard={handlerRemoveCard}
+                        />
+                        <DeckSection
+                          deck={deck}
+                          type={"5"}
+                          sectionName={"Oros"}
+                          handlerAddCard={handlerAddCard}
+                          handlerRemoveCard={handlerRemoveCard}
+                        />
+                        <DeckSection
+                          deck={deck}
+                          type={"6"}
+                          sectionName={"Monumento"}
+                        />
+                      </>
+                    )}
+                  </ul>
+                </div>
                 <ul className="list-group mt-2">
                   <li className="list-group-item d-flex justify-content-between fw-bold">
                     <span>Total</span>{" "}
@@ -508,6 +531,14 @@ export const DeckbuilderPage = () => {
                   </li>
                   <li className="list-group-item d-flex justify-content-between fw-bold">
                     <span>Costo promedio</span> <span>0</span>
+                  </li>
+                  <li>
+                    <button
+                      className="btn btn-warning w-100"
+                      onClick={() => setShowPreview(true)}
+                    >
+                      Ver vista previa
+                    </button>
                   </li>
                 </ul>
               </div>
