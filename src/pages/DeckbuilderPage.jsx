@@ -5,6 +5,7 @@ import { CardModalForm } from "../components/cardsPage/CardModalForm";
 import { useCards } from "../hooks/useCards";
 import { DeckSection } from "../components/deckbuilderPage/DeckSection";
 import { DeckModal } from "../components/deckbuilderPage/DeckModal";
+import { getCardImageUrl } from "../helpers/cardImageUrl";
 
 export const DeckbuilderPage = () => {
   const { formatos } = useFormats();
@@ -17,6 +18,7 @@ export const DeckbuilderPage = () => {
   const [deck, setDeck] = useState([]);
   const [showPreview, setShowPreview] = useState(false);
   const [deckName, setDeckName] = useState("");
+  const [viewMode, setViewMode] = useState("table");
 
   const formato = formatoKey ? formatos[formatoKey] : null;
   const {
@@ -204,7 +206,23 @@ export const DeckbuilderPage = () => {
                   </select>
                 </div>
                 <div className="row g-2 mb-3 align-items-center">
-                  <div className="col-12 col-md-4">
+                  <div className="col col-auto px-0">
+                    <div className="btn-group">
+                      <button
+                        className={`btn btn-sm ${viewMode === "table" ? "btn-warning" : "btn-outline-warning"}`}
+                        onClick={() => setViewMode("table")}
+                      >
+                        ☰
+                      </button>
+                      <button
+                        className={`btn btn-sm ${viewMode === "grid" ? "btn-warning" : "btn-outline-warning"}`}
+                        onClick={() => setViewMode("grid")}
+                      >
+                        ⊞
+                      </button>
+                    </div>
+                  </div>
+                  <div className="col col-auto">
                     <input
                       className="form-control custom-search-input"
                       type="search"
@@ -382,82 +400,130 @@ export const DeckbuilderPage = () => {
               </div>
               <div className="table-responsive rounded-2">
                 <div style={{ height: "60vh", overflowY: "auto" }}>
-                  <table className="table table-sm table-hover table-striped">
-                    <thead className="table-responsive table-dark sticky-top">
-                      <tr>
-                        <th style={{ width: "10%" }}>N°</th>
-                        <th style={{ width: "30%" }}>Nombre</th>
-                        <th style={{ width: "15%" }}>Tipo</th>
-                        <th style={{ width: "10%" }}>Coste</th>
-                        <th style={{ width: "5%" }}></th>
-                      </tr>
-                    </thead>
-
-                    <tbody>
-                      {loading && (
+                  {viewMode === "table" ? (
+                    <table className="table table-sm table-hover table-striped">
+                      <thead className="table-responsive table-dark sticky-top">
                         <tr>
-                          <td colSpan="5">
-                            <div
-                              className="progress my-2"
-                              style={{ height: "4px" }}
-                            >
+                          <th style={{ width: "10%" }}>N°</th>
+                          <th style={{ width: "30%" }}>Nombre</th>
+                          <th style={{ width: "15%" }}>Tipo</th>
+                          <th style={{ width: "10%" }}>Coste</th>
+                          <th style={{ width: "5%" }}></th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        {loading && (
+                          <tr>
+                            <td colSpan="5">
                               <div
-                                className="progress-bar bg-warning"
-                                style={{
-                                  width: `${progress}%`,
-                                  transition: "width 0.3s",
-                                }}
-                              />
-                            </div>
-                          </td>
-                        </tr>
-                      )}
+                                className="progress my-2"
+                                style={{ height: "4px" }}
+                              >
+                                <div
+                                  className="progress-bar bg-warning"
+                                  style={{
+                                    width: `${progress}%`,
+                                    transition: "width 0.3s",
+                                  }}
+                                />
+                              </div>
+                            </td>
+                          </tr>
+                        )}
+                        {filteredCards.map((card) => (
+                          <tr
+                            onClick={() => handleRowClick(card)}
+                            key={`${card.id}`}
+                            style={{ cursor: "pointer" }}
+                            data-rarity-color={onRaritySlug(card.rarity)}
+                            className="rarity"
+                          >
+                            <td>{card.edid}</td>
+                            <td>{card.name.toUpperCase()}</td>
+                            <td>{onTypes(card.type)}</td>
+                            <td>{card.cost ?? "—"}</td>
+                            <td>
+                              <div
+                                className="btn-group"
+                                role="group"
+                                aria-label="Copias"
+                              >
+                                <button
+                                  type="button"
+                                  className="btn btn-danger"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handlerRemoveCard(card);
+                                  }}
+                                >
+                                  -1
+                                </button>
+                                <button
+                                  type="button"
+                                  className="btn btn-primary"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handlerAddCard(card);
+                                  }}
+                                >
+                                  +1
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                        {/*console.log("cartas en tabla")*/}
+                        {/*console.log(filteredCards)*/}
+                      </tbody>
+                    </table>
+                  ) : (
+                    <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-2 p-2">
+                      {/* con row-cols-2 puedes modificar cuantas cartas se ven por fila, puedes asigar valroes fijos como en dreamborn
+                          investigar cómo funcionan mezclando row-cols-sm-3 y los md y lg. Al momento de codificar, se ven siempre dos cartas
+                          al agregar g-2 recien pasa a 5 cartas por fila.
+                      */}
                       {filteredCards.map((card) => (
-                        <tr
-                          onClick={() => handleRowClick(card)}
-                          key={`${card.id}`}
-                          style={{ cursor: "pointer" }}
-                          data-rarity-color={onRaritySlug(card.rarity)}
-                          className="rarity"
-                        >
-                          <td>{card.edid}</td>
-                          <td>{card.name.toUpperCase()}</td>
-                          <td>{onTypes(card.type)}</td>
-                          <td>{card.cost ?? "—"}</td>
-                          <td>
-                            <div
-                              className="btn-group"
-                              role="group"
-                              aria-label="Copias"
-                            >
-                              <button
-                                type="button"
-                                className="btn btn-danger"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  handlerRemoveCard(card);
-                                }}
-                              >
-                                -1
-                              </button>
-                              <button
-                                type="button"
-                                className="btn btn-primary"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  handlerAddCard(card);
-                                }}
-                              >
-                                +1
-                              </button>
+                        <div className="col" key={card.id}>
+                          <div
+                            className="card h-100 bg-dark border-secondary"
+                            data-rarity-color={onRaritySlug(card.rarity)}
+                          >
+                            <img
+                              src={getCardImageUrl(card.ed_edid, card.edid)}
+                              className="card-img-top"
+                              alt={card.name}
+                              onClick={() => handleRowClick(card)}
+                              style={{ cursor: "pointer" }}
+                            />
+                            <div className="card-footer p-1 justify-content-between align-items-center">
+                              <div className="btn-group btn-group-sm w-100">
+                                {/* con w-100 los botones usan todo el espacio ancho disponible (width-100) si los quieres hacer m´+as pequeños deberías partir modificando este atributo */}
+                                <button
+                                  className="btn btn-danger"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handlerRemoveCard(card);
+                                  }}
+                                >
+                                  -1
+                                </button>
+                                <button
+                                  className="btn btn-primary"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handlerAddCard(card);
+                                  }}
+                                >
+                                  +1
+                                </button>
+                              </div>
                             </div>
-                          </td>
-                        </tr>
+                          </div>
+                        </div>
                       ))}
-                      {/*console.log("cartas en tabla")*/}
-                      {/*console.log(filteredCards)*/}
-                    </tbody>
-                  </table>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
