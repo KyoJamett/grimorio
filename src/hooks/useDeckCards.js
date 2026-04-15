@@ -36,7 +36,7 @@ export function useDeckCards(format) {
         const allCards = [];
 
         editions.forEach(({ed}) => {
-            fetch(`http://localhost:3001/api/edition/${ed}`)
+            fetch(`${import.meta.env.VITE_API_URL}/api/edition/${ed}`)
             .then(res => res.json())
             .then(data => {
                 if(data?.cards) allCards.push(...data.cards);

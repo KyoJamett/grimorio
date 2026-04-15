@@ -4,7 +4,7 @@ export function useFormats() {
   const [formatos, setFormatos] = useState({});
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/formats')
+    fetch(`${import.meta.env.VITE_API_URL}/api/formats`)
       .then(res => res.json())
       .then(data => setFormatos(data));
   }, []);
@@ -17,7 +17,7 @@ export function useDocuments(folder) {
 
   useEffect(() => {
     if(!folder) return;
-    fetch(`http://localhost:3001/api/formats/${folder}/documents`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/formats/${folder}/documents`)
     .then(res => res.json())
     .then(data => setDocumentos(data));
   }, [folder]);

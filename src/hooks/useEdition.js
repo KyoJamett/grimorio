@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export function useEdition(ed) {
   const [dataCards, setDataCards] = useState(null);
-  let url = `http://localhost:3001/api/edition/${ed}`;
+  const url = `${import.meta.env.VITE_API_URL}/api/edition/${ed}`;
   useEffect(() => {
     console.log("Haciendo solicitud a la URL:", url);
     fetch(url)
