@@ -19,6 +19,7 @@ export const DeckbuilderPage = () => {
   const [showPreview, setShowPreview] = useState(false);
   const [deckName, setDeckName] = useState("");
   const [viewMode, setViewMode] = useState("table");
+  const [mobileTab, setMobileTab] = useState("pool"); // 'pool' | 'deck'
 
   const formato = formatoKey ? formatos[formatoKey] : null;
   const {
@@ -166,30 +167,16 @@ export const DeckbuilderPage = () => {
       <div className="container-pro justify-content-center pt-2">
         <div className="border rounded overflow-hidden madera text-light">
           <div className="row g-0">
-            <div className="col-8 border">
+            <div
+              className={`col-12 col-md-8 border ${mobileTab === "deck" ? "d-none d-md-block" : ""}`}
+            >
+              {/* cómo es que col-12 no interfiere con col-md-8? si antes tenía col-8 
+              por qué no se rompe el esquema en la pantalla del pc? */}
               <div className="p-2">
                 {" "}
                 {/* este padding regular los margenes de la tabla pool de cartas, ajustar aqui*/}
                 <div className="d-flex gap-2 mb-3 align-items-center">
-                  <h4>Pool de cartas</h4>
-                  <button
-                    type="button"
-                    className="btn btn-warning dropdown-toggle btn-sm"
-                    data-bs-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Bloque
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-warning dropdown-toggle btn-sm"
-                    data-bs-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Formato
-                  </button>
+                  {/* qué es d-flex? */}
                   <select
                     className="form-select"
                     onChange={(e) => setFormatoKey(e.target.value)}
@@ -204,8 +191,18 @@ export const DeckbuilderPage = () => {
                       </option>
                     ))}
                   </select>
+
+                  <button
+                    type="button"
+                    className="btn btn-warning dropdown-toggle btn-sm"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Formato
+                  </button>
                 </div>
-                <div className="row g-2 mb-3 align-items-center">
+                <div className="row g-2 align-items-center">
                   <div className="col col-auto px-0">
                     <div className="btn-group">
                       <button
@@ -236,7 +233,7 @@ export const DeckbuilderPage = () => {
                     <div className="btn-group w-100">
                       <button
                         type="button"
-                        className="btn btn-warning dropdown-toggle w-100"
+                        className="btn btn-warning dropdown-toggle w-100 btn-sm"
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
@@ -277,7 +274,7 @@ export const DeckbuilderPage = () => {
                     <div className="btn-group w-100">
                       <button
                         type="button"
-                        className="btn btn-warning dropdown-toggle w-100"
+                        className="btn btn-warning dropdown-toggle w-100 btn-sm"
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
@@ -318,7 +315,7 @@ export const DeckbuilderPage = () => {
                     <div className="btn-group w-100">
                       <button
                         type="button"
-                        className="btn btn-warning dropdown-toggle w-100"
+                        className="btn btn-warning dropdown-toggle w-100 btn-sm"
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
@@ -359,7 +356,7 @@ export const DeckbuilderPage = () => {
                     <div className="btn-group w-100">
                       <button
                         type="button"
-                        className="btn btn-warning dropdown-toggle w-100"
+                        className="btn btn-warning dropdown-toggle w-100 btn-sm"
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
@@ -478,7 +475,7 @@ export const DeckbuilderPage = () => {
                       </tbody>
                     </table>
                   ) : (
-                    <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-2 p-2">
+                    <div className="row row-cols-3 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-2 p-2">
                       {/* con row-cols-2 puedes modificar cuantas cartas se ven por fila, puedes asigar valroes fijos como en dreamborn
                           investigar cómo funcionan mezclando row-cols-sm-3 y los md y lg. Al momento de codificar, se ven siempre dos cartas
                           al agregar g-2 recien pasa a 5 cartas por fila.
@@ -528,7 +525,9 @@ export const DeckbuilderPage = () => {
               </div>
             </div>
 
-            <div className="col-4 border pb-2">
+            <div
+              className={`col-12 col-md-4 border pb-2 ${mobileTab === "pool" ? "d-none d-md-block" : ""}`}
+            >
               <div className="p-2">
                 {" "}
                 {/* este padding regular los margenes de los detalles del mazo, ajustar aqui*/}
@@ -612,6 +611,41 @@ export const DeckbuilderPage = () => {
           </div>
         </div>
       </div>
+
+      {/* inicio barra inferior, sólo visible en movil */}
+
+      <div
+        className="d-flex d-md-none fixed-bottom border-top pb-6"
+        style={{ backgroundColor: "#1a1a1a", zIndex: 1000 }}
+      >
+        {/* qué hace d-md-none? y fixed-bottom? border-top sólo agrega un borde en la parte superior de los botones */}
+        <button
+          className={`btn flex-fill py-3 rounded-0 ${mobileTab === "pool" ? "btn-warning" : "btn-dark"}`}
+          onClick={() => setMobileTab("pool")}
+        >
+          {/* rounded-0 hace que el boton no sea redondeado. ¿qué hace flex-fill? */}
+          Cartas{" "}
+          {mobileTab !== "pool" && (
+            <span className="badge bg-warning text-dark ms-2">
+              {filteredCards.length}
+            </span>
+          )}
+        </button>
+        {/* qué es flex-fill?  */}
+        <div style={{ width: "1px", backgroundColor: "#444" }} />
+        <button
+          className={`btn flex-fill py-3 rounded-0 ${mobileTab === "deck" ? "btn-warning" : "btn-dark"}`}
+          onClick={() => setMobileTab("deck")}
+        >
+          {" "}
+          Mazo{" "}
+          <span className="badge bg-warning text-dark ms-2">
+            {deck.reduce((sum, c) => sum + c.quantity, 0)}
+          </span>
+        </button>
+      </div>
+
+      {/* fin barra inferior, sólo visible en movil */}
     </>
   );
 };
