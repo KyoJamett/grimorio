@@ -414,4 +414,14 @@ body {
   z-index: 2000; /* mayor que sticky-top */
 }
 
+.responsive-label {
+  font-size: 1rem;
+}
+
+@media (max-width: 576px) {
+  .responsive-label {
+    font-size: 0.8rem;
+  }
+}
+
 /* fin estilos para deckbuilder */

@@ -14,7 +14,7 @@ export const DeckbuilderPage = () => {
   const [selectedType, setSelectedType] = useState("");
   const [selectedRace, setSelectedRace] = useState("");
   const [selectedRarity, setSelectedRarity] = useState("");
-  const [selectedEdition, setSelectedEdition] = useState("");
+  const [selectedEdition, setSelectedEdition] = useState([]);
   const [deck, setDeck] = useState([]);
   const [showPreview, setShowPreview] = useState(false);
   const [deckName, setDeckName] = useState("");
@@ -103,6 +103,15 @@ export const DeckbuilderPage = () => {
     });
   };
 
+  const handlerEditionChange = (id) => {
+    setSelectedEdition(
+      (prev) =>
+        prev.includes(String(id))
+          ? prev.filter((e) => e !== String(id)) // quitar
+          : [...prev, String(id)], // agregar
+    );
+  };
+
   useEffect(() => {
     console.log(deck);
   }, [deck]);
@@ -127,8 +136,8 @@ export const DeckbuilderPage = () => {
         String(card.rarity ?? "") === String(selectedRarity);
 
       const matchesEdition =
-        selectedEdition === "" ||
-        String(card.ed_edid ?? "") === String(selectedEdition);
+        selectedEdition.length === 0 ||
+        selectedEdition.includes(String(card.ed_edid ?? ""));
       return (
         matchesSearch &&
         matchesType &&
@@ -164,7 +173,7 @@ export const DeckbuilderPage = () => {
           edition={ediciones}
         />
       )}
-      <div className="container-pro justify-content-center pt-2">
+      <div className="container-pro justify-content-center pt-2 pb-md-0">
         <div className="border rounded overflow-hidden madera text-light">
           <div className="row g-0">
             <div
@@ -172,7 +181,7 @@ export const DeckbuilderPage = () => {
             >
               {/* cómo es que col-12 no interfiere con col-md-8? si antes tenía col-8 
               por qué no se rompe el esquema en la pantalla del pc? */}
-              <div className="p-2">
+              <div className="p-2 border-bottom">
                 {" "}
                 {/* este padding regular los margenes de la tabla pool de cartas, ajustar aqui*/}
                 <div className="d-flex gap-2 mb-3 align-items-center">
@@ -352,46 +361,26 @@ export const DeckbuilderPage = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-4 col-md-auto">
-                    <div className="btn-group w-100">
-                      <button
-                        type="button"
-                        className="btn btn-warning dropdown-toggle w-100 btn-sm"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        {selectedEdition === ""
-                          ? "Edición"
-                          : ediciones.find(
-                              (t) => String(t.id) === String(selectedEdition),
-                            )?.title}
-                      </button>
-                      <div className="dropdown-menu">
-                        <a
-                          className="dropdown-item"
-                          href="#"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setSelectedEdition("");
-                          }}
+
+                  <div className="d-flex flex-row flex-wrap gap-2">
+                    {/* acá están en una misma línea debido a d-flex */}
+                    {ediciones.map(({ id, title }) => (
+                      <div className="form-check form-switch" key={id}>
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          id={id}
+                          checked={selectedEdition.includes(String(id))}
+                          onChange={() => handlerEditionChange(id)}
+                        />
+                        <label
+                          className="form-check-label responsive-label"
+                          htmlFor={id}
                         >
-                          Todos
-                        </a>
-                        {ediciones.map(({ id, title }) => (
-                          <a
-                            key={id}
-                            className="dropdown-item"
-                            href="#"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              setSelectedEdition(String(id));
-                            }}
-                          >
-                            {title}
-                          </a>
-                        ))}
+                          {title}
+                        </label>
                       </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
               </div>
