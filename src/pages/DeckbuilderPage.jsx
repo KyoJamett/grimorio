@@ -116,6 +116,10 @@ export const DeckbuilderPage = () => {
     console.log(deck);
   }, [deck]);
 
+  useEffect(() => {
+    setSelectedRace("");
+  }, [selectedType]);
+
   // Función para filtrar las cartas
   const filterCards = (cards) => {
     return cards.filter((card) => {
@@ -320,47 +324,49 @@ export const DeckbuilderPage = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-4 col-md-auto">
-                    <div className="btn-group w-100">
-                      <button
-                        type="button"
-                        className="btn btn-warning dropdown-toggle w-100 btn-sm"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        {selectedRace === ""
-                          ? "Raza"
-                          : filteredRaces.find(
-                              (t) => String(t.id) === String(selectedRace),
-                            )?.name}
-                      </button>
-                      <div className="dropdown-menu">
-                        <a
-                          className="dropdown-item"
-                          href="#"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setSelectedRace("");
-                          }}
+                  {selectedType == 1 && (
+                    <div className="col-4 col-md-auto">
+                      <div className="btn-group w-100">
+                        <button
+                          type="button"
+                          className="btn btn-warning dropdown-toggle w-100 btn-sm"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
                         >
-                          Todos
-                        </a>
-                        {filteredRaces.map(({ id, name }) => (
+                          {selectedRace === ""
+                            ? "Raza"
+                            : filteredRaces.find(
+                                (t) => String(t.id) === String(selectedRace),
+                              )?.name}
+                        </button>
+                        <div className="dropdown-menu">
                           <a
-                            key={id}
                             className="dropdown-item"
                             href="#"
                             onClick={(e) => {
                               e.preventDefault();
-                              setSelectedRace(String(id));
+                              setSelectedRace("");
                             }}
                           >
-                            {name}
+                            Todos
                           </a>
-                        ))}
+                          {filteredRaces.map(({ id, name }) => (
+                            <a
+                              key={id}
+                              className="dropdown-item"
+                              href="#"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setSelectedRace(String(id));
+                              }}
+                            >
+                              {name}
+                            </a>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
 
                   <div className="d-flex flex-row flex-wrap gap-2">
                     {/* acá están en una misma línea debido a d-flex */}
