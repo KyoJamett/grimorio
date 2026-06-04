@@ -205,7 +205,7 @@ export const DeckbuilderPage = () => {
                     ))}
                   </select>
 
-                  <button
+                  {/*<button
                     type="button"
                     className="btn btn-warning dropdown-toggle btn-sm"
                     data-bs-toggle="dropdown"
@@ -213,7 +213,7 @@ export const DeckbuilderPage = () => {
                     aria-expanded="false"
                   >
                     Formato
-                  </button>
+                  </button>*/}
                 </div>
                 <div className="row g-2 align-items-center">
                   <div className="col col-auto px-0">
