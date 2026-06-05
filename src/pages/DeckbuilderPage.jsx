@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useFormats } from "../hooks/useResource";
 import { useDeckCards } from "../hooks/useDeckCards";
 import { CardModalForm } from "../components/cardsPage/CardModalForm";
@@ -6,6 +6,7 @@ import { useCards } from "../hooks/useCards";
 import { DeckSection } from "../components/deckbuilderPage/DeckSection";
 import { DeckModal } from "../components/deckbuilderPage/DeckModal";
 import { getCardImageUrl } from "../helpers/cardImageUrl";
+import { LazyCardImage } from "../components/deckbuilderPage/LazyCardImage";
 
 export const DeckbuilderPage = () => {
   const { formatos } = useFormats();
@@ -32,7 +33,7 @@ export const DeckbuilderPage = () => {
     keywords,
     ediciones,
   } = useDeckCards(formato);
-
+  //console.log("total de cartas: ", cards);
   const { cardSelected, handlerCloseForm, handlerOpenForm, visibleForm } =
     useCards();
 
@@ -120,8 +121,8 @@ export const DeckbuilderPage = () => {
     setSelectedRace("");
   }, [selectedType]);
 
-  // Función para filtrar las cartas
-  const filterCards = (cards) => {
+  // Función para filtrar las cartas, falta entender qué es useMemo y cómo funciona
+  const filteredCards = useMemo(() => {
     return cards.filter((card) => {
       const matchesSearch =
         searchInput.trim() === "" ||
@@ -150,9 +151,16 @@ export const DeckbuilderPage = () => {
         matchesEdition
       );
     });
-  };
+  }, [
+    cards,
+    searchInput,
+    selectedType,
+    selectedRace,
+    selectedRarity,
+    selectedEdition,
+  ]);
 
-  const filteredCards = filterCards(cards);
+  //const filteredCards = filterCards(cards);
   console.log("formatos", formato);
   return (
     <>
@@ -481,12 +489,21 @@ export const DeckbuilderPage = () => {
                             className="card h-100 bg-dark border-secondary"
                             data-rarity-color={onRaritySlug(card.rarity)}
                           >
-                            <img
+                            {/*
+                              <img
+                                src={getCardImageUrl(card.ed_edid, card.edid)}
+                                className="card-img-top"
+                                alt={card.name}
+                                loading="lazy"
+                                onClick={() => handleRowClick(card)}
+                                style={{ cursor: "pointer" }}
+                              />
+                            */}
+                            <LazyCardImage
+                              key={card.id}
                               src={getCardImageUrl(card.ed_edid, card.edid)}
-                              className="card-img-top"
                               alt={card.name}
                               onClick={() => handleRowClick(card)}
-                              style={{ cursor: "pointer" }}
                             />
                             <div className="card-footer p-1 justify-content-between align-items-center">
                               <div className="btn-group btn-group-sm w-100">
