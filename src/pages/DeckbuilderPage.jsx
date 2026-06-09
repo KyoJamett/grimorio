@@ -691,6 +691,7 @@ export const DeckbuilderPage = () => {
                   </li>
                   <li>
                     <button
+                      disabled={deck.length === 0}
                       className="btn btn-warning w-100"
                       onClick={() => setShowPreview(true)}
                     >
