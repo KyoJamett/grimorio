@@ -3,7 +3,7 @@ export const DocumentList = ({ documentos, formato }) => {
     <div className="container my-4 pb-3">
       <h4>Documentos</h4>
       <div>
-        {documentos.length > 1 ? (
+        {documentos.length >= 1 ? (
           <ul>
             {documentos.map((doc) => (
               <li key={doc.id} className="li_docs">
