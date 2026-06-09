@@ -6,7 +6,7 @@ import { FormatInfo } from "../components/FormatInfo";
 import { Loading } from "../components/Loading";
 
 export function FormatPage() {
-  const { formatos} = useFormats()
+  const { formatos } = useFormats();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -21,13 +21,13 @@ export function FormatPage() {
   //Obtengo el formato a partir de los parámetros enviados al hacer click en la barra de navegacion
   const formato = formatos[getFormatParams()];
 
-  const { documentos } = useDocuments(formato?.folder)
+  const { documentos } = useDocuments(formato?.folder);
 
   // Verificar si formato está definido antes de intentar acceder a sus propiedades
   if (!formato) {
     return (
       <>
-        <Loading/>
+        <Loading />
       </>
     );
   }
@@ -35,14 +35,13 @@ export function FormatPage() {
   return (
     <>
       {/*----------------------------------------------- Componentes de info del formato */}
-      <FormatInfo formato={formato}/>
-    
-      {/* --------------------------------------------------Componente grid de ediciones*/ }
-      <EditionGrid ediciones={formato.ediciones}/>
-      
-      {/* --------------------------------------------------------Componente de documentos */ }
-      <DocumentList documentos={documentos} formato={formato}/>
-      
+      <FormatInfo formato={formato} />
+
+      {/* --------------------------------------------------Componente grid de ediciones*/}
+      <EditionGrid ediciones={formato.ediciones} />
+
+      {/* --------------------------------------------------------Componente de documentos */}
+      <DocumentList documentos={documentos} formato={formato} />
     </>
   );
 }
