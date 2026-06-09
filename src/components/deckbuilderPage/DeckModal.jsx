@@ -45,9 +45,9 @@ export const DeckModal = ({
                 <button className="btn btn-warning" onClick={exportDeckToImage}>
                   Exportar imagen
                 </button>
-                <button className="btn btn-danger" onClick={exportDeckToPDF}>
+                {/*<button className="btn btn-danger" onClick={exportDeckToPDF}>
                   Exportar PDF
-                </button>
+                </button>*/}
               </div>
             </div>
           </div>
