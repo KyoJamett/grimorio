@@ -11,6 +11,7 @@ export const DeckModal = ({
   showPreview,
   setShowPreview,
 }) => {
+  //console.log(deck);
   return (
     <>
       {showPreview && (

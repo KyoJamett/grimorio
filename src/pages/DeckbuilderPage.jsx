@@ -87,6 +87,7 @@ export const DeckbuilderPage = () => {
           name: card.name,
           type: card.type,
           quantity: 1,
+          cost: card.cost ? card.cost : null,
         },
       ];
     });
@@ -162,6 +163,19 @@ export const DeckbuilderPage = () => {
     selectedRarity,
     selectedEdition,
   ]);
+
+  const avgCost = () => {
+    const cardsWithCost = deck.filter((c) => c.cost && c.cost !== "");
+    //console.log(cards);
+    //console.log(cardsWithCost);
+    if (cardsWithCost.length === 0) return "—";
+    const total = cardsWithCost.reduce(
+      (sum, c) => sum + Number(c.cost) * c.quantity,
+      0,
+    );
+    const qty = cardsWithCost.reduce((sum, c) => sum + c.quantity, 0);
+    return (total / qty).toFixed(1);
+  };
 
   //const filteredCards = filterCards(cards);
   console.log("formatos", formato);
@@ -669,7 +683,7 @@ export const DeckbuilderPage = () => {
                     </span>
                   </li>
                   <li className="list-group-item d-flex justify-content-between fw-bold">
-                    <span>Costo promedio</span> <span>0</span>
+                    <span>Costo promedio</span> <span>{avgCost()}</span>
                   </li>
                   <li>
                     <button
