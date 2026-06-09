@@ -3,7 +3,7 @@ export const Footer = () => {
     <footer className="fixed-bottom bg-dark py-2 font-footer">
       <div className="container px-4 px-lg-5">
         <div className="small text-center">
-          Copyright &copy; 2025 - Ignacio Jamett
+          Proyecto portafolio en desarrollo
         </div>
       </div>
     </footer>
