@@ -444,4 +444,10 @@ body.page-deckbuilder .app-background {
     margin-bottom: 56px;
   }
 }
+
+.deck-table-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
 /* fin estilos para deckbuilder */

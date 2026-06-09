@@ -481,7 +481,7 @@ export const DeckbuilderPage = () => {
                   {/*<div style={{ flex: 1, overflowY: "auto", minHeight: 0 }}>*/}
                   {viewMode === "table" ? (
                     <table className="table table-sm table-hover table-striped">
-                      <thead className="table-responsive table-dark sticky-top">
+                      <thead className="table-responsive table-dark deck-table-header">
                         <tr>
                           <th style={{ width: "10%" }}>N°</th>
                           <th style={{ width: "30%" }}>Nombre</th>
