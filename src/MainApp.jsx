@@ -1,16 +1,28 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { CardRoutes } from "./routes/CardRoutes";
 import { Footer } from "./components/layout/Footer";
 
 export const MainApp = () => {
+  const location = useLocation();
+  const isDeckBuilder = location.hash
+    ? location.hash.includes("deckbuilder")
+    : location.pathname.includes("deckbuilder");
+
   return (
-    <>
-      <div className="app-background pb-4">
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        minHeight: 0,
+      }}
+    >
+      <div className="app-background">
         <Routes>
           <Route path="/*" element={<CardRoutes />} />
         </Routes>
       </div>
-      <Footer />
-    </>
+      {!isDeckBuilder && <Footer />}
+    </div>
   );
 };

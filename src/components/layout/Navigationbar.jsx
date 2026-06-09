@@ -11,7 +11,7 @@ export const Navigationbar = () => {
   };
 
   return (
-    <div className="pb-6">
+    <div className="pb-5">
       <nav className="navbar navbar-expand-lg navbar-dark  bg-dark main-navbar">
         <div className="container-fluid">
           <a className="navbar-brand" href="/grimorio/">
@@ -67,15 +67,13 @@ export const Navigationbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                
-                  <NavLink
+                <NavLink
                   className="nav-link"
                   to="/deckbuilder"
                   onClick={handleNavLinkClick}
-                  >
-                    Deckbuilder
-                  </NavLink>
-                
+                >
+                  Deckbuilder
+                </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink
@@ -86,7 +84,6 @@ export const Navigationbar = () => {
                   Acerca de
                 </NavLink>
               </li>
-              
             </ul>
           </div>
         </div>

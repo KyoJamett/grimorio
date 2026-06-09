@@ -341,7 +341,12 @@ nota de nacho: el media query solucionó el problema de la tabla no ajustandose 
   background-position: center;
   background-attachment: fixed;
   width: 100%;
-  height: auto;
+
+  /*height: auto;*/
+  display: flex;
+  flex-direction: column;
+
+  min-height: 0;
 }
 html {
   height: 100%;
@@ -350,9 +355,8 @@ html {
 #root {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100dvh;
 }
-
 
 body {
   height: 100%;
@@ -361,6 +365,12 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+body.page-deckbuilder {
+  overflow: hidden;
+  height: 100dvh;
+}
+
 .main-navbar {
   position: fixed;
   width: 100%;
@@ -424,4 +434,10 @@ body {
   }
 }
 
+/* estilo para que tabla no se oculte detrás de botones en vista movil */
+@media (max-width: 767.98px) {
+  .deckbuilder-container {
+    margin-bottom: 56px;
+  }
+}
 /* fin estilos para deckbuilder */

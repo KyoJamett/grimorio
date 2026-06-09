@@ -7,8 +7,11 @@ import { DeckSection } from "../components/deckbuilderPage/DeckSection";
 import { DeckModal } from "../components/deckbuilderPage/DeckModal";
 import { getCardImageUrl } from "../helpers/cardImageUrl";
 import { LazyCardImage } from "../components/deckbuilderPage/LazyCardImage";
+import { useBodyClass } from "../hooks/useBodyClass";
 
 export const DeckbuilderPage = () => {
+  useBodyClass("page-deckbuilder");
+
   const { formatos } = useFormats();
   const [formatoKey, setFormatoKey] = useState(null);
   const [searchInput, setSearchInput] = useState("");
@@ -185,11 +188,42 @@ export const DeckbuilderPage = () => {
           edition={ediciones}
         />
       )}
-      <div className="container-pro justify-content-center pt-2 pb-md-0">
-        <div className="border rounded overflow-hidden madera text-light">
-          <div className="row g-0">
+      <div
+        className="container-pro justify-content-center pt-2 pb-md-0 px-0"
+        style={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          minHeight: 0,
+          /*height: "500px",*/
+        }}
+      >
+        <div
+          className="border rounded overflow-hidden madera text-light deckbuilder-container"
+          style={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            minHeight: 0,
+          }}
+        >
+          <div
+            className="row g-0"
+            style={{
+              flex: 1,
+              overflow: "hidden",
+              minHeight: 0,
+              flexWrap: "nowrap",
+            }}
+          >
             <div
               className={`col-12 col-md-8 border ${mobileTab === "deck" ? "d-none d-md-block" : ""}`}
+              style={{
+                overflow: "hidden",
+                display: "flex",
+                flexDirection: "column",
+                minHeight: 0,
+              }}
             >
               {/* cómo es que col-12 no interfiere con col-md-8? si antes tenía col-8 
               por qué no se rompe el esquema en la pantalla del pc? */}
@@ -398,8 +432,35 @@ export const DeckbuilderPage = () => {
                   </div>
                 </div>
               </div>
-              <div className="table-responsive rounded-2">
-                <div style={{ height: "60vh", overflowY: "auto" }}>
+              <div
+                className="table-responsive rounded-2"
+                style={{
+                  flex: 1,
+                  minHeight: 0,
+                  overflow: "hidden",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <div
+                  className="deckbuilder-mobile-scroll"
+                  style={{
+                    minHeight: 0,
+                    overflowY: "auto",
+                    flex: 1,
+                  }}
+                  /*style={{
+                    height: "calc(100dvh - 250px)",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}*/
+                  /*style={{
+                    height: "100%",
+                    overflowY: "auto",
+                    border: "3px solid red",
+                  }}*/
+                >
+                  {/*<div style={{ flex: 1, overflowY: "auto", minHeight: 0 }}>*/}
                   {viewMode === "table" ? (
                     <table className="table table-sm table-hover table-striped">
                       <thead className="table-responsive table-dark sticky-top">
@@ -539,6 +600,7 @@ export const DeckbuilderPage = () => {
 
             <div
               className={`col-12 col-md-4 border pb-2 ${mobileTab === "pool" ? "d-none d-md-block" : ""}`}
+              style={{ overflow: "hidden" }}
             >
               <div className="p-2">
                 {" "}
@@ -627,8 +689,8 @@ export const DeckbuilderPage = () => {
       {/* inicio barra inferior, sólo visible en movil */}
 
       <div
-        className="d-flex d-md-none fixed-bottom border-top pb-6"
-        style={{ backgroundColor: "#1a1a1a", zIndex: 1000 }}
+        className="d-flex d-md-none fixed-bottom border-top"
+        style={{ height: "56px", backgroundColor: "#1a1a1a", zIndex: 1000 }}
       >
         {/* qué hace d-md-none? y fixed-bottom? border-top sólo agrega un borde en la parte superior de los botones */}
         <button
