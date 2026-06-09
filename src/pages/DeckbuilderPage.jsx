@@ -620,7 +620,14 @@ export const DeckbuilderPage = () => {
               className={`col-12 col-md-4 border pb-2 ${mobileTab === "pool" ? "d-none d-md-block" : ""}`}
               style={{ overflow: "hidden" }}
             >
-              <div className="p-2">
+              <div
+                className="p-2"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
+                }}
+              >
                 {" "}
                 {/* este padding regular los margenes de los detalles del mazo, ajustar aqui*/}
                 <input
@@ -630,8 +637,8 @@ export const DeckbuilderPage = () => {
                   value={deckName}
                   onChange={(e) => setDeckName(e.target.value)}
                 />
-                <div style={{ height: "50vh", overflowY: "auto" }}>
-                  <ul className="list-group list-group-flush">
+                <div style={{ flex: 1, minHeight: 0, overflowY: "auto" }}>
+                  <ul className="list-group list-group-flush mt-2">
                     {deck.length > 0 && (
                       <>
                         <DeckSection
