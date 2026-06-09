@@ -125,6 +125,10 @@ export const DeckbuilderPage = () => {
     setSelectedRace("");
   }, [selectedType]);
 
+  useEffect(() => {
+    setSelectedEdition([]);
+  }, [formatoKey]);
+
   // Función para filtrar las cartas, falta entender qué es useMemo y cómo funciona
   const filteredCards = useMemo(() => {
     return cards.filter((card) => {
