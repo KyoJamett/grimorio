@@ -44,11 +44,23 @@ export function useDeckCards(format) {
                 if(data?.rarities) setRarities(prev => mergeUnique(prev, data.rarities));
                 if(data?.types) setTypes(prev => mergeUnique(prev, data.types));
                 if(data?.keywords) setKeyWords(prev => mergeUnique(prev, data.keywords));
-                if(data?.edition) setEdiciones(prev => mergeUnique(prev, [data.edition]));
+                if(data?.edition) setEdiciones(prev => mergeUnique(prev, [data.edition]).sort((a,b) => a.id - b.id));
 
                 loaded++;
                 setProgress(Math.round((loaded / editions.length) * 100));
-                setCards([...allCards]);
+                //setCards([...allCards]);
+                if (loaded === editions.length) {
+                    setCards(
+                        [...allCards].sort((a, b) => {
+                            if (a.ed_edid !== b.ed_edid) {
+                                return a.ed_edid - b.ed_edid;
+                            }
+
+                            return a.edid - b.edid;
+                        })
+                     );
+                    setLoading(false);
+                }
                 if(loaded === editions.length) setLoading(false);
             })
             .catch(() => {
