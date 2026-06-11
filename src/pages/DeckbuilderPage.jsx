@@ -117,9 +117,9 @@ export const DeckbuilderPage = () => {
     );
   };
 
-  useEffect(() => {
+  /*useEffect(() => {
     console.log(deck);
-  }, [deck]);
+  }, [deck]);*/
 
   useEffect(() => {
     setSelectedRace("");
@@ -182,7 +182,7 @@ export const DeckbuilderPage = () => {
   };
 
   //const filteredCards = filterCards(cards);
-  console.log("formatos", formato);
+  //console.log("formatos", formato);
   return (
     <>
       {!showPreview || (

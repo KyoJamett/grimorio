@@ -20,7 +20,7 @@ export function FormatPage() {
 
   //Obtengo el formato a partir de los parámetros enviados al hacer click en la barra de navegacion
   const formato = formatos[getFormatParams()];
-
+  console.log(formato);
   const { documentos } = useDocuments(formato?.folder);
 
   // Verificar si formato está definido antes de intentar acceder a sus propiedades
@@ -34,14 +34,14 @@ export function FormatPage() {
 
   return (
     <>
-      {/*----------------------------------------------- Componentes de info del formato */}
-      <FormatInfo formato={formato} />
-
       {/* --------------------------------------------------Componente grid de ediciones*/}
-      <EditionGrid ediciones={formato.ediciones} />
+      <EditionGrid ediciones={formato.ediciones} formato={formato} />
 
       {/* --------------------------------------------------------Componente de documentos */}
       <DocumentList documentos={documentos} formato={formato} />
+
+      {/*----------------------------------------------- Componentes de info del formato */}
+      <FormatInfo formato={formato} />
     </>
   );
 }
