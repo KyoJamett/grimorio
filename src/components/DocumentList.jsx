@@ -8,7 +8,7 @@ export const DocumentList = ({ documentos, formato }) => {
             {documentos.map((doc) => (
               <li key={doc.id} className="li_docs">
                 <a
-                  href={`docs/${formato.folder}/${doc.file}`} // Ruta construida dinámicamente
+                  href={`/docs/${formato.folder}/${doc.file}`} // Ruta construida dinámicamente
                   className="btn btn-primary"
                   target="_blank"
                   rel="noopener noreferrer"
