@@ -1,6 +1,6 @@
 export const DocumentList = ({ documentos, formato }) => {
   return (
-    <div className="container my-4 pb-3">
+    <div className="container-md my-4 pb-3">
       <h4>Documentos</h4>
       <div>
         {documentos.length >= 1 ? (
