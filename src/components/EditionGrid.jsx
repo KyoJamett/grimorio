@@ -3,7 +3,7 @@ import { getEditionLogo } from "../helpers/editionLogo";
 
 export const EditionGrid = ({ ediciones, formato }) => {
   return (
-    <div className="container-md my-4">
+    <div className="container my-4">
       <div className="pb-3 text-center">
         <h2>{formato.name}</h2>
       </div>
