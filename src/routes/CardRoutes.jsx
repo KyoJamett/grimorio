@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, Form } from "react-router-dom";
 import { CardsPage } from "../pages/CardsPage";
 import { Navigationbar } from "../components/layout/Navigationbar";
 import { Home } from "../pages/Home";
@@ -23,6 +23,7 @@ export const CardRoutes = () => {
             <Route path="/grimorio" element={<Home />} />
             <Route path="/" element={<Navigate to="/grimorio" />} />
             <Route path="/bloque-furia" element={<FormatPage />} />
+            <Route path="/feudal" element={<FormatPage />} />
             <Route path="/escuelas-elementales" element={<FormatPage />} />
             <Route path="/civilizaciones" element={<FormatPage />} />
             <Route path="/expediciones" element={<FormatPage />} />
