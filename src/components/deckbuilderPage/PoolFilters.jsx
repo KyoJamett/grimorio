@@ -16,8 +16,9 @@ export const PoolFilters = ({
   setSelectedRace,
   selectedEdition,
   handlerEditionChange,
+  ediciones,
 }) => {
-  const { ediciones } = useDeckCards();
+  //const { ediciones } = useDeckCards();
   return (
     <div className="row g-2 align-items-center">
       <div className="col col-auto px-0">

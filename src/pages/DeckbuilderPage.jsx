@@ -1,20 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
-import { useFormats } from "../hooks/useResource";
 import { useDeckCards } from "../hooks/useDeckCards";
 import { CardModalForm } from "../components/cardsPage/CardModalForm";
 import { useCards } from "../hooks/useCards";
-import { DeckSection } from "../components/deckbuilderPage/DeckSection";
 import { DeckModal } from "../components/deckbuilderPage/DeckModal";
 import { getCardImageUrl } from "../helpers/cardImageUrl";
-import { LazyCardImage } from "../components/deckbuilderPage/LazyCardImage";
 import { useBodyClass } from "../hooks/useBodyClass";
 import { useFormatsContext } from "../context/FormatsContext";
 import { useDeckContext } from "../context/DeckContext";
 import { useCardPool } from "../hooks/useCardPool";
 import { useCardContext } from "../context/CardContext";
-import { FormatSelector } from "../components/deckbuilderPage/FormatSelector";
-import { PoolFilters } from "../components/deckbuilderPage/PoolFilters";
-import { PoolCards } from "../components/deckbuilderPage/PoolCards";
 import { BottomNavigation } from "../components/layout/BottomNavigation";
 import { DeckPanel } from "../components/deckbuilderPage/DeckPanel";
 import { PoolCardsPanel } from "../components/deckbuilderPage/PoolCardsPanel";
@@ -193,6 +187,7 @@ export const DeckbuilderPage = () => {
               handleRowClick={handleRowClick}
               onRaritySlug={onRaritySlug}
               onTypes={onTypes}
+              ediciones={ediciones}
             />
 
             <DeckPanel

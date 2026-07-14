@@ -25,6 +25,7 @@ export const PoolCardsPanel = ({
   handleRowClick,
   onRaritySlug,
   onTypes,
+  ediciones,
 }) => {
   return (
     <div
@@ -57,6 +58,7 @@ export const PoolCardsPanel = ({
           setSelectedRace={setSelectedRace}
           selectedEdition={selectedEdition}
           handlerEditionChange={handlerEditionChange}
+          ediciones={ediciones}
         />
       </div>
       <PoolCards
