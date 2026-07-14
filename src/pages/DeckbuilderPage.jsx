@@ -68,16 +68,25 @@ export const DeckbuilderPage = () => {
     return foundRarity ? foundRarity.slug || "sin rareza" : "default";
   };
 
+  const cardsByEdition = useMemo(() => {
+    return cards.filter((card) => {
+      return (
+        selectedEdition.length === 0 ||
+        selectedEdition.includes(String(card.ed_edid ?? ""))
+      );
+    });
+  }, [cards, selectedEdition]);
+
   const filteredRaces = races.filter((race) =>
-    cards.some((card) => String(card.race) === race.id),
+    cardsByEdition.some((card) => String(card.race) === race.id),
   );
 
   const filteredRarities = rarities.filter((rarity) =>
-    cards.some((card) => String(card.rarity) === rarity.id),
+    cardsByEdition.some((card) => String(card.rarity) === rarity.id),
   );
 
   const filteredTypes = types.filter((type) =>
-    cards.some((card) => String(card.type) === type.id),
+    cardsByEdition.some((card) => String(card.type) === type.id),
   );
 
   const handleRowClick = (card) => {
