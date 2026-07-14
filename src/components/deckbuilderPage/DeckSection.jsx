@@ -1,10 +1,9 @@
-export const DeckSection = ({
-  deck = [],
-  type,
-  sectionName,
-  handlerAddCard,
-  handlerRemoveCard,
-}) => {
+import { useCardContext } from "../../context/CardContext";
+import { useDeckContext } from "../../context/DeckContext";
+
+export const DeckSection = ({ type, sectionName }) => {
+  const { deck, handlerAddCard, handlerRemoveCard } = useDeckContext();
+
   return (
     <>
       {deck.some((c) => String(c.type) === type) && (

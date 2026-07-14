@@ -1,17 +1,12 @@
+import { useDeckContext } from "../../context/DeckContext";
 import {
   exportDeckToImage,
   exportDeckToPDF,
 } from "../../helpers/exportDeckToPDF";
 import { DeckPreview } from "./DeckPreview";
 
-export const DeckModal = ({
-  deck,
-  deckName,
-  formato,
-  showPreview,
-  setShowPreview,
-}) => {
-  //console.log(deck);
+export const DeckModal = ({ formato, showPreview, setShowPreview }) => {
+  const { deck, deckName } = useDeckContext();
   return (
     <>
       {showPreview && (

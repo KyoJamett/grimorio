@@ -8,9 +8,11 @@ import { AboutPage } from "../pages/AboutPage";
 import { DeckbuilderPage } from "../pages/DeckbuilderPage";
 import { useFormats } from "../hooks/useResource";
 import { MainLoading } from "../components/layout/MainLoading";
+import { DeckProvider } from "../context/DeckContext";
+import { useFormatsContext } from "../context/FormatsContext";
 
 export const CardRoutes = () => {
-  const { loadingFormats } = useFormats();
+  const { loadingFormats } = useFormatsContext();
   return (
     <>
       {loadingFormats ? (
@@ -31,7 +33,14 @@ export const CardRoutes = () => {
             <Route path="/primera-era" element={<FormatPage />} />
             <Route path="/diccionario" element={<DictionaryPage />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/deckbuilder" element={<DeckbuilderPage />} />
+            <Route
+              path="/deckbuilder"
+              element={
+                <DeckProvider>
+                  <DeckbuilderPage />
+                </DeckProvider>
+              }
+            />
           </Routes>
         </>
       )}

@@ -4,15 +4,13 @@ import { useEdition } from "../hooks/useEdition";
 import { Loading } from "../components/Loading";
 import { CardModalForm } from "../components/cardsPage/CardModalForm";
 import { CardsList } from "../components/cardsPage/CardsList";
+import { useCardContext } from "../context/CardContext";
 
 export function CardsPage() {
-  const {
-    cards,
-    cardSelected,
-    visibleForm,
-    handlerOpenForm,
-    handlerCloseForm,
-  } = useCards();
+  const { cards } = useCards();
+
+  const { cardSelected, visibleForm, handlerOpenForm, handlerCloseForm } =
+    useCardContext();
 
   const navigate = useNavigate();
   const { ed } = useParams();
@@ -45,7 +43,7 @@ export function CardsPage() {
     keywords = dataCards.keywords;
     edition = dataCards.edition;
     cardsArray = dataCards.cards.sort(
-      (a, b) => Number(a.edid) - Number(b.edid)
+      (a, b) => Number(a.edid) - Number(b.edid),
     );
   }
 

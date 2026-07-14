@@ -1,8 +1,7 @@
+import { useCardContext } from "../../context/CardContext";
 import { CardForm } from "../CardForm";
 
 export const CardModalForm = ({
-  cardSelected,
-  handlerCloseForm,
   races,
   rarities,
   types,
@@ -15,6 +14,8 @@ export const CardModalForm = ({
       handlerCloseForm();
     }
   };
+
+  const { cardSelected, handlerCloseForm } = useCardContext();
 
   return (
     <>

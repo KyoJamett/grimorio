@@ -8,24 +8,27 @@ import { DeckModal } from "../components/deckbuilderPage/DeckModal";
 import { getCardImageUrl } from "../helpers/cardImageUrl";
 import { LazyCardImage } from "../components/deckbuilderPage/LazyCardImage";
 import { useBodyClass } from "../hooks/useBodyClass";
+import { useFormatsContext } from "../context/FormatsContext";
+import { useDeckContext } from "../context/DeckContext";
+import { useCardPool } from "../hooks/useCardPool";
+import { useCardContext } from "../context/CardContext";
 
 export const DeckbuilderPage = () => {
   useBodyClass("page-deckbuilder");
 
-  const { formatos } = useFormats();
-  const [formatoKey, setFormatoKey] = useState(null);
-  const [searchInput, setSearchInput] = useState("");
-  const [selectedType, setSelectedType] = useState("");
-  const [selectedRace, setSelectedRace] = useState("");
-  const [selectedRarity, setSelectedRarity] = useState("");
-  const [selectedEdition, setSelectedEdition] = useState([]);
-  const [deck, setDeck] = useState([]);
-  const [showPreview, setShowPreview] = useState(false);
-  const [deckName, setDeckName] = useState("");
-  const [viewMode, setViewMode] = useState("table");
-  const [mobileTab, setMobileTab] = useState("pool"); // 'pool' | 'deck'
+  //useContext
+  const { formatos } = useFormatsContext();
+  const { deck, deckName, handlerAddCard, handlerRemoveCard, handlerDeckName } =
+    useDeckContext();
 
+  const { cardSelected, handlerCloseForm, handlerOpenForm, visibleForm } =
+    useCardContext();
+
+  const [formatoKey, setFormatoKey] = useState(null);
+  const [showPreview, setShowPreview] = useState(false);
+  const [mobileTab, setMobileTab] = useState("pool"); // 'pool' | 'deck'
   const formato = formatoKey ? formatos[formatoKey] : null;
+
   const {
     cards,
     loading,
@@ -37,8 +40,23 @@ export const DeckbuilderPage = () => {
     ediciones,
   } = useDeckCards(formato);
   //console.log("total de cartas: ", cards);
-  const { cardSelected, handlerCloseForm, handlerOpenForm, visibleForm } =
-    useCards();
+
+  const {
+    searchInput,
+    setSearchInput,
+    selectedType,
+    setSelectedType,
+    selectedRace,
+    setSelectedRace,
+    selectedRarity,
+    setSelectedRarity,
+    selectedEdition,
+    setSelectedEdition,
+    handlerEditionChange,
+    viewMode,
+    setViewMode,
+    filteredCards,
+  } = useCardPool(cards);
 
   const onTypes = (type) => {
     const foundType = types.find((t) => t.id == type);
@@ -69,104 +87,20 @@ export const DeckbuilderPage = () => {
     );
   };
 
-  const handlerAddCard = (card) => {
-    setDeck((prevDeck) => {
-      const existing = prevDeck.find((c) => c.id === card.id);
-
-      if (existing) {
-        return prevDeck.map((c) => {
-          return c.id === card.id ? { ...c, quantity: c.quantity + 1 } : c;
-        });
-      }
-      return [
-        ...prevDeck,
-        {
-          id: card.id,
-          ed_edid: card.ed_edid,
-          edid: card.edid,
-          name: card.name,
-          type: card.type,
-          quantity: 1,
-          cost: card.cost ? card.cost : null,
-        },
-      ];
-    });
-  };
-
-  const handlerRemoveCard = (card) => {
-    setDeck((prevDeck) => {
-      const existing = prevDeck.find((c) => c.id === card.id);
-
-      if (existing) {
-        if (existing.quantity > 1) {
-          return prevDeck.map((c) => {
-            return c.id === card.id ? { ...c, quantity: c.quantity - 1 } : c;
-          });
-        }
-      }
-      return prevDeck.filter((c) => c.id !== card.id);
-    });
-  };
-
-  const handlerEditionChange = (id) => {
-    setSelectedEdition(
-      (prev) =>
-        prev.includes(String(id))
-          ? prev.filter((e) => e !== String(id)) // quitar
-          : [...prev, String(id)], // agregar
-    );
-  };
-
+  //ver el mazo por consola
   /*useEffect(() => {
     console.log(deck);
   }, [deck]);*/
 
+  //limpiar el selector de raza cuando se cambie de tipo de carta
   useEffect(() => {
     setSelectedRace("");
   }, [selectedType]);
 
+  //limpiar los filtros de ediciones cuando se cambie el formato
   useEffect(() => {
     setSelectedEdition([]);
   }, [formatoKey]);
-
-  // Función para filtrar las cartas, falta entender qué es useMemo y cómo funciona
-  const filteredCards = useMemo(() => {
-    return cards.filter((card) => {
-      const matchesSearch =
-        searchInput.trim() === "" ||
-        (card.name ?? "")
-          .toLowerCase()
-          .includes(searchInput.trim().toLowerCase());
-
-      const matchesType =
-        selectedType === "" || String(card.type ?? "") === String(selectedType);
-
-      const matchesRace =
-        selectedRace === "" || String(card.race ?? "") === String(selectedRace);
-
-      const matchesRarity =
-        selectedRarity === "" ||
-        String(card.rarity ?? "") === String(selectedRarity);
-
-      const matchesEdition =
-        selectedEdition.length === 0 ||
-        selectedEdition.includes(String(card.ed_edid ?? ""));
-      return (
-        matchesSearch &&
-        matchesType &&
-        matchesRace &&
-        matchesRarity &&
-        matchesEdition
-      );
-    });
-  }, [
-    cards,
-    searchInput,
-    selectedType,
-    selectedRace,
-    selectedRarity,
-    selectedEdition,
-  ]);
 
   const avgCost = () => {
     const cardsWithCost = deck.filter((c) => c.cost && c.cost !== "");
@@ -187,8 +121,6 @@ export const DeckbuilderPage = () => {
     <>
       {!showPreview || (
         <DeckModal
-          deck={deck}
-          deckName={deckName}
           formato={formato.name}
           showPreview={showPreview}
           setShowPreview={setShowPreview}
@@ -197,8 +129,6 @@ export const DeckbuilderPage = () => {
 
       {!visibleForm || (
         <CardModalForm
-          cardSelected={cardSelected}
-          handlerCloseForm={handlerCloseForm}
           races={races}
           rarities={rarities}
           types={types}
@@ -635,53 +565,18 @@ export const DeckbuilderPage = () => {
                   className="form-control mb-2"
                   placeholder="Nombre del mazo..."
                   value={deckName}
-                  onChange={(e) => setDeckName(e.target.value)}
+                  onChange={(e) => handlerDeckName(e.target.value)}
                 />
                 <div style={{ flex: 1, minHeight: 0, overflowY: "auto" }}>
                   <ul className="list-group list-group-flush mt-2">
                     {deck.length > 0 && (
                       <>
-                        <DeckSection
-                          deck={deck}
-                          type={"1"}
-                          sectionName={"Aliados"}
-                          handlerAddCard={handlerAddCard}
-                          handlerRemoveCard={handlerRemoveCard}
-                        />
-
-                        <DeckSection
-                          deck={deck}
-                          type={"2"}
-                          sectionName={"Talismanes"}
-                          handlerAddCard={handlerAddCard}
-                          handlerRemoveCard={handlerRemoveCard}
-                        />
-                        <DeckSection
-                          deck={deck}
-                          type={"3"}
-                          sectionName={"Armas"}
-                          handlerAddCard={handlerAddCard}
-                          handlerRemoveCard={handlerRemoveCard}
-                        />
-                        <DeckSection
-                          deck={deck}
-                          type={"4"}
-                          sectionName={"Totems"}
-                          handlerAddCard={handlerAddCard}
-                          handlerRemoveCard={handlerRemoveCard}
-                        />
-                        <DeckSection
-                          deck={deck}
-                          type={"5"}
-                          sectionName={"Oros"}
-                          handlerAddCard={handlerAddCard}
-                          handlerRemoveCard={handlerRemoveCard}
-                        />
-                        <DeckSection
-                          deck={deck}
-                          type={"6"}
-                          sectionName={"Monumento"}
-                        />
+                        <DeckSection type={"1"} sectionName={"Aliados"} />
+                        <DeckSection type={"2"} sectionName={"Talismanes"} />
+                        <DeckSection type={"3"} sectionName={"Armas"} />
+                        <DeckSection type={"4"} sectionName={"Totems"} />
+                        <DeckSection type={"5"} sectionName={"Oros"} />
+                        <DeckSection type={"6"} sectionName={"Monumento"} />
                       </>
                     )}
                   </ul>
