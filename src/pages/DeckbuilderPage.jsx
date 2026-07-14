@@ -12,6 +12,9 @@ import { useFormatsContext } from "../context/FormatsContext";
 import { useDeckContext } from "../context/DeckContext";
 import { useCardPool } from "../hooks/useCardPool";
 import { useCardContext } from "../context/CardContext";
+import { FormatSelector } from "../components/deckbuilderPage/FormatSelector";
+import { PoolFilters } from "../components/deckbuilderPage/PoolFilters";
+import { PoolCards } from "../components/deckbuilderPage/PoolCards";
 
 export const DeckbuilderPage = () => {
   useBodyClass("page-deckbuilder");
@@ -178,372 +181,33 @@ export const DeckbuilderPage = () => {
               <div className="p-2 border-bottom">
                 {" "}
                 {/* este padding regular los margenes de la tabla pool de cartas, ajustar aqui*/}
-                <div className="d-flex gap-2 mb-3 align-items-center">
-                  {/* qué es d-flex? */}
-                  <select
-                    className="form-select"
-                    onChange={(e) => setFormatoKey(e.target.value)}
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Selecciona un formato
-                    </option>
-                    {Object.entries(formatos).map(([key, f]) => (
-                      <option key={key} value={key}>
-                        {f.name}
-                      </option>
-                    ))}
-                  </select>
-
-                  {/*<button
-                    type="button"
-                    className="btn btn-warning dropdown-toggle btn-sm"
-                    data-bs-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Formato
-                  </button>*/}
-                </div>
-                <div className="row g-2 align-items-center">
-                  <div className="col col-auto px-0">
-                    <div className="btn-group">
-                      <button
-                        className={`btn btn-sm ${viewMode === "table" ? "btn-warning" : "btn-outline-warning"}`}
-                        onClick={() => setViewMode("table")}
-                      >
-                        ☰
-                      </button>
-                      <button
-                        className={`btn btn-sm ${viewMode === "grid" ? "btn-warning" : "btn-outline-warning"}`}
-                        onClick={() => setViewMode("grid")}
-                      >
-                        ⊞
-                      </button>
-                    </div>
-                  </div>
-                  <div className="col col-auto">
-                    <input
-                      className="form-control custom-search-input"
-                      type="search"
-                      placeholder="Buscar carta..."
-                      aria-label="Search"
-                      data-bs-theme="dark"
-                      onChange={(e) => setSearchInput(e.target.value)}
-                    />
-                  </div>
-                  <div className="col-4 col-md-auto">
-                    <div className="btn-group w-100">
-                      <button
-                        type="button"
-                        className="btn btn-warning dropdown-toggle w-100 btn-sm"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        {selectedType === ""
-                          ? "Tipo de carta"
-                          : filteredTypes.find(
-                              (t) => String(t.id) === String(selectedType),
-                            )?.name}
-                      </button>
-                      <div className="dropdown-menu">
-                        <a
-                          className="dropdown-item"
-                          href="#"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setSelectedType("");
-                          }}
-                        >
-                          Todos
-                        </a>
-                        {filteredTypes.map(({ id, name }) => (
-                          <a
-                            key={id}
-                            className="dropdown-item"
-                            href="#"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              setSelectedType(String(id));
-                            }}
-                          >
-                            {name}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-4 col-md-auto">
-                    <div className="btn-group w-100">
-                      <button
-                        type="button"
-                        className="btn btn-warning dropdown-toggle w-100 btn-sm"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        {selectedRarity === ""
-                          ? "Frecuencia"
-                          : filteredRarities.find(
-                              (t) => String(t.id) === String(selectedRarity),
-                            )?.name}
-                      </button>
-                      <div className="dropdown-menu">
-                        <a
-                          className="dropdown-item"
-                          href="#"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setSelectedRarity("");
-                          }}
-                        >
-                          Todas
-                        </a>
-                        {filteredRarities.map(({ id, name }) => (
-                          <a
-                            key={id}
-                            className="dropdown-item"
-                            href="#"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              setSelectedRarity(String(id));
-                            }}
-                          >
-                            {name}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  {selectedType == 1 && (
-                    <div className="col-4 col-md-auto">
-                      <div className="btn-group w-100">
-                        <button
-                          type="button"
-                          className="btn btn-warning dropdown-toggle w-100 btn-sm"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false"
-                        >
-                          {selectedRace === ""
-                            ? "Raza"
-                            : filteredRaces.find(
-                                (t) => String(t.id) === String(selectedRace),
-                              )?.name}
-                        </button>
-                        <div className="dropdown-menu">
-                          <a
-                            className="dropdown-item"
-                            href="#"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              setSelectedRace("");
-                            }}
-                          >
-                            Todos
-                          </a>
-                          {filteredRaces.map(({ id, name }) => (
-                            <a
-                              key={id}
-                              className="dropdown-item"
-                              href="#"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                setSelectedRace(String(id));
-                              }}
-                            >
-                              {name}
-                            </a>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="d-flex flex-row flex-wrap gap-2">
-                    {/* acá están en una misma línea debido a d-flex */}
-                    {ediciones.map(({ id, title }) => (
-                      <div className="form-check form-switch" key={id}>
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id={id}
-                          checked={selectedEdition.includes(String(id))}
-                          onChange={() => handlerEditionChange(id)}
-                        />
-                        <label
-                          className="form-check-label responsive-label"
-                          htmlFor={id}
-                        >
-                          {title}
-                        </label>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <FormatSelector setFormatoKey={setFormatoKey} />
+                <PoolFilters
+                  filteredTypes={filteredTypes}
+                  filteredRarities={filteredRarities}
+                  filteredRaces={filteredRaces}
+                  viewMode={viewMode}
+                  setViewMode={setViewMode}
+                  setSearchInput={setSearchInput}
+                  selectedType={selectedType}
+                  setSelectedType={setSelectedType}
+                  selectedRarity={selectedRarity}
+                  setSelectedRarity={setSelectedRarity}
+                  selectedRace={selectedRace}
+                  setSelectedRace={setSelectedRace}
+                  selectedEdition={selectedEdition}
+                  handlerEditionChange={handlerEditionChange}
+                />
               </div>
-              <div
-                className="table-responsive rounded-2"
-                style={{
-                  flex: 1,
-                  minHeight: 0,
-                  overflow: "hidden",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <div
-                  className="deckbuilder-mobile-scroll"
-                  style={{
-                    minHeight: 0,
-                    overflowY: "auto",
-                    flex: 1,
-                  }}
-                  /*style={{
-                    height: "calc(100dvh - 250px)",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}*/
-                  /*style={{
-                    height: "100%",
-                    overflowY: "auto",
-                    border: "3px solid red",
-                  }}*/
-                >
-                  {/*<div style={{ flex: 1, overflowY: "auto", minHeight: 0 }}>*/}
-                  {viewMode === "table" ? (
-                    <table className="table table-sm table-hover table-striped">
-                      <thead className="table-responsive table-dark deck-table-header">
-                        <tr>
-                          <th style={{ width: "10%" }}>N°</th>
-                          <th style={{ width: "30%" }}>Nombre</th>
-                          <th style={{ width: "15%" }}>Tipo</th>
-                          <th style={{ width: "10%" }}>Coste</th>
-                          <th style={{ width: "5%" }}></th>
-                        </tr>
-                      </thead>
-
-                      <tbody>
-                        {loading && (
-                          <tr>
-                            <td colSpan="5">
-                              <div
-                                className="progress my-2"
-                                style={{ height: "4px" }}
-                              >
-                                <div
-                                  className="progress-bar bg-warning"
-                                  style={{
-                                    width: `${progress}%`,
-                                    transition: "width 0.3s",
-                                  }}
-                                />
-                              </div>
-                            </td>
-                          </tr>
-                        )}
-                        {filteredCards.map((card) => (
-                          <tr
-                            onClick={() => handleRowClick(card)}
-                            key={`${card.id}`}
-                            style={{ cursor: "pointer" }}
-                            data-rarity-color={onRaritySlug(card.rarity)}
-                            className="rarity"
-                          >
-                            <td>{card.edid}</td>
-                            <td>{card.name.toUpperCase()}</td>
-                            <td>{onTypes(card.type)}</td>
-                            <td>{card.cost ?? "—"}</td>
-                            <td>
-                              <div
-                                className="btn-group"
-                                role="group"
-                                aria-label="Copias"
-                              >
-                                <button
-                                  type="button"
-                                  className="btn btn-danger"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    handlerRemoveCard(card);
-                                  }}
-                                >
-                                  -1
-                                </button>
-                                <button
-                                  type="button"
-                                  className="btn btn-primary"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    handlerAddCard(card);
-                                  }}
-                                >
-                                  +1
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
-                        ))}
-                        {/*console.log("cartas en tabla")*/}
-                        {/*console.log(filteredCards)*/}
-                      </tbody>
-                    </table>
-                  ) : (
-                    <div className="row row-cols-3 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-2 p-2">
-                      {/* con row-cols-2 puedes modificar cuantas cartas se ven por fila, puedes asigar valroes fijos como en dreamborn
-                          investigar cómo funcionan mezclando row-cols-sm-3 y los md y lg. Al momento de codificar, se ven siempre dos cartas
-                          al agregar g-2 recien pasa a 5 cartas por fila.
-                      */}
-                      {filteredCards.map((card) => (
-                        <div className="col" key={card.id}>
-                          <div
-                            className="card h-100 bg-dark border-secondary"
-                            data-rarity-color={onRaritySlug(card.rarity)}
-                          >
-                            {/*
-                              <img
-                                src={getCardImageUrl(card.ed_edid, card.edid)}
-                                className="card-img-top"
-                                alt={card.name}
-                                loading="lazy"
-                                onClick={() => handleRowClick(card)}
-                                style={{ cursor: "pointer" }}
-                              />
-                            */}
-                            <LazyCardImage
-                              key={card.id}
-                              src={getCardImageUrl(card.ed_edid, card.edid)}
-                              alt={card.name}
-                              onClick={() => handleRowClick(card)}
-                            />
-                            <div className="card-footer p-1 justify-content-between align-items-center">
-                              <div className="btn-group btn-group-sm w-100">
-                                {/* con w-100 los botones usan todo el espacio ancho disponible (width-100) si los quieres hacer m´+as pequeños deberías partir modificando este atributo */}
-                                <button
-                                  className="btn btn-danger"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    handlerRemoveCard(card);
-                                  }}
-                                >
-                                  -1
-                                </button>
-                                <button
-                                  className="btn btn-primary"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    handlerAddCard(card);
-                                  }}
-                                >
-                                  +1
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
+              <PoolCards
+                loading={loading}
+                progress={progress}
+                filteredCards={filteredCards}
+                handleRowClick={handleRowClick}
+                onRaritySlug={onRaritySlug}
+                viewMode={viewMode}
+                onTypes={onTypes}
+              />
             </div>
 
             <div
