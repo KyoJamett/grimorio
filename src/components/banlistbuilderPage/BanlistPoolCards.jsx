@@ -79,17 +79,45 @@ export const BanlistPoolCards = ({
                   <td>{onTypes(card.type)}</td>
                   <td>{card.cost ?? "—"}</td>
                   <td>
-                    <div className="btn-group" role="group" aria-label="Copias">
+                    <div className="dropdown">
                       <button
+                        className="btn btn-danger dropdown-toggle"
                         type="button"
-                        className="btn btn-danger"
+                        id="dropdownMenuButton"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
                         onClick={(e) => {
                           e.stopPropagation();
-                          handlerAddCard(card);
+                          e.preventDefault();
                         }}
                       >
                         Restringir
                       </button>
+                      <div
+                        className="dropdown-menu"
+                        aria-labelledby="dropdownMenuButton"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          e.preventDefault();
+                        }}
+                      >
+                        {rules.map(({ id, label }) => {
+                          return (
+                            <button
+                              key={id}
+                              type="button"
+                              className="dropdown-item"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handlerAddCard(card, id);
+                              }}
+                            >
+                              {label}
+                            </button>
+                          );
+                        })}
+                      </div>
                     </div>
                   </td>
                 </tr>
@@ -128,27 +156,28 @@ export const BanlistPoolCards = ({
                           data-bs-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
+                          onClick={(e) => e.stopPropagation()}
                         >
                           Restringir
                         </button>
                         <div
                           className="dropdown-menu"
                           aria-labelledby="dropdownMenuButton"
+                          onClick={(e) => e.stopPropagation()}
                         >
                           {rules.map(({ id, label }) => {
                             return (
-                              <a
+                              <button
                                 key={id}
+                                type="button"
                                 className="dropdown-item"
-                                href="#"
                                 onClick={(e) => {
-                                  e.preventDefault();
+                                  e.stopPropagation();
                                   handlerAddCard(card, id);
-                                  onCloseForm();
                                 }}
                               >
                                 {label}
-                              </a>
+                              </button>
                             );
                           })}
                         </div>

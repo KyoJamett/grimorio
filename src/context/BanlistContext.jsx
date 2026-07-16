@@ -9,6 +9,11 @@ export const BanlistProvider = ({ children }) => {
   //HANDLERS
   const handlerAddCard = (card, rule, obs = "") => {
     setBanlist((prevBan) => {
+      const existing = prevBan.some((c) => c.id === card.id);
+
+      if (existing) {
+        return prevBan.map((c) => (c.id === card.id ? { ...c, rule, obs } : c));
+      }
       return [
         ...prevBan,
         {
