@@ -12,6 +12,13 @@ export const BanlistPoolCards = ({
   handlerAddCard,
   handlerRemoveCard,
 }) => {
+  const rules = [
+    { id: "1", label: "Prohibida" },
+    { id: "2", label: "Única" },
+    { id: "3", label: "Sólo dos copias" },
+    { id: "4", label: "Errante" },
+    { id: "5", label: "Errata" },
+  ];
   return (
     <div
       className="table-responsive rounded-2"
@@ -113,15 +120,39 @@ export const BanlistPoolCards = ({
                     <div className="btn-group btn-group-sm w-100">
                       {/* con w-100 los botones usan todo el espacio ancho disponible (width-100) si los quieres hacer m´+as pequeños deberías partir modificando este atributo */}
 
-                      <button
-                        className="btn btn-primary"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handlerAddCard(card);
-                        }}
-                      >
-                        Restringir
-                      </button>
+                      <div className="dropdown">
+                        <button
+                          className="btn btn-danger dropdown-toggle"
+                          type="button"
+                          id="dropdownMenuButton"
+                          data-bs-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          Restringir
+                        </button>
+                        <div
+                          className="dropdown-menu"
+                          aria-labelledby="dropdownMenuButton"
+                        >
+                          {rules.map(({ id, label }) => {
+                            return (
+                              <a
+                                key={id}
+                                className="dropdown-item"
+                                href="#"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  handlerAddCard(card, id);
+                                  onCloseForm();
+                                }}
+                              >
+                                {label}
+                              </a>
+                            );
+                          })}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

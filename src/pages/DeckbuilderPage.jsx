@@ -12,6 +12,7 @@ import { useCardContext } from "../context/CardContext";
 import { BottomNavigation } from "../components/layout/BottomNavigation";
 import { DeckPanel } from "../components/deckbuilderPage/DeckPanel";
 import { PoolCardsPanel } from "../components/deckbuilderPage/PoolCardsPanel";
+import { CardForm } from "../components/CardForm";
 
 export const DeckbuilderPage = () => {
   useBodyClass("page-deckbuilder");
@@ -137,13 +138,17 @@ export const DeckbuilderPage = () => {
       )}
 
       {!visibleForm || (
-        <CardModalForm
-          races={races}
-          rarities={rarities}
-          types={types}
-          keywords={keywords}
-          edition={ediciones}
-        />
+        <CardModalForm title="Ficha de carta">
+          <CardForm
+            cardSelected={cardSelected}
+            handlerCloseForm={handlerCloseForm}
+            races={races}
+            rarities={rarities}
+            types={types}
+            keywordsArray={keywords}
+            edition={ediciones}
+          />
+        </CardModalForm>
       )}
       <div
         className="container-pro justify-content-center pt-2 pb-md-0 px-0"

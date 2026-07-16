@@ -1,13 +1,7 @@
 import { useCardContext } from "../../context/CardContext";
 import { CardForm } from "../CardForm";
 
-export const CardModalForm = ({
-  races,
-  rarities,
-  types,
-  keywords,
-  edition,
-}) => {
+export const CardModalForm = ({ title, children }) => {
   const handleClickOutside = (event) => {
     // Verifica si el clic ocurrió fuera del modal
     if (event.target.classList.contains("modal")) {
@@ -29,19 +23,9 @@ export const CardModalForm = ({
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title">Ficha de carta</h5>
+                <h5 className="modal-title">{title}</h5>
               </div>
-              <div className="modal-body">
-                <CardForm
-                  cardSelected={cardSelected}
-                  handlerCloseForm={handlerCloseForm}
-                  races={races}
-                  rarities={rarities}
-                  types={types}
-                  keywordsArray={keywords}
-                  edition={edition}
-                />
-              </div>
+              <div className="modal-body">{children}</div>
             </div>
           </div>
         </div>

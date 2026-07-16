@@ -37,7 +37,7 @@ export const BanlistPanel = ({
                 <BanSection
                   banlist={banlist}
                   rule={"1"}
-                  sectionName={"Baneada"}
+                  sectionName={"Prohibida"}
                 />
                 <BanSection
                   banlist={banlist}
@@ -54,11 +54,10 @@ export const BanlistPanel = ({
                   rule={"4"}
                   sectionName={"Errante"}
                 />
-                <BanSection banlist={banlist} rule={"5"} sectionName={"Oros"} />
                 <BanSection
                   banlist={banlist}
-                  rule={"6"}
-                  sectionName={"Monumento"}
+                  rule={"5"}
+                  sectionName={"Errata"}
                 />
               </>
             )}

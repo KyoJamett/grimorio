@@ -1,0 +1,195 @@
+import { useEffect, useState } from "react";
+import { useCards } from "../../hooks/useCards";
+import { getCardImageUrl } from "../../helpers/cardImageUrl";
+import { useBanlistContext } from "../../context/BanlistContext";
+
+export const BanCardForm = ({
+  cardSelected,
+  handlerCloseForm,
+  races,
+  rarities,
+  types,
+  keywordsArray,
+  edition,
+}) => {
+  const { initialCardSelected } = useCards();
+  const [cardForm, setCardForm] = useState(initialCardSelected);
+  const { handlerAddCard } = useBanlistContext();
+  const rules = [
+    { id: "1", label: "Prohibida" },
+    { id: "2", label: "Única" },
+    { id: "3", label: "Sólo dos copias" },
+    { id: "4", label: "Errante" },
+    { id: "5", label: "Errata" },
+  ];
+  const {
+    id,
+    edid,
+    slug,
+    name,
+    rarity,
+    race,
+    type,
+    keywords,
+    cost,
+    damage,
+    ability,
+    flavour,
+    ed_edid,
+    ed_slug,
+  } = cardForm;
+
+  useEffect(() => {
+    setCardForm({
+      ...cardSelected,
+    });
+  }, [cardSelected]);
+
+  const onCloseForm = () => {
+    handlerCloseForm();
+    setCardForm(initialCardSelected);
+  };
+
+  const onRarity = (rarity) => {
+    return rarities.find((r) => r.id == rarity)
+      ? rarities.find((r) => r.id == rarity).name
+      : "No aplica";
+  };
+
+  const onTypes = (type) => {
+    return types.find((t) => t.id == type)
+      ? types.find((t) => t.id == type).name
+      : "";
+  };
+
+  const onRace = (race) => {
+    return races.find((r) => r.id == race)
+      ? races.find((r) => r.id == race).name
+      : "No aplica";
+  };
+
+  const onAbility = (ability) => {
+    //limpiar habilidades con saltos de linea /n presentes en algunas cartas
+    return ability.replace(/\/n|↵|\r\n|\r|\n/g, "\n");
+  };
+
+  const onCost = (cost) => {
+    // el "operador de fusion nula" retorna el string "no aplica"
+    // sólo si cost tiene valor null o undefined
+    return cost ?? "No aplica";
+  };
+
+  const onDamage = (damage) => {
+    return damage ?? "No aplica";
+  };
+
+  const onEdition = (edition) => {
+    return edition?.title ?? "No aplica";
+  };
+
+  const dataCard = () => {
+    return [
+      { label: "Tipo", value: onTypes(type) },
+      { label: "Costo", value: onCost(cost) },
+      { label: "Raza", value: onRace(race) },
+      { label: "Fuerza", value: onDamage(damage) },
+      { label: "Rareza", value: onRarity(rarity) },
+      { label: "Edición", value: onEdition(edition) },
+    ];
+  };
+  return (
+    <div className="container my-4">
+      <div
+        className="modal fade show"
+        tabIndex="-1"
+        role="dialog"
+        style={{ display: "block" }}
+      >
+        <div className="modal-dialog modal-dialog-scrollable" role="document">
+          <div className="modal-content madera text-warning">
+            <div className="modal-header">
+              <h5 className="modal-title">{name.toUpperCase()}</h5>
+              <button
+                type="button"
+                className="btn-close btn-close-red"
+                onClick={onCloseForm}
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <div className="card burdeos text-warning">
+                <div className="row">
+                  <div className="col card-col">
+                    <img
+                      src={getCardImageUrl(ed_edid, edid)}
+                      className="card-img-top img-fluid"
+                      alt="card"
+                    />
+                  </div>
+                  <div className="col card-col">
+                    <div className="card-body">
+                      <ul className="list-unstyled dataText">
+                        {dataCard().map((item, index) => (
+                          <li key={index} className="mb-2 row">
+                            <div className="col-5 fw-bold text-end">
+                              {item.label}:
+                            </div>
+                            <div className="col-7">{item.value}</div>
+                          </li>
+                        ))}
+                      </ul>
+                      <ul>
+                        <div className="dropdown">
+                          <button
+                            className="btn btn-danger dropdown-toggle"
+                            type="button"
+                            id="dropdownMenuButton"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            Restringir
+                          </button>
+                          <div
+                            className="dropdown-menu"
+                            aria-labelledby="dropdownMenuButton"
+                          >
+                            {rules.map(({ id, label }) => {
+                              return (
+                                <a
+                                  key={id}
+                                  className="dropdown-item"
+                                  href="#"
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    handlerAddCard(cardForm, id);
+                                    onCloseForm();
+                                  }}
+                                >
+                                  {label}
+                                </a>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div className="card-body">
+                  <h6>Habilidad</h6>
+                  <p className="card-text skill-text justificado backslash">
+                    {ability === null || ability === undefined
+                      ? "Carta sin habilidad"
+                      : onAbility(ability)}
+                  </p>
+                </div>
+                <div className="card-body"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

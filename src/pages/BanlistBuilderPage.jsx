@@ -16,6 +16,7 @@ import { BanlistPanel } from "../components/banlistbuilderPage/BanlistPanel";
 import { useDeckCards } from "../hooks/useDeckCards";
 import { useBanlistContext } from "../context/BanlistContext";
 import { BanlistPoolCardsPanel } from "../components/banlistbuilderPage/BanlistPoolCardsPanel";
+import { BanCardForm } from "../components/banlistbuilderPage/BanCardForm";
 
 export const BanlistbuilderPage = () => {
   useBodyClass("page-deckbuilder");
@@ -150,13 +151,17 @@ export const BanlistbuilderPage = () => {
       )}
 
       {!visibleForm || (
-        <CardModalForm
-          races={races}
-          rarities={rarities}
-          types={types}
-          keywords={keywords}
-          edition={ediciones}
-        />
+        <CardModalForm title="Ficha de carta">
+          <BanCardForm
+            cardSelected={cardSelected}
+            handlerCloseForm={handlerCloseForm}
+            races={races}
+            rarities={rarities}
+            types={types}
+            keywordsArray={keywords}
+            edition={ediciones}
+          />
+        </CardModalForm>
       )}
       <div
         className="container-pro justify-content-center pt-2 pb-md-0 px-0"
