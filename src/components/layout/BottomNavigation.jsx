@@ -2,7 +2,7 @@ export const BottomNavigation = ({
   mobileTab,
   setMobileTab,
   filteredCards,
-  deck,
+  deck = [],
 }) => {
   return (
     <div

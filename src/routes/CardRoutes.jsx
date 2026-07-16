@@ -10,6 +10,8 @@ import { useFormats } from "../hooks/useResource";
 import { MainLoading } from "../components/layout/MainLoading";
 import { DeckProvider } from "../context/DeckContext";
 import { useFormatsContext } from "../context/FormatsContext";
+import { BanlistbuilderPage } from "../pages/BanlistBuilderPage";
+import { BanlistProvider } from "../context/BanlistContext";
 
 export const CardRoutes = () => {
   const { loadingFormats } = useFormatsContext();
@@ -39,6 +41,14 @@ export const CardRoutes = () => {
                 <DeckProvider>
                   <DeckbuilderPage />
                 </DeckProvider>
+              }
+            />
+            <Route
+              path="/banbuilder"
+              element={
+                <BanlistProvider>
+                  <BanlistbuilderPage />
+                </BanlistProvider>
               }
             />
           </Routes>

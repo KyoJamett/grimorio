@@ -1,8 +1,7 @@
-import { useDeckContext } from "../../context/DeckContext";
 import { getCardImageUrl } from "../../helpers/cardImageUrl";
-import { LazyCardImage } from "./LazyCardImage";
+import { LazyCardImage } from "../deckbuilderPage/LazyCardImage";
 
-export const PoolCards = ({
+export const BanlistPoolCards = ({
   loading,
   progress,
   filteredCards,
@@ -31,18 +30,7 @@ export const PoolCards = ({
           overflowY: "auto",
           flex: 1,
         }}
-        /*style={{
-                    height: "calc(100dvh - 250px)",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}*/
-        /*style={{
-                    height: "100%",
-                    overflowY: "auto",
-                    border: "3px solid red",
-                  }}*/
       >
-        {/*<div style={{ flex: 1, overflowY: "auto", minHeight: 0 }}>*/}
         {viewMode === "table" ? (
           <table className="table table-sm table-hover table-striped">
             <thead className="table-responsive table-dark deck-table-header">
@@ -90,20 +78,10 @@ export const PoolCards = ({
                         className="btn btn-danger"
                         onClick={(e) => {
                           e.stopPropagation();
-                          handlerRemoveCard(card);
-                        }}
-                      >
-                        -1
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-primary"
-                        onClick={(e) => {
-                          e.stopPropagation();
                           handlerAddCard(card);
                         }}
                       >
-                        +1
+                        Restringir
                       </button>
                     </div>
                   </td>
@@ -134,15 +112,7 @@ export const PoolCards = ({
                   <div className="card-footer p-1 justify-content-between align-items-center">
                     <div className="btn-group btn-group-sm w-100">
                       {/* con w-100 los botones usan todo el espacio ancho disponible (width-100) si los quieres hacer m´+as pequeños deberías partir modificando este atributo */}
-                      <button
-                        className="btn btn-danger"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handlerRemoveCard(card);
-                        }}
-                      >
-                        -1
-                      </button>
+
                       <button
                         className="btn btn-primary"
                         onClick={(e) => {
@@ -150,7 +120,7 @@ export const PoolCards = ({
                           handlerAddCard(card);
                         }}
                       >
-                        +1
+                        Restringir
                       </button>
                     </div>
                   </div>

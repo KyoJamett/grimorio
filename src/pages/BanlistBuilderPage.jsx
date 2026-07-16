@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { useDeckCards } from "../hooks/useDeckCards";
+
 import { CardModalForm } from "../components/cardsPage/CardModalForm";
 import { useCards } from "../hooks/useCards";
 import { DeckModal } from "../components/deckbuilderPage/DeckModal";
@@ -12,14 +12,27 @@ import { useCardContext } from "../context/CardContext";
 import { BottomNavigation } from "../components/layout/BottomNavigation";
 import { DeckPanel } from "../components/deckbuilderPage/DeckPanel";
 import { PoolCardsPanel } from "../components/deckbuilderPage/PoolCardsPanel";
+import { BanlistPanel } from "../components/banlistbuilderPage/BanlistPanel";
+import { useDeckCards } from "../hooks/useDeckCards";
+import { useBanlistContext } from "../context/BanlistContext";
+import { BanlistPoolCardsPanel } from "../components/banlistbuilderPage/BanlistPoolCardsPanel";
 
-export const DeckbuilderPage = () => {
+export const BanlistbuilderPage = () => {
   useBodyClass("page-deckbuilder");
 
   //useContext
   const { formatos } = useFormatsContext();
-  const { deck, deckName, handlerAddCard, handlerRemoveCard, handlerDeckName } =
-    useDeckContext();
+  //const { deck, deckName, handlerAddCard, handlerRemoveCard, handlerDeckName } =
+  //useDeckContext();
+
+  const {
+    banlist,
+    banListName,
+    handlerAddCard,
+    handlerRemoveCard,
+    handlerBanlistName,
+    setBanlist,
+  } = useBanlistContext();
 
   const { cardSelected, handlerCloseForm, handlerOpenForm, visibleForm } =
     useCardContext();
@@ -173,7 +186,7 @@ export const DeckbuilderPage = () => {
               flexWrap: "nowrap",
             }}
           >
-            <PoolCardsPanel
+            <BanlistPoolCardsPanel
               mobileTab={mobileTab}
               setFormatoKey={setFormatoKey}
               filteredTypes={filteredTypes}
@@ -201,13 +214,12 @@ export const DeckbuilderPage = () => {
               handlerRemoveCard={handlerRemoveCard}
             />
 
-            <DeckPanel
+            <BanlistPanel
               mobileTab={mobileTab}
-              deck={deck}
-              deckName={deckName}
-              handlerDeckName={handlerDeckName}
+              banlist={banlist}
+              banListName={banListName}
+              handlerBanlistName={handlerBanlistName}
               setShowPreview={setShowPreview}
-              avgCost={avgCost}
             />
           </div>
         </div>
@@ -219,7 +231,6 @@ export const DeckbuilderPage = () => {
         mobileTab={mobileTab}
         setMobileTab={setMobileTab}
         filteredCards={filteredCards}
-        deck={deck}
       />
 
       {/* fin barra inferior, sólo visible en movil */}

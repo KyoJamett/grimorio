@@ -1,8 +1,9 @@
-import { FormatSelector } from "./FormatSelector";
-import { PoolCards } from "./PoolCards";
-import { PoolFilters } from "./PoolFilters";
+import { FormatSelector } from "../deckbuilderPage/FormatSelector";
+import { PoolCards } from "../deckbuilderPage/PoolCards";
+import { PoolFilters } from "../deckbuilderPage/PoolFilters";
+import { BanlistPoolCards } from "./BanlistPoolCards";
 
-export const PoolCardsPanel = ({
+export const BanlistPoolCardsPanel = ({
   mobileTab,
   setFormatoKey,
   filteredTypes,
@@ -63,7 +64,7 @@ export const PoolCardsPanel = ({
           ediciones={ediciones}
         />
       </div>
-      <PoolCards
+      <BanlistPoolCards
         loading={loading}
         progress={progress}
         filteredCards={filteredCards}
