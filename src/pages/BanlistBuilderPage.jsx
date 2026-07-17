@@ -17,6 +17,8 @@ import { useDeckCards } from "../hooks/useDeckCards";
 import { useBanlistContext } from "../context/BanlistContext";
 import { BanlistPoolCardsPanel } from "../components/banlistbuilderPage/BanlistPoolCardsPanel";
 import { BanCardForm } from "../components/banlistbuilderPage/BanCardForm";
+import { DeckPreview } from "../components/deckbuilderPage/DeckPreview";
+import { BanPreview } from "../components/banlistbuilderPage/BanPreview";
 
 export const BanlistbuilderPage = () => {
   useBodyClass("page-deckbuilder");
@@ -144,10 +146,16 @@ export const BanlistbuilderPage = () => {
     <>
       {!showPreview || (
         <DeckModal
-          formato={formato.name}
+          title={"Vista previa del mazo"}
           showPreview={showPreview}
           setShowPreview={setShowPreview}
-        />
+        >
+          <BanPreview
+            banlist={banlist}
+            banlistName={banListName}
+            formatoName={formato?.name}
+          />
+        </DeckModal>
       )}
 
       {!visibleForm || (

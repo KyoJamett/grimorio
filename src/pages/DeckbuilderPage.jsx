@@ -13,6 +13,7 @@ import { BottomNavigation } from "../components/layout/BottomNavigation";
 import { DeckPanel } from "../components/deckbuilderPage/DeckPanel";
 import { PoolCardsPanel } from "../components/deckbuilderPage/PoolCardsPanel";
 import { CardForm } from "../components/CardForm";
+import { DeckPreview } from "../components/deckbuilderPage/DeckPreview";
 
 export const DeckbuilderPage = () => {
   useBodyClass("page-deckbuilder");
@@ -131,10 +132,16 @@ export const DeckbuilderPage = () => {
     <>
       {!showPreview || (
         <DeckModal
-          formato={formato.name}
+          title={"Vista previa del mazo"}
           showPreview={showPreview}
           setShowPreview={setShowPreview}
-        />
+        >
+          <DeckPreview
+            cards={deck}
+            deckName={deckName}
+            formatoName={formato?.name}
+          />
+        </DeckModal>
       )}
 
       {!visibleForm || (

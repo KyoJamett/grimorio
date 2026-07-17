@@ -5,8 +5,8 @@ import {
 } from "../../helpers/exportDeckToPDF";
 import { DeckPreview } from "./DeckPreview";
 
-export const DeckModal = ({ formato, showPreview, setShowPreview }) => {
-  const { deck, deckName } = useDeckContext();
+export const DeckModal = ({ title, children, showPreview, setShowPreview }) => {
+  //const { deck, deckName } = useDeckContext();
   return (
     <>
       {showPreview && (
@@ -18,18 +18,14 @@ export const DeckModal = ({ formato, showPreview, setShowPreview }) => {
           <div className="modal-dialog modal-xl modal-dialog-scrollable">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title">Vista previa del mazo</h5>
+                <h5 className="modal-title">{title}</h5>
                 <button
                   className="btn-close"
                   onClick={() => setShowPreview(false)}
                 />
               </div>
               <div className="modal-body" style={{ overflow: "auto" }}>
-                <DeckPreview
-                  cards={deck}
-                  deckName={deckName}
-                  formatoName={formato}
-                />
+                {children}
               </div>
               <div className="modal-footer">
                 <button
