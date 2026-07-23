@@ -44,7 +44,7 @@ export const BanSection = ({ banlist, rule, sectionName }) => {
                 </li>
               );
             })}
-          <li className="border-bottom"></li>
+          <hr className="border-secondary my-1" />
         </>
       )}
     </>

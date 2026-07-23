@@ -44,6 +44,7 @@ export const BanlistbuilderPage = () => {
   const [showPreview, setShowPreview] = useState(false);
   const [mobileTab, setMobileTab] = useState("pool"); // 'pool' | 'deck'
   const formato = formatoKey ? formatos[formatoKey] : null;
+  const [generalRules, setGeneralRules] = useState([]);
 
   const {
     cards,
@@ -154,6 +155,7 @@ export const BanlistbuilderPage = () => {
             banlist={banlist}
             banlistName={banListName}
             formatoName={formato?.name}
+            generalRules={generalRules}
           />
         </DeckModal>
       )}
@@ -233,6 +235,8 @@ export const BanlistbuilderPage = () => {
               banListName={banListName}
               handlerBanlistName={handlerBanlistName}
               setShowPreview={setShowPreview}
+              generalRules={generalRules}
+              setGeneralRules={setGeneralRules}
             />
           </div>
         </div>

@@ -91,7 +91,12 @@ const styles = {
   },
 };
 
-export const BanPreview = ({ banlist, banlistName, formatoName }) => {
+export const BanPreview = ({
+  banlist,
+  banlistName,
+  formatoName,
+  generalRules = [],
+}) => {
   //console.log("cards: ", cards);
   //console.log("banlistName: ", banlistName);
   //console.log("formatoName: ", formatoName);
@@ -102,6 +107,26 @@ export const BanPreview = ({ banlist, banlistName, formatoName }) => {
         <p style={styles.banlistName}>{banlistName || "Banlist"}</p>
         <p style={styles.formatName}>{formatoName}</p>
       </div>
+
+      {generalRules.length > 0 && (
+        <div style={{ ...styles.section, marginTop: "16px" }}>
+          <p style={styles.sectionTitle}>Reglas Generales</p>
+          <ul style={{ paddingLeft: "20px", margin: 0 }}>
+            {generalRules.map((rule) => (
+              <li
+                key={rule.id}
+                style={{
+                  fontSize: "13px",
+                  marginBottom: "6px",
+                  lineHeight: "1.5",
+                }}
+              >
+                {rule.text}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {Object.entries(TIPOS).map(([ruleId, ruleName]) => {
         const banOfType = banlist.filter((c) => String(c.rule) === ruleId);

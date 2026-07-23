@@ -7,6 +7,9 @@ export const MainApp = () => {
   const isDeckBuilder = location.hash
     ? location.hash.includes("deckbuilder")
     : location.pathname.includes("deckbuilder");
+  const isBanBuilder = location.hash
+    ? location.hash.includes("banbuilder")
+    : location.pathname.includes("banbuilder");
 
   return (
     <div
@@ -22,7 +25,7 @@ export const MainApp = () => {
           <Route path="/*" element={<CardRoutes />} />
         </Routes>
       </div>
-      {!isDeckBuilder && <Footer />}
+      {!isDeckBuilder && !isBanBuilder && <Footer />}
     </div>
   );
 };
