@@ -77,15 +77,15 @@ const styles = {
   },
   cardStack: {
     position: "relative",
-    width: "100px",
-    height: "143px", // proporción correcta aprox
+    width: "80px",
+    height: "114px", // proporción correcta aprox
   },
   cardStackImg: {
     position: "absolute",
     top: 0,
     left: 0,
-    width: "100px",
-    height: "143px",
+    width: "80px",
+    height: "114px",
     objectFit: "contain",
     borderRadius: "4px",
   },
@@ -137,30 +137,40 @@ export const BanPreview = ({
             <p style={styles.sectionTitle}>
               {ruleName} ({banOfType.reduce((s, c) => s + c.quantity, 0)})
             </p>
-            <div className="row">
+            <div className="row g-2">
               {banOfType.map((card) => (
                 <div key={card.id} style={styles.cardRow} className="col-auto">
                   <div className="col">
                     <div
                       style={{
                         ...styles.cardStack,
-                        width: `${100 + (card.quantity - 1) * 15}px `,
                       }}
                     >
                       {Array.from({ length: card.quantity }).map((_, i) => (
                         <img
                           key={i}
                           src={getCardImageUrl(card.ed_edid, card.edid)}
-                          style={{
-                            ...styles.cardStackImg,
-                            transform: `translate(${i * 15}px)`,
-                            zIndex: i,
-                          }}
+                          style={styles.cardStackImg}
                           crossOrigin="anonymous"
                           alt={card.name}
                         />
                       ))}
                     </div>
+                    {ruleId === "5" && card.obs && (
+                      <p
+                        style={{
+                          textAlign: "center",
+                          fontSize: "13px",
+                          marginTop: "4px",
+                          width: "80px",
+                          lineHeight: "1.2",
+                          color: "#f5c842",
+                          wordBreak: "break-word",
+                        }}
+                      >
+                        {card.obs}
+                      </p>
+                    )}
                   </div>
                 </div>
               ))}
