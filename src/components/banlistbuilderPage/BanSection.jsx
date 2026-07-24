@@ -29,7 +29,9 @@ export const BanSection = ({ banlist, rule, sectionName }) => {
                   key={card.id}
                 >
                   <div className="d-flex justify-content-between align-items-center">
-                    {card.name.toUpperCase()}
+                    {rule == "5"
+                      ? card.name.toUpperCase() + " : " + card.obs
+                      : card.name.toUpperCase()}
                   </div>
                   <div className="d-flex justify-content-between align-items-center">
                     <div>
