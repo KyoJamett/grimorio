@@ -149,9 +149,10 @@ export const BanlistbuilderPage = () => {
     <>
       {!showPreview || (
         <DeckModal
-          title={"Vista previa del mazo"}
+          title={"Vista previa de la Banlist"}
           showPreview={showPreview}
           setShowPreview={setShowPreview}
+          exportName={banListName}
         >
           <BanPreview
             banlist={banlist}
@@ -268,6 +269,7 @@ export const BanlistbuilderPage = () => {
         mobileTab={mobileTab}
         setMobileTab={setMobileTab}
         filteredCards={filteredCards}
+        text="Banlist"
       />
 
       {/* fin barra inferior, sólo visible en movil */}

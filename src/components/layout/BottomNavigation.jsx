@@ -3,6 +3,7 @@ export const BottomNavigation = ({
   setMobileTab,
   filteredCards,
   deck = [],
+  text,
 }) => {
   return (
     <div
@@ -28,7 +29,7 @@ export const BottomNavigation = ({
         className={`btn flex-fill py-3 rounded-0 ${mobileTab === "deck" ? "btn-warning" : "btn-dark"}`}
         onClick={() => setMobileTab("deck")}
       >
-        Mazo
+        {text}
         <span className="badge bg-warning text-dark ms-2">
           {deck.reduce((sum, c) => sum + c.quantity, 0)}
         </span>

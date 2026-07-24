@@ -135,6 +135,7 @@ export const DeckbuilderPage = () => {
           title={"Vista previa del mazo"}
           showPreview={showPreview}
           setShowPreview={setShowPreview}
+          exportName={deckName}
         >
           <DeckPreview
             cards={deck}
@@ -232,6 +233,7 @@ export const DeckbuilderPage = () => {
         setMobileTab={setMobileTab}
         filteredCards={filteredCards}
         deck={deck}
+        text="Mazo"
       />
 
       {/* fin barra inferior, sólo visible en movil */}

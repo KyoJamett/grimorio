@@ -2,7 +2,7 @@
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-export const exportDeckToImage = async () => {
+export const exportDeckToImage = async (title) => {
   const element = document.getElementById('deck-export');
   const canvas = await html2canvas(element, {
     scale: 2,
@@ -11,7 +11,7 @@ export const exportDeckToImage = async () => {
   });
 
   const link = document.createElement('a');
-  link.download = 'mazo.png';
+  link.download = `${title || 'exported_image'}.png`;
   link.href = canvas.toDataURL('image/png');
   link.click();
 };

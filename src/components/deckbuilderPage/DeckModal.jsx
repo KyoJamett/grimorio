@@ -5,7 +5,13 @@ import {
 } from "../../helpers/exportDeckToPDF";
 import { DeckPreview } from "./DeckPreview";
 
-export const DeckModal = ({ title, children, showPreview, setShowPreview }) => {
+export const DeckModal = ({
+  title,
+  children,
+  showPreview,
+  setShowPreview,
+  exportName,
+}) => {
   //const { deck, deckName } = useDeckContext();
   return (
     <>
@@ -34,7 +40,10 @@ export const DeckModal = ({ title, children, showPreview, setShowPreview }) => {
                 >
                   Cerrar
                 </button>
-                <button className="btn btn-warning" onClick={exportDeckToImage}>
+                <button
+                  className="btn btn-warning"
+                  onClick={() => exportDeckToImage(exportName)}
+                >
                   Exportar imagen
                 </button>
                 {/*<button className="btn btn-danger" onClick={exportDeckToPDF}>
