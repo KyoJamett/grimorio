@@ -10,10 +10,14 @@ export const exportDeckToImage = async (title) => {
     backgroundColor: null,
   });
 
-  const link = document.createElement('a');
-  link.download = `${title || 'exported_image'}.png`;
-  link.href = canvas.toDataURL('image/png');
-  link.click();
+  canvas.toBlob((blob) => {
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.download = `${title || 'exported_image'}.png`;
+    link.href = url;
+    link.click();
+    URL.revokeObjectURL(url); //esto libera memoria luego de la descarga
+  }, 'image/png');
 };
 
 export const exportDeckToPDF = async () => {
