@@ -84,7 +84,7 @@ export const BanlistPoolCards = ({
                       <button
                         className="btn btn-danger dropdown-toggle"
                         type="button"
-                        id="dropdownMenuButton"
+                        id={`dropdown-${card.id}`}
                         data-bs-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="false"
@@ -97,11 +97,7 @@ export const BanlistPoolCards = ({
                       </button>
                       <div
                         className="dropdown-menu"
-                        aria-labelledby="dropdownMenuButton"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          e.preventDefault();
-                        }}
+                        aria-labelledby={`dropdown-${card.id}`}
                       >
                         {rules.map(({ id, label }) => {
                           return (
@@ -111,6 +107,14 @@ export const BanlistPoolCards = ({
                               className="dropdown-item"
                               onClick={(e) => {
                                 e.stopPropagation();
+                                const dropdownEl = e.target
+                                  .closest(".dropdown")
+                                  .querySelector('[data-bs-toggle="dropdown"]');
+                                const dropdown =
+                                  window.bootstrap.Dropdown.getInstance(
+                                    dropdownEl,
+                                  );
+                                if (dropdown) dropdown.hide();
                                 if (id == 5) {
                                   setErrataModal({ show: true, card });
                                 } else {
@@ -157,7 +161,7 @@ export const BanlistPoolCards = ({
                         <button
                           className="btn btn-danger dropdown-toggle"
                           type="button"
-                          id="dropdownMenuButton"
+                          id={`dropdown-grid-${card.id}`}
                           data-bs-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
@@ -167,8 +171,7 @@ export const BanlistPoolCards = ({
                         </button>
                         <div
                           className="dropdown-menu"
-                          aria-labelledby="dropdownMenuButton"
-                          onClick={(e) => e.stopPropagation()}
+                          aria-labelledby={`dropdown-grid-${card.id}`}
                         >
                           {rules.map(({ id, label }) => {
                             return (
@@ -178,7 +181,21 @@ export const BanlistPoolCards = ({
                                 className="dropdown-item"
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  handlerAddCard(card, id);
+                                  const dropdownEl = e.target
+                                    .closest(".dropdown")
+                                    .querySelector(
+                                      '[data-bs-toggle="dropdown"]',
+                                    );
+                                  const dropdown =
+                                    window.bootstrap.Dropdown.getInstance(
+                                      dropdownEl,
+                                    );
+                                  if (dropdown) dropdown.hide();
+                                  if (id == 5) {
+                                    setErrataModal({ show: true, card });
+                                  } else {
+                                    handlerAddCard(card, id);
+                                  }
                                 }}
                               >
                                 {label}
