@@ -1,7 +1,6 @@
-// components/banlist/AddRuleModal.jsx
 import { useState } from "react";
 
-export const AddRuleModal = ({ onAdd, onClose }) => {
+export const AddRuleModal = ({ onAdd, onClose, title, placeholder }) => {
   const [ruleText, setRuleText] = useState("");
 
   const handleAdd = () => {
@@ -20,14 +19,14 @@ export const AddRuleModal = ({ onAdd, onClose }) => {
       <div className="modal-dialog">
         <div className="modal-content bg-dark text-light">
           <div className="modal-header border-secondary">
-            <h5 className="modal-title">Agregar regla general</h5>
-            <button className="btn-close btn-close-white" onClick={onClose} />
+            <h5 className="modal-title">{title}</h5>
+            <button className="btn-close" onClick={onClose} />
           </div>
           <div className="modal-body">
             <textarea
               className="form-control bg-dark text-light border-secondary"
               rows={4}
-              placeholder="Escribe la regla aquí..."
+              placeholder={placeholder}
               value={ruleText}
               onChange={(e) => setRuleText(e.target.value)}
               autoFocus

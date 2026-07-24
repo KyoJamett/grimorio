@@ -11,6 +11,7 @@ export const BanlistPoolCards = ({
   onTypes,
   handlerAddCard,
   handlerRemoveCard,
+  setErrataModal,
 }) => {
   const rules = [
     { id: "1", label: "Prohibida" },
@@ -110,7 +111,11 @@ export const BanlistPoolCards = ({
                               className="dropdown-item"
                               onClick={(e) => {
                                 e.stopPropagation();
-                                handlerAddCard(card, id);
+                                if (id == 5) {
+                                  setErrataModal({ show: true, card });
+                                } else {
+                                  handlerAddCard(card, id);
+                                }
                               }}
                             >
                               {label}

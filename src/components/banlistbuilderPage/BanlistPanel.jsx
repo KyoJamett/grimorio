@@ -29,6 +29,8 @@ export const BanlistPanel = ({
         <AddRuleModal
           onAdd={handlerAddRule}
           onClose={() => setShowRuleModal(false)}
+          title="Agregar regla general"
+          placeholder="Ediciones disponibles, mínimo de aliados, etc"
         />
       )}
       <div

@@ -29,6 +29,7 @@ export const BanlistPoolCardsPanel = ({
   ediciones,
   handlerAddCard,
   handlerRemoveCard,
+  setErrataModal,
 }) => {
   return (
     <div
@@ -74,6 +75,7 @@ export const BanlistPoolCardsPanel = ({
         onTypes={onTypes}
         handlerAddCard={handlerAddCard}
         handlerRemoveCard={handlerRemoveCard}
+        setErrataModal={setErrataModal}
       />
     </div>
   );

@@ -11,6 +11,7 @@ export const BanCardForm = ({
   types,
   keywordsArray,
   edition,
+  setErrataModal,
 }) => {
   const { initialCardSelected } = useCards();
   const [cardForm, setCardForm] = useState(initialCardSelected);
@@ -162,8 +163,16 @@ export const BanCardForm = ({
                                   href="#"
                                   onClick={(e) => {
                                     e.preventDefault();
-                                    handlerAddCard(cardForm, id);
-                                    onCloseForm();
+                                    if (id == 5) {
+                                      setErrataModal({
+                                        show: true,
+                                        card: cardForm,
+                                      });
+                                      onCloseForm();
+                                    } else {
+                                      handlerAddCard(cardForm, id);
+                                      onCloseForm();
+                                    }
                                   }}
                                 >
                                   {label}

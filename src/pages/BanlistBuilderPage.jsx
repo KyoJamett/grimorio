@@ -19,6 +19,7 @@ import { BanlistPoolCardsPanel } from "../components/banlistbuilderPage/BanlistP
 import { BanCardForm } from "../components/banlistbuilderPage/BanCardForm";
 import { DeckPreview } from "../components/deckbuilderPage/DeckPreview";
 import { BanPreview } from "../components/banlistbuilderPage/BanPreview";
+import { AddRuleModal } from "../components/banlistbuilderPage/AddRuleModal";
 
 export const BanlistbuilderPage = () => {
   useBodyClass("page-deckbuilder");
@@ -45,6 +46,7 @@ export const BanlistbuilderPage = () => {
   const [mobileTab, setMobileTab] = useState("pool"); // 'pool' | 'deck'
   const formato = formatoKey ? formatos[formatoKey] : null;
   const [generalRules, setGeneralRules] = useState([]);
+  const [errataModal, setErrataModal] = useState({ show: false, card: null });
 
   const {
     cards,
@@ -170,9 +172,26 @@ export const BanlistbuilderPage = () => {
             types={types}
             keywordsArray={keywords}
             edition={ediciones}
+            setErrataModal={setErrataModal}
           />
         </CardModalForm>
       )}
+      {console.log(errataModal.show)}
+      {errataModal.show && (
+        <AddRuleModal
+          onAdd={(text) => {
+            handlerAddCard(errataModal.card, "5", text); // obs = text
+            setErrataModal({ show: false, card: null });
+          }}
+          onClose={() => setErrataModal({ show: false, card: null })}
+          title="Agregar errata"
+          placeholder="Escribe la errata para esta carta..."
+        />
+      )}
+      {console.log("carta seleccionada para modal de errata")}
+      {console.log(errataModal.card)}
+      {console.log("banlist")}
+      {console.log(banlist)}
       <div
         className="container-pro justify-content-center pt-2 pb-md-0 px-0"
         style={{
@@ -227,6 +246,7 @@ export const BanlistbuilderPage = () => {
               ediciones={ediciones}
               handlerAddCard={handlerAddCard}
               handlerRemoveCard={handlerRemoveCard}
+              setErrataModal={setErrataModal}
             />
 
             <BanlistPanel
