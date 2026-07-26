@@ -5,6 +5,7 @@ import { Loading } from "../components/Loading";
 import { CardModalForm } from "../components/cardsPage/CardModalForm";
 import { CardsList } from "../components/cardsPage/CardsList";
 import { useCardContext } from "../context/CardContext";
+import { CardForm } from "../components/CardForm";
 
 export function CardsPage() {
   const { cards } = useCards();
@@ -53,15 +54,17 @@ export function CardsPage() {
   return (
     <>
       {!visibleForm || (
-        <CardModalForm
-          cardSelected={cardSelected}
-          handlerCloseForm={handlerCloseForm}
-          races={races}
-          rarities={rarities}
-          types={types}
-          keywords={keywords}
-          edition={edition}
-        />
+        <CardModalForm title="Ficha de carta">
+          <CardForm
+            cardSelected={cardSelected}
+            handlerCloseForm={handlerCloseForm}
+            races={races}
+            rarities={rarities}
+            types={types}
+            keywordsArray={keywords}
+            edition={ediciones}
+          />
+        </CardModalForm>
       )}
       <div className="container my-5 justify-content-center">
         <div className="row">
