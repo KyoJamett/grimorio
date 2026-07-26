@@ -269,6 +269,7 @@ export const BanlistbuilderPage = () => {
         mobileTab={mobileTab}
         setMobileTab={setMobileTab}
         filteredCards={filteredCards}
+        deck={banlist}
         text="Banlist"
       />
 
