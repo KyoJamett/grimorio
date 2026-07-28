@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useCards } from "../hooks/useCards";
-import { getCardImageUrl } from '../helpers/cardImageUrl';
+import { getCardImageUrl } from "../helpers/cardImageUrl";
 
 export const CardForm = ({
   cardSelected,
@@ -35,7 +35,7 @@ export const CardForm = ({
       ...cardSelected,
     });
   }, [cardSelected]);
-
+  console.log("así llega edition: ", edition);
   const onCloseForm = () => {
     handlerCloseForm();
     setCardForm(initialCardSelected);

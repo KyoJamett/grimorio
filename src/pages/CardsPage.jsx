@@ -48,7 +48,7 @@ export function CardsPage() {
     );
   }
 
-  //console.log(dataCards);
+  //console.log(dataCards?.edition);
   //console.log(cardsArray);
 
   return (
@@ -62,7 +62,7 @@ export function CardsPage() {
             rarities={rarities}
             types={types}
             keywordsArray={keywords}
-            edition={ediciones}
+            edition={edition}
           />
         </CardModalForm>
       )}

@@ -41,7 +41,7 @@ export const DeckbuilderPage = () => {
     keywords,
     ediciones,
   } = useDeckCards(formato);
-  //console.log("total de cartas: ", cards);
+  //console.log("Ediciones: ", ediciones);
 
   const {
     searchInput,
@@ -126,6 +126,12 @@ export const DeckbuilderPage = () => {
     return (total / qty).toFixed(1);
   };
 
+  const getEdition = (card) => {
+    const edition = ediciones.filter((c) => c.id === card.ed_edid);
+    //console.log("edicion: ", edition);
+    return edition[0];
+  };
+
   //const filteredCards = filterCards(cards);
   //console.log("formatos", formato);
   return (
@@ -144,7 +150,7 @@ export const DeckbuilderPage = () => {
           />
         </DeckModal>
       )}
-
+      {/*console.log(cardSelected)*/}
       {!visibleForm || (
         <CardModalForm title="Ficha de carta">
           <CardForm
@@ -154,7 +160,7 @@ export const DeckbuilderPage = () => {
             rarities={rarities}
             types={types}
             keywordsArray={keywords}
-            edition={ediciones}
+            edition={getEdition(cardSelected)}
           />
         </CardModalForm>
       )}
@@ -225,9 +231,7 @@ export const DeckbuilderPage = () => {
           </div>
         </div>
       </div>
-
       {/* inicio barra inferior, sólo visible en movil */}
-
       <BottomNavigation
         mobileTab={mobileTab}
         setMobileTab={setMobileTab}
@@ -235,7 +239,6 @@ export const DeckbuilderPage = () => {
         deck={deck}
         text="Mazo"
       />
-
       {/* fin barra inferior, sólo visible en movil */}
     </>
   );
