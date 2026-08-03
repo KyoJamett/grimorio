@@ -409,6 +409,12 @@ body.page-deckbuilder .app-background {
   min-height: 0;
 }
 
+.page-full-height {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 /*estilo para aprovechar mejor el ancho de la pantalla*/
 @media (min-width: 1025px) {
   .container-pro {

@@ -12,6 +12,7 @@ import { DeckProvider } from "../context/DeckContext";
 import { useFormatsContext } from "../context/FormatsContext";
 import { BanlistbuilderPage } from "../pages/BanlistBuilderPage";
 import { BanlistProvider } from "../context/BanlistContext";
+import { DisclaimerPage } from "../pages/DisclaimerPage";
 
 export const CardRoutes = () => {
   const { loadingFormats } = useFormatsContext();
@@ -51,6 +52,7 @@ export const CardRoutes = () => {
                 </BanlistProvider>
               }
             />
+            <Route path="/disclaimer" element={<DisclaimerPage />} />
           </Routes>
         </>
       )}
