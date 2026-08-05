@@ -18,13 +18,13 @@ export function Home() {
   };
 
   return (
-    <div className="d-inline justify-content-center">
+    <div className="d-inline justify-content-center pt-5">
       <div className="container my-4 text-center">
-        <h1 className="display-1 mb-0">Grimorio</h1>
+        <h1 className="display-1 mb-0">Biblioteca Eterna</h1>
         <h4 className="cursiva">Sabiduría Infinita</h4>
-        <p className="pt-3">
+        <h5 className="pt-3">
           Crea mazos, conoce formatos de juego, explora colecciones.
-        </p>
+        </h5>
 
         <div className="row justify-content-center g-2">
           <div className="col-auto col-md-3">

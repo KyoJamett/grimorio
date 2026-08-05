@@ -15,8 +15,8 @@ export const Navigationbar = () => {
     <div className="pb-5">
       <nav className="navbar navbar-expand-lg navbar-dark  bg-dark main-navbar">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/grimorio/">
-            Grimorio
+          <a className="navbar-brand" href="/bibliotecaeterna/">
+            Biblioteca
           </a>
 
           {/*-------------Collapsibe Button---------------- */}

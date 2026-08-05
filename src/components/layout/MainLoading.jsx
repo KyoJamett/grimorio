@@ -15,13 +15,13 @@ export const MainLoading = () => {
       >
         <img
           src="vite.svg"
-          alt="Grimorio"
+          alt="Biblioteca"
           style={{ width: "80px", opacity: 0.8 }}
         />
         <div className="spinner-border text-dark" role="status">
           <span className="visually-hidden">Cargando...</span>
         </div>
-        <p className="text-dark">Cargando Grimorio...</p>
+        <p className="text-dark">Cargando Biblioteca...</p>
       </div>
     </>
   );
