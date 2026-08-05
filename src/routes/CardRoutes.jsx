@@ -26,7 +26,8 @@ export const CardRoutes = () => {
           <Navigationbar />
           <Routes>
             <Route path="/cartas/:ed" element={<CardsPage />} />
-            <Route path="/" element={<Home />} />
+            <Route path="/bibliotecaeterna" element={<Home />} />
+            <Route path="/" element={<Navigate to="/bibliotecaeterna" />} />
             <Route path="/bloque-furia" element={<FormatPage />} />
             <Route path="/feudal" element={<FormatPage />} />
             <Route path="/escuelas-elementales" element={<FormatPage />} />
