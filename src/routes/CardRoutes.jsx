@@ -13,6 +13,7 @@ import { useFormatsContext } from "../context/FormatsContext";
 import { BanlistbuilderPage } from "../pages/BanlistBuilderPage";
 import { BanlistProvider } from "../context/BanlistContext";
 import { DisclaimerPage } from "../pages/DisclaimerPage";
+import { TournamentPage } from "../pages/TournamentPage";
 
 export const CardRoutes = () => {
   const { loadingFormats } = useFormatsContext();
@@ -53,6 +54,7 @@ export const CardRoutes = () => {
               }
             />
             <Route path="/disclaimer" element={<DisclaimerPage />} />
+            <Route path="/torneos" element={<TournamentPage />} />
           </Routes>
         </>
       )}
