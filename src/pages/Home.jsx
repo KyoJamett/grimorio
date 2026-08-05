@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { CardSearch } from "../components/home/CardSearch";
 import { CardGrid } from "../components/home/CardGrid";
 import { CardSearchModal } from "../components/home/CardSearchModal";
+import { NavLink } from "react-router-dom";
 
 export function Home() {
   const [cards, setCards] = useState([]); // Estado para almacenar las cartas halladas con la barra de busqueda
@@ -19,21 +20,43 @@ export function Home() {
   return (
     <div className="d-inline justify-content-center">
       <div className="container my-4 text-center">
-        <h1>Grimorio</h1>
-        <h6 className="cursiva">Sabiduría Infinita</h6>
+        <h1 className="display-1 mb-0">Grimorio</h1>
+        <h4 className="cursiva">Sabiduría Infinita</h4>
+        <p className="pt-3">
+          Crea mazos, conoce formatos de juego, explora colecciones.
+        </p>
+
+        <div className="row justify-content-center g-2">
+          <div className="col-auto col-md-3">
+            <NavLink
+              className="btn btn-primary btn-lg mt-2 d-flex justify-content-center"
+              to={`/deckbuilder`}
+            >
+              Crear Mazo
+            </NavLink>
+          </div>
+          <div className="col-auto col-md-3">
+            <NavLink
+              className="btn btn-primary btn-lg mt-2 d-flex justify-content-center"
+              to={`/banbuilder`}
+            >
+              Crear Banlist
+            </NavLink>
+          </div>
+        </div>
       </div>
 
-      {/* Barra de busqueda */}
+      {/* Barra de busqueda 
       <CardSearch setCards={setCards} />
 
-      {/* Grid de cartas, visible solo cuando hay cartas */}
+      {/* Grid de cartas, visible solo cuando hay cartas 
       <CardGrid cards={cards} handleImageClick={handleImageClick} />
 
-      {/* Modal para mostrar imagen expandida */}
+      {/* Modal para mostrar imagen expandida 
       <CardSearchModal
         handleCloseModal={handleCloseModal}
         selectedImage={selectedImage}
-      />
+      />*/}
     </div>
   );
 }
