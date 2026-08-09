@@ -14,7 +14,7 @@ export const MainLoading = () => {
         }}
       >
         <img
-          src="vite.svg"
+          src="web-app-manifest-512x512.png"
           alt="Biblioteca"
           style={{ width: "80px", opacity: 0.8 }}
         />
