@@ -79,17 +79,21 @@ export const DeckbuilderPage = () => {
     });
   }, [cards, selectedEdition]);
 
-  const filteredRaces = races.filter((race) =>
-    cardsByEdition.some((card) => String(card.race) === race.id),
-  );
+  const filteredRaces = races
+    .filter((race) =>
+      cardsByEdition.some((card) => String(card.race) === race.id),
+    )
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   const filteredRarities = rarities.filter((rarity) =>
     cardsByEdition.some((card) => String(card.rarity) === rarity.id),
   );
 
-  const filteredTypes = types.filter((type) =>
-    cardsByEdition.some((card) => String(card.type) === type.id),
-  );
+  const filteredTypes = types
+    .filter((type) =>
+      cardsByEdition.some((card) => String(card.type) === type.id),
+    )
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   const handleRowClick = (card) => {
     handlerOpenForm(card);
