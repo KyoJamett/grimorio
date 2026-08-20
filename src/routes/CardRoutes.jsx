@@ -14,6 +14,7 @@ import { BanlistbuilderPage } from "../pages/BanlistBuilderPage";
 import { BanlistProvider } from "../context/BanlistContext";
 import { DisclaimerPage } from "../pages/DisclaimerPage";
 import { TournamentPage } from "../pages/TournamentPage";
+import { RouteTracker } from "../components/RouteTracker";
 
 export const CardRoutes = () => {
   const { loadingFormats } = useFormatsContext();
@@ -23,6 +24,7 @@ export const CardRoutes = () => {
         <MainLoading />
       ) : (
         <>
+          <RouteTracker />
           <Navigationbar />
           <Routes>
             <Route path="/cartas/:ed" element={<CardsPage />} />
