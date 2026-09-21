@@ -74,6 +74,7 @@ export const DeckProvider = ({ children }) => {
         handlerDeckName,
         handlerLoadDeck,
         handlerResetDeck,
+        editingDeckId,
       }}
     >
       {children}
