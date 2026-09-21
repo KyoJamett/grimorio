@@ -44,6 +44,16 @@ export function Home() {
             </NavLink>
           </div>
         </div>
+        <div className="row justify-content-center g-2">
+          <div className="col-auto col-md-3">
+            <NavLink
+              className="btn btn-primary btn-lg mt-2 d-flex justify-content-center"
+              to={`/mis-mazos`}
+            >
+              Mis Mazos
+            </NavLink>
+          </div>
+        </div>
       </div>
 
       {/* Barra de busqueda 

@@ -15,6 +15,8 @@ import { BanlistProvider } from "../context/BanlistContext";
 import { DisclaimerPage } from "../pages/DisclaimerPage";
 import { TournamentPage } from "../pages/TournamentPage";
 import { RouteTracker } from "../components/RouteTracker";
+import { MyDecksPage } from "../pages/MyDecksPage";
+import { MyDecksProvider } from "../context/MyDecksContext";
 
 export const CardRoutes = () => {
   const { loadingFormats } = useFormatsContext();
@@ -37,13 +39,33 @@ export const CardRoutes = () => {
             <Route path="/primer-bloque" element={<FormatPage />} />
             <Route path="/primera-era" element={<FormatPage />} />
             <Route path="/diccionario" element={<DictionaryPage />} />
+            <Route
+              path="/mis-mazos"
+              element={
+                <MyDecksProvider>
+                  <MyDecksPage />
+                </MyDecksProvider>
+              }
+            />
             <Route path="/about" element={<AboutPage />} />
             <Route
               path="/deckbuilder"
               element={
-                <DeckProvider>
-                  <DeckbuilderPage />
-                </DeckProvider>
+                <MyDecksProvider>
+                  <DeckProvider>
+                    <DeckbuilderPage />
+                  </DeckProvider>
+                </MyDecksProvider>
+              }
+            />
+            <Route
+              path="/deckbuilder/:deckId"
+              element={
+                <MyDecksProvider>
+                  <DeckProvider>
+                    <DeckbuilderPage />
+                  </DeckProvider>
+                </MyDecksProvider>
               }
             />
             <Route

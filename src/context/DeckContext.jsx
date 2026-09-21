@@ -5,6 +5,7 @@ const DeckContext = createContext();
 export const DeckProvider = ({ children }) => {
   const [deck, setDeck] = useState([]);
   const [deckName, setDeckName] = useState("");
+  const [editingDeckId, setEditingDeckId] = useState(null);
 
   //HANDLERS
   const handlerAddCard = (card) => {
@@ -50,6 +51,18 @@ export const DeckProvider = ({ children }) => {
     setDeckName(name);
   };
 
+  const handlerLoadDeck = (savedDeck) => {
+    setDeck(savedDeck.cards ?? []);
+    setDeckName(savedDeck.name ?? "");
+    setEditingDeckId(savedDeck.id ?? null);
+  };
+
+  const handlerResetDeck = () => {
+    setDeck([]);
+    setDeckName("");
+    setEditingDeckId(null);
+  };
+
   return (
     <DeckContext.Provider
       value={{
@@ -59,6 +72,8 @@ export const DeckProvider = ({ children }) => {
         handlerAddCard,
         handlerRemoveCard,
         handlerDeckName,
+        handlerLoadDeck,
+        handlerResetDeck,
       }}
     >
       {children}

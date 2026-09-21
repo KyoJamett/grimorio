@@ -14,17 +14,31 @@ import { DeckPanel } from "../components/deckbuilderPage/DeckPanel";
 import { PoolCardsPanel } from "../components/deckbuilderPage/PoolCardsPanel";
 import { CardForm } from "../components/CardForm";
 import { DeckPreview } from "../components/deckbuilderPage/DeckPreview";
+import { useMyDecksContext } from "../context/MyDecksContext";
+import { useParams } from "react-router-dom";
+import { SaveDeckButton } from "../components/deckbuilderPage/SaveDeckButton";
 
 export const DeckbuilderPage = () => {
   useBodyClass("page-deckbuilder");
 
   //useContext
   const { formatos } = useFormatsContext();
-  const { deck, deckName, handlerAddCard, handlerRemoveCard, handlerDeckName } =
-    useDeckContext();
+  const {
+    deck,
+    deckName,
+    handlerAddCard,
+    handlerRemoveCard,
+    handlerDeckName,
+    handlerLoadDeck,
+    handlerResetDeck,
+    editingDeckId,
+  } = useDeckContext();
 
   const { cardSelected, handlerCloseForm, handlerOpenForm, visibleForm } =
     useCardContext();
+
+  const { deckId } = useParams();
+  const { decks } = useMyDecksContext();
 
   const [formatoKey, setFormatoKey] = useState(null);
   const [showPreview, setShowPreview] = useState(false);
@@ -117,10 +131,23 @@ export const DeckbuilderPage = () => {
     setSelectedEdition([]);
   }, [formatoKey]);
 
+  useEffect(() => {
+    if (deckId) {
+      const savedDeck = decks.find((d) => d.id === deckId);
+      if (savedDeck) {
+        handlerLoadDeck(savedDeck);
+        setFormatoKey(savedDeck.format);
+      }
+    } else {
+      handlerResetDeck();
+      setFormatoKey(null);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [deckId]);
+
   const avgCost = () => {
     const cardsWithCost = deck.filter((c) => c.cost && c.cost !== "");
-    //console.log(cards);
-    //console.log(cardsWithCost);
+
     if (cardsWithCost.length === 0) return "—";
     const total = cardsWithCost.reduce(
       (sum, c) => sum + Number(c.cost) * c.quantity,
@@ -146,6 +173,7 @@ export const DeckbuilderPage = () => {
           showPreview={showPreview}
           setShowPreview={setShowPreview}
           exportName={deckName}
+          footerActions={<SaveDeckButton formatoKey={formatoKey} />}
         >
           <DeckPreview
             cards={deck}

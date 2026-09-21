@@ -1,9 +1,4 @@
-import { useDeckContext } from "../../context/DeckContext";
-import {
-  exportDeckToImage,
-  exportDeckToPDF,
-} from "../../helpers/exportDeckToPDF";
-import { DeckPreview } from "./DeckPreview";
+import { exportDeckToImage } from "../../helpers/exportDeckToPDF";
 
 export const DeckModal = ({
   title,
@@ -11,8 +6,8 @@ export const DeckModal = ({
   showPreview,
   setShowPreview,
   exportName,
+  footerActions,
 }) => {
-  //const { deck, deckName } = useDeckContext();
   return (
     <>
       {showPreview && (
@@ -46,9 +41,7 @@ export const DeckModal = ({
                 >
                   Exportar imagen
                 </button>
-                {/*<button className="btn btn-danger" onClick={exportDeckToPDF}>
-                  Exportar PDF
-                </button>*/}
+                {footerActions}
               </div>
             </div>
           </div>
