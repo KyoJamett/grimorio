@@ -30,7 +30,7 @@ export const DeckModal = ({
               </div>
               <div className="modal-footer">
                 <button
-                  className="btn btn-secondary"
+                  className="btn btn-danger"
                   onClick={() => setShowPreview(false)}
                 >
                   Cerrar
