@@ -7,6 +7,7 @@ export const DeckPanel = ({
   handlerDeckName,
   setShowPreview,
   avgCost,
+  handlerResetDeck,
 }) => {
   return (
     <div
@@ -55,10 +56,17 @@ export const DeckPanel = ({
           <li>
             <button
               disabled={deck.length === 0}
-              className="btn btn-warning w-100"
+              className="btn btn-warning w-50"
               onClick={() => setShowPreview(true)}
             >
               Ver vista previa
+            </button>
+            <button
+              disabled={deck.length === 0}
+              className="btn btn-danger w-50"
+              onClick={() => handlerResetDeck()}
+            >
+              Limpiar mazo
             </button>
           </li>
         </ul>

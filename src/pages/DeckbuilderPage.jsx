@@ -259,6 +259,7 @@ export const DeckbuilderPage = () => {
               handlerDeckName={handlerDeckName}
               setShowPreview={setShowPreview}
               avgCost={avgCost}
+              handlerResetDeck={handlerResetDeck}
             />
           </div>
         </div>
