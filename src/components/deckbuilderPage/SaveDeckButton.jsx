@@ -30,7 +30,7 @@ export const SaveDeckButton = ({ formatoKey }) => {
 
   return (
     <>
-      <button className="btn btn-danger" onClick={handleSaveDeck}>
+      <button className="btn btn-success" onClick={handleSaveDeck}>
         {editingDeckId ? "Actualizar Mazo" : "Guardar Mazo"}
       </button>
 
