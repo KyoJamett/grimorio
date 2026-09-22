@@ -9,17 +9,19 @@ export const SaveDeckButton = ({ formatoKey }) => {
   const [showSuccess, setShowSuccess] = useState(false);
 
   const handleSaveDeck = () => {
-    if (!deckName.trim() || deck.length === 0) return;
-    //console.log("Mazo a guardar: ", editingDeckId);
+    if (deck.length === 0) return;
+
+    const finalName = deckName.trim() || "Mi mazo";
+
     if (editingDeckId) {
       handlerUpdateDeck(editingDeckId, {
-        name: deckName,
+        name: finalName,
         format: formatoKey,
         cards: deck,
       });
     } else {
       handlerAddDeck({
-        name: deckName,
+        name: finalName,
         format: formatoKey,
         cards: deck,
       });
