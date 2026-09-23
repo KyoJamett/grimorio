@@ -17,7 +17,7 @@ export const DeckModal = ({
           tabIndex="-1"
         >
           <div className="modal-dialog modal-xl modal-dialog-scrollable">
-            <div className="modal-content">
+            <div className="modal-content madera text-warning">
               <div className="modal-header">
                 <h5 className="modal-title">{title}</h5>
                 <button
