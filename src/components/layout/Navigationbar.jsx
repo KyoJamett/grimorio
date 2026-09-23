@@ -46,18 +46,32 @@ export const Navigationbar = () => {
             id="navbarCards"
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              {Object.entries(formatos).map(([key, formato]) => (
-                <li key={key} className="nav-item">
-                  <NavLink
-                    className="nav-link"
-                    to={`/${formato.slug}`}
-                    state={{ formatParam: key }}
-                    onClick={handleNavLinkClick}
-                  >
-                    {formato.name}
-                  </NavLink>
-                </li>
-              ))}
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Formatos de Juego
+                </a>
+                <ul className="dropdown-menu">
+                  {Object.entries(formatos).map(([key, formato]) => (
+                    <li key={key}>
+                      <NavLink
+                        className="dropdown-item"
+                        to={`/${formato.slug}`}
+                        state={{ formatParam: key }}
+                        onClick={handleNavLinkClick}
+                      >
+                        {formato.name}
+                      </NavLink>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
