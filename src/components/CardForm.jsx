@@ -110,40 +110,46 @@ export const CardForm = ({
             </div>
             <div className="modal-body">
               <div className="card burdeos text-warning">
-                <div className="row">
-                  <div className="col card-col">
-                    <img
-                      src={getCardImageUrl(ed_edid, edid)}
-                      className="card-img-top img-fluid"
-                      alt="card"
-                    />
-                  </div>
-                  <div className="col card-col">
-                    <div className="card-body">
-                      <ul className="list-unstyled dataText">
-                        {dataCard().map((item, index) => (
-                          <li key={index} className="mb-2 row">
-                            <div className="col-5 fw-bold text-end">
-                              {item.label}:
-                            </div>
-                            <div className="col-7">{item.value}</div>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+                <img
+                  src={getCardImageUrl(ed_edid, edid)}
+                  className="card-img-top img-fluid p-1"
+                  alt="card"
+                />
+
+                <div className={`card-body ${/*border*/ ""}`}>
+                  <ul
+                    className={`list-unstyled dataText ${/*border*/ ""} mb-0`}
+                  >
+                    {dataCard().map((item, index) => (
+                      <li key={index} className="mb-1 row mx-0">
+                        <div
+                          className={`col-5 fw-bold pe-1 ${/*border*/ ""} p-0`}
+                        >
+                          {item.label}:
+                        </div>
+                        <div className={`col-5 ps-1 ${/*border*/ ""}`}>
+                          {item.value}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
+
                 <div className="card-body">
-                  <h6>Habilidad</h6>
-                  <p className="card-text skill-text justificado backslash">
+                  <h6 className={`${/*border*/ ""} mb-0`}>Habilidad</h6>
+                  <p
+                    className={`card-text skill-text justificado backslash ${/*border*/ ""}`}
+                  >
                     {ability === null || ability === undefined
                       ? "Carta sin habilidad"
                       : onAbility(ability)}
                   </p>
                 </div>
                 <div className="card-body">
-                  <h6>Texto épico</h6>
-                  <p className="card-text cursiva justificado">
+                  <h6 className={`${/*border*/ ""} mb-0`}>Texto épico</h6>
+                  <p
+                    className={`card-text cursiva justificado ${/*border*/ ""}`}
+                  >
                     {flavour === null || flavour === undefined
                       ? "No contiene texto épico."
                       : flavour}
