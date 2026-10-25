@@ -36,6 +36,7 @@ export const CardRoutes = () => {
             <Route path="/escuelas-elementales" element={<FormatPage />} />
             <Route path="/civilizaciones" element={<FormatPage />} />
             <Route path="/expediciones" element={<FormatPage />} />
+            <Route path="/literario" element={<FormatPage />} />
             <Route path="/primer-bloque" element={<FormatPage />} />
             <Route path="/primera-era" element={<FormatPage />} />
             <Route path="/diccionario" element={<DictionaryPage />} />
